@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VGU Buddy Program - Connect, Learn, Grow</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'vgu-orange': '#FF670D',
+                        'vgu-orange-dark': '#E55D0C',
+                        'vgu-orange-light': '#FF8A3B',
+                        'vgu-black': '#000000',
+                        'vgu-surface': '#1F1F1F',
+                        'vgu-text': '#EFEFEF',
+                        'vgu-muted': '#BDBDBD'
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-vgu-black text-vgu-text overflow-x-hidden">
+    <!-- Header -->
+    <header class="fixed top-0 w-full z-50 bg-vgu-black/95 backdrop-blur-sm border-b border-vgu-surface/50">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                    <a href="#home">
+                        <img src="images/hero.png" alt="VGU Buddy Logo" class="w-12 h-12 rounded-xl object-cover">
+                    </a>
+                    <a href="#home" class="font-bold text-xl text-vgu-text">VGU Buddy</a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <nav class="hidden lg:flex items-center space-x-8">
+                    <a href="#home" class="text-vgu-text hover:text-vgu-orange transition-colors" data-i18n="nav.home">Home</a>
+                    <a href="#about" class="text-vgu-text hover:text-vgu-orange transition-colors" data-i18n="nav.about">About</a>
+                    <a href="#features" class="text-vgu-text hover:text-vgu-orange transition-colors" data-i18n="nav.features">Features</a>
+                    <a href="#community" class="text-vgu-text hover:text-vgu-orange transition-colors" data-i18n="nav.community">Community</a>
+                    <a href="#contact" class="text-vgu-text hover:text-vgu-orange transition-colors" data-i18n="nav.contact">Contact</a>
+                </nav>
+                
+                <!-- Language Toggle & Auth -->
+                <div class="hidden lg:flex items-center space-x-4">
+                    <!-- Language Toggle -->
+                    <button 
+                        id="languageToggle" 
+                        onclick="toggleLanguage()" 
+                        class="language-toggle flex items-center space-x-2 px-3 py-2 rounded-lg bg-vgu-surface hover:bg-vgu-surface/80 transition-all duration-200"
+                        aria-pressed="false"
+                        aria-label="Toggle language">
+                        <button class="lang-toggle" id="languageToggle" onclick="toggleLanguage()">
+                            <div class="lang-switch">
+                                <div class="toggle"></div>
+                                <span class="lang-label">EN</span>
+                                </div>
+                        </button>
+                    </button>
+                    
+                    <!-- Auth Buttons -->
+                    <button onclick="showSignIn()" class="px-4 py-2 text-vgu-text hover:text-vgu-orange transition-colors" data-i18n="auth.signIn">
+                        Sign In
+                    </button>
+                    <button onclick="showSignUp()" class="px-6 py-2 bg-vgu-orange text-vgu-black rounded-lg font-semibold hover:bg-vgu-orange-dark transition-colors" data-i18n="auth.signUp">
+                        Sign Up
+                    </button>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button onclick="toggleMobileMenu()" class="lg:hidden p-2 text-vgu-text hover:text-vgu-orange transition-colors">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="mobile-menu fixed top-0 right-0 h-full w-80 bg-vgu-surface shadow-2xl z-50 lg:hidden">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-8">
+                    <h2 class="text-xl font-bold text-vgu-text">Menu</h2>
+                    <button onclick="toggleMobileMenu()" class="p-2 text-vgu-text hover:text-vgu-orange transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+                
+                <!-- Mobile Language Toggle -->
+                <div class="mb-6">
+                    <button 
+                        onclick="toggleLanguage()" 
+                        class="w-full flex items-center justify-between p-3 rounded-lg bg-vgu-black hover:bg-vgu-black/80 transition-all duration-200">
+                        <div class="flex items-center space-x-3">
+                            <button id="mobileLanguageToggle" onclick="toggleLanguage()">
+                                <span id="mobileLanguageCode">EN</span>
+                            </button>
+                        </div>
+                        <svg class="w-4 h-4 text-vgu-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l4-4 4 4m0 6l-4 4-4-4"></path>
+                        </svg>
+                    </button>
+                </div>
+                
+                <nav class="space-y-2 mb-8">
+                    <a href="#home" class="block px-4 py-3 text-vgu-text hover:text-vgu-orange hover:bg-vgu-black rounded-lg transition-colors" data-i18n="nav.home">Home</a>
+                    <a href="#about" class="block px-4 py-3 text-vgu-text hover:text-vgu-orange hover:bg-vgu-black rounded-lg transition-colors" data-i18n="nav.about">About</a>
+                    <a href="#features" class="block px-4 py-3 text-vgu-text hover:text-vgu-orange hover:bg-vgu-black rounded-lg transition-colors" data-i18n="nav.features">Features</a>
+                    <a href="#community" class="block px-4 py-3 text-vgu-text hover:text-vgu-orange hover:bg-vgu-black rounded-lg transition-colors" data-i18n="nav.community">Community</a>
+                    <a href="#contact" class="block px-4 py-3 text-vgu-text hover:text-vgu-orange hover:bg-vgu-black rounded-lg transition-colors" data-i18n="nav.contact">Contact</a>
+                </nav>
+                
+                <div class="space-y-3">
+                    <button onclick="showSignIn()" class="w-full px-4 py-3 text-vgu-text hover:text-vgu-orange hover:bg-vgu-black rounded-lg transition-colors text-left" data-i18n="auth.signIn">
+                        Sign In
+                    </button>
+                    <button onclick="showSignUp()" class="w-full px-4 py-3 bg-vgu-orange text-vgu-black rounded-lg font-semibold hover:bg-vgu-orange-dark transition-colors" data-i18n="auth.signUp">
+                        Sign Up
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-gradient min-h-screen flex items-center relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 py-20 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Content -->
+                <div class="space-y-8 animate-fade-in">
+                    <h1 class="text-5xl lg:text-7xl font-black leading-tight text-glow">
+                        <span class="text-vgu-text" data-i18n="hero.title1">Connect with</span>
+                        <span class="block text-vgu-orange" data-i18n="hero.title2">VGU Buddy</span>
+                    </h1>
+                    <p class="text-xl lg:text-2xl text-vgu-muted leading-relaxed max-w-2xl" data-i18n="hero.subtitle">
+                        Join the ultimate Vietnamese-German University community. Build connections, share experiences, and thrive together.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button onclick="showSignUp()" class="btn-primary px-8 py-4 rounded-xl font-bold text-lg text-vgu-black" data-i18n="hero.joinNow">
+                            Join Now
+                        </button>
+                        <button onclick="scrollToSection('about')" class="btn-secondary px-8 py-4 rounded-xl font-bold text-lg" data-i18n="hero.learnMore">
+                            Learn More
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Hero Card -->
+                <div class="relative animate-slide-up">
+                    <div class="card-hover bg-vgu-surface/80 backdrop-blur-sm rounded-2xl p-8 shadow-2xl">
+                        <div class="text-center space-y-6">
+                            <div class="flex justify-center -space-x-4 mb-6">
+                                <div class="w-16 h-16 rounded-full bg-vgu-orange flex items-center justify-center border-4 border-vgu-surface">
+                                    <span class="text-2xl">👨‍🎓</span>
+                                </div>
+                                <div class="w-16 h-16 rounded-full bg-vgu-orange-light flex items-center justify-center border-4 border-vgu-surface">
+                                    <span class="text-2xl">👩‍🎓</span>
+                                </div>
+                                <div class="w-16 h-16 rounded-full bg-vgu-orange-dark flex items-center justify-center border-4 border-vgu-surface">
+                                    <span class="text-2xl">👨‍💻</span>
+                                </div>
+                            </div>
+                            <h3 class="text-2xl font-bold text-vgu-text mb-3" data-i18n="hero.cardTitle">Welcome to VGU Buddy</h3>
+                            <p class="text-vgu-muted leading-relaxed" data-i18n="hero.cardSubtitle">Your gateway to an amazing university experience with friends who care.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-20 bg-vgu-surface">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="section-title text-4xl lg:text-6xl font-black text-vgu-text mb-6" data-i18n="stats.title">VGU Buddy by Numbers</h2>
+                <p class="text-xl text-vgu-muted max-w-3xl mx-auto" data-i18n="stats.subtitle">
+                    Join a thriving community that's making university life better for everyone.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center animate-counter">
+                    <div class="stats-counter">500+</div>
+                    <h3 class="text-xl font-bold text-vgu-text mb-2" data-i18n="stats.activeStudents">Active Students</h3>
+                    <p class="text-vgu-muted" data-i18n="stats.activeStudentsDesc">Connected and engaged daily</p>
+                </div>
+                <div class="text-center animate-counter">
+                    <div class="stats-counter">50+</div>
+                    <h3 class="text-xl font-bold text-vgu-text mb-2" data-i18n="stats.eventsMonthly">Events Monthly</h3>
+                    <p class="text-vgu-muted" data-i18n="stats.eventsMonthlyDesc">Cultural exchanges & activities</p>
+                </div>
+                <div class="text-center animate-counter">
+                    <div class="stats-counter">20+</div>
+                    <h3 class="text-xl font-bold text-vgu-text mb-2" data-i18n="stats.studyGroups">Study Groups</h3>
+                    <p class="text-vgu-muted" data-i18n="stats.studyGroupsDesc">Academic support networks</p>
+                </div>
+                <div class="text-center animate-counter">
+                    <div class="stats-counter">95%</div>
+                    <h3 class="text-xl font-bold text-vgu-text mb-2" data-i18n="stats.satisfaction">Satisfaction Rate</h3>
+                    <p class="text-vgu-muted" data-i18n="stats.satisfactionDesc">Students love VGU Buddy</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-vgu-black">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="space-y-8">
+                    <h2 class="text-4xl lg:text-6xl font-black text-vgu-text" data-i18n="about.title">Why Choose VGU Buddy?</h2>
+                    <p class="text-xl text-vgu-muted leading-relaxed" data-i18n="about.subtitle">
+                        VGU Buddy isn't just another platform – it's your complete university companion. We've built everything you need to succeed academically and socially.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-vgu-orange rounded-lg flex items-center justify-center flex-shrink-0">
+                                <svg class="w-6 h-6 text-vgu-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-vgu-text mb-2" data-i18n="about.social.title">Social Networking</h3>
+                                <p class="text-vgu-muted" data-i18n="about.social.desc">Connect with peers, share experiences, and build lasting friendships.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-vgu-orange rounded-lg flex items-center justify-center flex-shrink-0">
+                                <svg class="w-6 h-6 text-vgu-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-vgu-text mb-2" data-i18n="about.academic.title">Academic Support</h3>
+                                <p class="text-vgu-muted" data-i18n="about.academic.desc">Access resources, join study groups, and excel in your studies.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-vgu-orange rounded-lg flex items-center justify-center flex-shrink-0">
+                                <svg class="w-6 h-6 text-vgu-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-vgu-text mb-2" data-i18n="about.campus.title">Campus Services</h3>
+                                <p class="text-vgu-muted" data-i18n="about.campus.desc">Book facilities, access library services, and manage your schedule.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative">
+                    <div class="card-hover bg-gradient-to-br from-vgu-orange to-vgu-orange-dark rounded-2xl p-8 shadow-2xl">
+                        <div class="bg-vgu-black/20 rounded-xl p-8 backdrop-blur-sm">
+                            <div class="text-center space-y-6">
+                                <div>
+                                    <img src="images/group.png">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-vgu-surface">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="section-title text-4xl lg:text-6xl font-black text-vgu-text mb-6" data-i18n="features.title">Powerful Features</h2>
+                <p class="text-xl text-vgu-muted max-w-3xl mx-auto" data-i18n="features.subtitle">
+                    Everything you need for an amazing university experience, all in one platform.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="card-hover bg-vgu-black rounded-2xl p-8">
+                    <div class="w-16 h-16 bg-vgu-orange rounded-xl flex items-center justify-center mb-6">
+                        <span class="text-3xl">👥</span>
+                    </div>
+                    <a href="social_hub.html"><h3 class="text-2xl font-bold text-vgu-text mb-4" data-i18n="features.social.title">Social Hub</h3></a>
+                    <p class="text-vgu-muted mb-6" data-i18n="features.social.desc">Connect, chat, and share with your VGU community in real-time.</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-center text-vgu-muted">
+                            <span class="w-2 h-2 bg-vgu-orange rounded-full mr-3"></span>
+                            <span data-i18n="features.social.item1">Friend connections</span>
+                        </li>
+                        <li class="flex items-center text-vgu-muted">
+                            <span class="w-2 h-2 bg-vgu-orange rounded-full mr-3"></span>
+                            <span data-i18n="features.social.item2">Group messaging</span>
+                        </li>
+                        <li class="flex items-center text-vgu-muted">
+                            <span class="w-2 h-2 bg-vgu-orange rounded-full mr-3"></span>
+                            <span data-i18n="features.social.item3">Merchandise</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="card-hover bg-vgu-black rounded-2xl p-8">
+                    <div class="w-16 h-16 bg-vgu-orange rounded-xl flex items-center justify-center mb-6">
+                        <span class="text-3xl">📅</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-vgu-text mb-4" data-i18n="features.events.title">Events Calendar</h3>
+                    <p class="text-vgu-muted mb-6" data-i18n="features.events.desc">Never miss important events, workshops, or cultural activities.</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-center text-vgu-muted">
+                            <span class="w-2 h-2 bg-vgu-orange rounded-full mr-3"></span>
+                            <span data-i18n="features.events.item1">Event RSVP</span>
+                        </li>
+                        <li class="flex items-center text-vgu-muted">
+                            <span class="w-2 h-2 bg-vgu-orange rounded-full mr-3"></span>
+                            <span data-i18n="features.events.item2">Calendar sync</span>
+                        </li>
+                        <li class="flex items-center text-vgu-muted">
+                            <span class="w-2 h-2 bg-vgu-orange rounded-full mr-3"></span>
+                            <span data-i18n="features.events.item3">Reminders</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="card-hover bg-vgu-black rounded-2xl p-8">
+                    <div class="w-16 h-16 bg-vgu-orange rounded-xl flex items-center justify-center mb-6">
+                        <span class="text-3xl">📚</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-vgu-text mb-4" data-i18n="features.academic.title">Academic Tools</h3>
+                    <p class="text-vgu-muted mb-6" data-i18n="features.academic.desc">Access all your academic resources and manage your studies.</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-center text-vgu-muted">
+                            <span class="w-2 h-2 bg-vgu-orange rounded-full mr-3"></span>
+                            <span data-i18n="features.academic.item1">Class schedules</span>
+                        </li>
+                        <li class="flex items-center text-vgu-muted">
+                            <span class="w-2 h-2 bg-vgu-orange rounded-full mr-3"></span>
+                            <span data-i18n="features.academic.item2">Library access</span>
+                        </li>
+                        <li class="flex items-center text-vgu-muted">
+                            <span class="w-2 h-2 bg-vgu-orange rounded-full mr-3"></span>
+                            <span data-i18n="features.academic.item3">Study rooms</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="card-hover bg-vgu-black rounded-2xl p-8">
+                    <div class="w-16 h-16 bg-vgu-orange rounded-xl flex items-center justify-center mb-6">
+                        <span class="text-3xl">🏃</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-vgu-text mb-4" data-i18n="features.sports.title">Sports & Fitness</h3>
+                    <p class="text-vgu-muted mb-6" data-i18n="features.sports.desc">Book facilities and stay active with your buddies.</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-center text-vgu-muted">
+                            <span class="w-2 h-2 bg-vgu-orange rounded-full mr-3"></span>
+                            <span data-i18n="features.sports.item1">Court booking</span>
+                        </li>
+                        <li class="flex items-center text-vgu-muted">
+                            <span class="w-2 h-2 bg-vgu-orange rounded-full mr-3"></span>
+                            <span data-i18n="features.sports.item2">Gym access</span>
+                        </li>
+                        <li class="flex items-center text-vgu-muted">
+                            <span class="w-2 h-2 bg-vgu-orange rounded-full mr-3"></span>
+                            <span data-i18n="features.sports.item3">Sports groups</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="card-hover bg-vgu-black rounded-2xl p-8">
+                    <div class="w-16 h-16 bg-vgu-orange rounded-xl flex items-center justify-center mb-6">
+                        <span class="text-3xl">🆘</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-vgu-text mb-4" data-i18n="features.support.title">Support Services</h3>
+                    <p class="text-vgu-muted mb-6" data-i18n="features.support.desc">Get help when you need it with comprehensive support.</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-center text-vgu-muted">
+                            <span class="w-2 h-2 bg-vgu-orange rounded-full mr-3"></span>
+                            <span data-i18n="features.support.item1">Mental health</span>
+                        </li>
+                        <li class="flex items-center text-vgu-muted">
+                            <span class="w-2 h-2 bg-vgu-orange rounded-full mr-3"></span>
+                            <span data-i18n="features.support.item2">Emergency contacts</span>
+                        </li>
+                        <li class="flex items-center text-vgu-muted">
+                            <span class="w-2 h-2 bg-vgu-orange rounded-full mr-3"></span>
+                            <span data-i18n="features.support.item3">University hotline</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="card-hover bg-vgu-black rounded-2xl p-8">
+                    <div class="w-16 h-16 bg-vgu-orange rounded-xl flex items-center justify-center mb-6">
+                        <span class="text-3xl">🌍</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-vgu-text mb-4" data-i18n="features.global.title">Global Community</h3>
+                    <p class="text-vgu-muted mb-6" data-i18n="features.global.desc">Connect across cultures with multilingual support.</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-center text-vgu-muted">
+                            <span class="w-2 h-2 bg-vgu-orange rounded-full mr-3"></span>
+                            <span data-i18n="features.global.item1">English interface</span>
+                        </li>
+                        <li class="flex items-center text-vgu-muted">
+                            <span class="w-2 h-2 bg-vgu-orange rounded-full mr-3"></span>
+                            <span data-i18n="features.global.item2">German support</span>
+                        </li>
+                        <li class="flex items-center text-vgu-muted">
+                            <span class="w-2 h-2 bg-vgu-orange rounded-full mr-3"></span>
+                            <span data-i18n="features.global.item3">Language exchange</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Section -->
+    <section id="community" class="py-20 bg-vgu-black">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="section-title text-4xl lg:text-6xl font-black text-vgu-text mb-6" data-i18n="community.title">What Students Say</h2>
+                <p class="text-xl text-vgu-muted max-w-3xl mx-auto" data-i18n="community.subtitle">
+                    Hear from real VGU students about their experiences with the Buddy Program.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="testimonial-card rounded-2xl p-8">
+                    <div class="flex items-center mb-6">
+                        <div class="w-16 h-16 bg-vgu-orange rounded-full flex items-center justify-center mr-4">
+                            <span class="text-2xl">👨‍🎓</span>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold text-vgu-text">Minh Nguyen</h4>
+                            <p class="text-vgu-muted">Computer Science, Year 3</p>
+                        </div>
+                    </div>
+                    <p class="text-vgu-muted leading-relaxed" data-i18n="community.testimonial1">
+                        "VGU Buddy transformed my university experience. I found my study group, made lifelong friends, and never missed an important event. It's like having a personal assistant for student life!"
+                    </p>
+                </div>
+                
+                <div class="testimonial-card rounded-2xl p-8">
+                    <div class="flex items-center mb-6">
+                        <div class="w-16 h-16 bg-vgu-orange rounded-full flex items-center justify-center mr-4">
+                            <span class="text-2xl">👩‍🎓</span>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold text-vgu-text">Sarah Müller</h4>
+                            <p class="text-vgu-muted">Business Admin, Year 2</p>
+                        </div>
+                    </div>
+                    <p class="text-vgu-muted leading-relaxed" data-i18n="community.testimonial2">
+                        "As an exchange student, VGU Buddy helped me integrate seamlessly. The multilingual support and cultural events made me feel at home immediately. Highly recommended!"
+                    </p>
+                </div>
+                
+                <div class="testimonial-card rounded-2xl p-8">
+                    <div class="flex items-center mb-6">
+                        <div class="w-16 h-16 bg-vgu-orange rounded-full flex items-center justify-center mr-4">
+                            <span class="text-2xl">👨‍💻</span>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold text-vgu-text">Duc Tran </h4>
+                            <p class="text-vgu-muted">Engineering, Year 4</p>
+                        </div>
+                    </div>
+                    <p class="text-vgu-muted leading-relaxed" data-i18n="community.testimonial3">
+                        "The sports booking feature is amazing! I can easily reserve courts for badminton with friends. VGU Buddy makes campus life so much more organized and fun."
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-gradient-to-br from-vgu-surface to-vgu-black">
+        <div class="max-w-4xl mx-auto text-center px-6 lg:px-8">
+            <h2 class="text-4xl lg:text-6xl font-black text-vgu-text mb-8" data-i18n="cta.title">Ready to Transform Your University Experience?</h2>
+            <p class="text-xl lg:text-2xl text-vgu-muted mb-12" data-i18n="cta.subtitle">
+                Join thousands of VGU students who are already making the most of their university journey.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-6 justify-center">
+                <button onclick="showSignUp()" class="btn-primary px-8 py-4 rounded-xl font-bold text-lg text-vgu-black" data-i18n="cta.join">
+                    Join the Community
+                </button>
+                <button onclick="showDemo()" class="btn-secondary px-8 py-4 rounded-xl font-bold text-lg" data-i18n="cta.demo">
+                    Watch Demo
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-vgu-surface py-16">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="md:col-span-2">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <img src="images/hero.png" alt="VGU Buddy Logo" class="w-12 h-12 rounded-xl object-cover">
+                        <span class="font-bold text-xl text-vgu-text">VGU Buddy</span>
+                    </div>
+                    <p class="text-vgu-muted leading-relaxed mb-6" data-i18n="footer.description">
+                        Connecting students at Vietnamese-German University for an extraordinary academic and social experience.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="https://www.facebook.com/VGUBuddyProgram" target="_blank">
+                            <div class="w-10 h-10 bg-vgu-black rounded-lg flex items-center justify-center hover:bg-vgu-orange transition-colors cursor-pointer">
+                                <i data-lucide="facebook" class="text-vgu-orange hover:text-vgu-black w-6 h-6"></i>
+                            </div>
+                        </a>
+                        <a href="https://www.instagram.com/buddyprogram_vgu/" target="_blank">
+                            <div class="w-10 h-10 bg-vgu-black rounded-lg flex items-center justify-center hover:bg-vgu-orange transition-colors cursor-pointer">
+                                <i data-lucide="instagram" class="text-vgu-orange hover:text-vgu-black w-6 h-6"></i>
+                            </div>
+                        </a>
+                        <a href="#home">
+                            <div class="w-10 h-10 bg-vgu-black rounded-lg flex items-center justify-center hover:bg-vgu-orange transition-colors cursor-pointer">
+                                <i data-lucide="globe" class="text-vgu-orange hover:text-vgu-black w-6 h-6"></i>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-lg text-vgu-text mb-4" data-i18n="footer.quickLinks">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-vgu-muted hover:text-vgu-orange transition-colors" data-i18n="nav.home">Home</a></li>
+                        <li><a href="#about" class="text-vgu-muted hover:text-vgu-orange transition-colors" data-i18n="nav.about">About</a></li>
+                        <li><a href="#features" class="text-vgu-muted hover:text-vgu-orange transition-colors" data-i18n="nav.features">Features</a></li>
+                        <li><a href="#community" class="text-vgu-muted hover:text-vgu-orange transition-colors" data-i18n="nav.community">Community</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-lg text-vgu-text mb-4" data-i18n="footer.support">Support</h4>
+                    <ul class="space-y-2">
+                        <li class="text-vgu-muted hover:text-vgu-orange transition-colors cursor-pointer" data-i18n="footer.helpCenter">Help Center</li>
+                        <li class="text-vgu-muted hover:text-vgu-orange transition-colors cursor-pointer" data-i18n="footer.emergency">Emergency Contacts</li>
+                        <li class="text-vgu-muted hover:text-vgu-orange transition-colors cursor-pointer" data-i18n="footer.mentalHealth">Mental Health</li>
+                        <li class="text-vgu-muted hover:text-vgu-orange transition-colors cursor-pointer" data-i18n="footer.technical">Technical Support</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-vgu-black mt-12 pt-8 text-center">
+                <p class="text-vgu-muted" data-i18n="footer.copyright">
+                    &copy; 2024 VGU Buddy Program. All rights reserved. | Available in English & German
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Auth Modal -->
+    <div id="authModal" class="fixed inset-0 bg-vgu-black/90 backdrop-blur-sm hidden z-50 flex items-center justify-center p-4">
+        <div class="bg-vgu-surface rounded-2xl max-w-md w-full p-8 transform transition-all">
+            <div class="text-center mb-8">
+                <div class="w-16 h-16 bg-vgu-orange rounded-xl flex items-center justify-center mx-auto mb-4">
+                    <span class="text-2xl">🎓</span>
+                </div>
+                <h2 id="authTitle" class="text-2xl font-bold text-vgu-text mb-2">Welcome Back</h2>
+                <p class="text-vgu-muted">Sign in to your VGU Buddy account</p>
+            </div>
+            
+            <form id="authForm" class="space-y-6">
+                <div id="nameField" class="hidden">
+                    <label class="block text-sm font-semibold text-vgu-text mb-2" data-i18n="auth.fullName">Full Name</label>
+                    <input type="text" name="name" class="w-full px-4 py-3 bg-vgu-black border border-vgu-surface rounded-lg text-vgu-text focus:border-vgu-orange focus:outline-none" placeholder="Enter your full name">
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-vgu-text mb-2" data-i18n="auth.email">Email</label>
+                    <input type="email" name="email" class="w-full px-4 py-3 bg-vgu-black border border-vgu-surface rounded-lg text-vgu-text focus:border-vgu-orange focus:outline-none" placeholder="Enter your email">
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-vgu-text mb-2" data-i18n="auth.password">Password</label>
+                    <input type="password" name="password" class="w-full px-4 py-3 bg-vgu-black border border-vgu-surface rounded-lg text-vgu-text focus:border-vgu-orange focus:outline-none" placeholder="Enter your password">
+                </div>
+                <div id="confirmPasswordField" class="hidden">
+                    <label class="block text-sm font-semibold text-vgu-text mb-2" data-i18n="auth.confirmPassword">Confirm Password</label>
+                    <input type="password" name="confirmPassword" class="w-full px-4 py-3 bg-vgu-black border border-vgu-surface rounded-lg text-vgu-text focus:border-vgu-orange focus:outline-none" placeholder="Confirm your password">
+                </div>
+                <button type="submit" class="w-full bg-vgu-orange text-vgu-black py-3 rounded-lg font-bold hover:bg-vgu-orange-dark transition-colors">
+                    <span id="authButtonText">Sign In</span>
+                </button>
+            </form>
+            
+            <div class="mt-6 text-center">
+                <p class="text-vgu-muted">
+                    <span id="authSwitchText">Don't have an account?</span>
+                    <button id="authSwitchButton" onclick="switchAuthMode()" class="text-vgu-orange font-semibold hover:text-vgu-orange-light transition-colors ml-1">Sign Up</button>
+                </p>
+            </div>
+            
+            <button onclick="closeAuthModal()" class="absolute top-4 right-4 text-vgu-muted hover:text-vgu-text transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97128657528985e9',t:'MTc1NTUzMTc4NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+<script>
+  lucide.createIcons();
+</script>
+</body>
+</html>
