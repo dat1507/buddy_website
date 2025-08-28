@@ -439,30 +439,54 @@ function scrollToSection(sectionId) {
 }
 
 // Slider Fuction
-let slider, slides, totalSlides, index = 0;
+const slider = document.getElementById('slider');
+let slides = document.querySelectorAll('#slider img');
+const totalSlides = slides.length;
+let currentIndex = 1;
+
+// Clone first and last slides
+const firstClone = slides[0].cloneNode(true);
+const lastClone = slides[totalSlides - 1].cloneNode(true);
+
+slider.appendChild(firstClone);
+slider.insertBefore(lastClone, slides[0]);
+
+// Update slides NodeList
+slides = document.querySelectorAll('#slider img');
+
+// Set initial position
+slider.style.transform = `translateX(-${100 * currentIndex}%)`;
 
 function updateSlider() {
-    slider.style.transform = `translateX(-${index * 100}%)`;
+    slider.style.transition = 'transform 0.7s ease';
+    slider.style.transform = `translateX(-${100 * currentIndex}%)`;
 }
 
 function nextSlide() {
-    index = (index + 1) % totalSlides;
+    if (currentIndex >= slides.length - 1) return;
+    currentIndex++;
     updateSlider();
 }
 
 function prevSlide() {
-    index = (index - 1 + totalSlides) % totalSlides;
+    if (currentIndex <= 0) return;
+    currentIndex--;
     updateSlider();
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-    slider = document.getElementById('slider');
-    slides = slider.children;
-    totalSlides = slides.length;
-    setInterval(nextSlide, 5000);
+// Handle infinite loop
+slider.addEventListener('transitionend', () => {
+    if (slides[currentIndex].alt === 'Slide 1') {
+        slider.style.transition = 'none';
+        currentIndex = 1;
+        slider.style.transform = `translateX(-${100 * currentIndex}%)`;
+    }
+    if (slides[currentIndex].alt === 'Slide 3') {
+        slider.style.transition = 'none';
+        currentIndex = totalSlides;
+        slider.style.transform = `translateX(-${100 * currentIndex}%)`;
+    }
 });
-
-
 
 // Demo Function
 function showDemo() {
