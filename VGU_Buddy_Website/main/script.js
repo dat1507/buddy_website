@@ -4,9 +4,20 @@ let currentLanguage = 'en';
 let translations = {};
 
 // Language Management
+// Language Management
 const SUPPORTED_LANGUAGES = {
-    'en': { name: 'English', flag: '🇺🇸' },
-    'de': { name: 'Deutsch', flag: '🇩🇪' }
+    'en': { 
+        name: 'English', 
+        code: 'EN',
+        flagClass: 'fi fi-gb',
+        flagStyle: 'font-size: 16px;'
+    },
+    'de': { 
+        name: 'Deutsch', 
+        code: 'DE',
+        flagClass: 'fi fi-de',
+        flagStyle: 'font-size: 16px;'
+    }
 };
 
 // Initialize language system
@@ -342,16 +353,26 @@ async function toggleLanguage() {
 
 // Update language toggle UI
 function updateLanguageToggle() {
-    // Get the code element for desktop
+    const langData = SUPPORTED_LANGUAGES[currentLanguage];
+    
+    // Desktop toggle
+    const flagElement = document.getElementById('languageFlag');
     const codeElement = document.getElementById('languageCode');
-    if (codeElement) {
-        codeElement.textContent = currentLanguage.toUpperCase(); // EN or DE
+    
+    if (flagElement && codeElement) {
+        flagElement.className = langData.flagClass;
+        flagElement.style.cssText = langData.flagStyle;
+        codeElement.textContent = langData.code;
     }
-
-    // Get the code element for mobile
+    
+    // Mobile toggle
+    const mobileFlagElement = document.getElementById('mobileLanguageFlag');
     const mobileCodeElement = document.getElementById('mobileLanguageCode');
-    if (mobileCodeElement) {
-        mobileCodeElement.textContent = currentLanguage.toUpperCase(); // EN or DE
+    
+    if (mobileFlagElement && mobileCodeElement) {
+        mobileFlagElement.className = langData.flagClass;
+        mobileFlagElement.style.cssText = langData.flagStyle;
+        mobileCodeElement.textContent = langData.name;
     }
 }
 

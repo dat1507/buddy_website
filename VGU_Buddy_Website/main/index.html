@@ -25,6 +25,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.6.6/css/flag-icons.min.css">
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9760834b34598976',t:'MTc1NjM0OTU0OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
 </head>
 <body class="bg-vgu-black text-vgu-text overflow-x-hidden">
     <!-- Header -->
@@ -50,6 +53,8 @@
                 
                 <!-- Language Toggle & Auth -->
                 <div class="hidden lg:flex items-center space-x-4">
+                    
+                    <!-- Language Toggle -->
                     <!-- Language Toggle -->
                     <button 
                         id="languageToggle" 
@@ -57,11 +62,10 @@
                         class="language-toggle flex items-center space-x-2 px-3 py-2 rounded-lg bg-vgu-surface hover:bg-vgu-surface/80 transition-all duration-200"
                         aria-pressed="false"
                         aria-label="Toggle language">
-                        <button class="lang-toggle">
-                            EN
-                        </button>
+                        <i id="languageFlag" class="fas fa-flag text-blue-500"></i>
+                        <span id="languageCode" class="text-sm font-semibold text-vgu-muted">EN</span>
                     </button>
-                    
+
                     <!-- Auth Buttons -->
                     <button onclick="showSignIn()" class="px-4 py-2 text-vgu-text hover:text-vgu-orange transition-colors" data-i18n="auth.signIn">
                         Sign In
@@ -98,16 +102,15 @@
                         onclick="toggleLanguage()" 
                         class="w-full flex items-center justify-between p-3 rounded-lg bg-vgu-black hover:bg-vgu-black/80 transition-all duration-200">
                         <div class="flex items-center space-x-3">
-                            <button id="mobileLanguageToggle" onclick="toggleLanguage()">
-                                <span id="mobileLanguageCode">EN</span>
-                            </button>
+                            <i id="mobileLanguageFlag" class="fas fa-flag text-blue-500"></i>
+                            <span id="mobileLanguageCode" class="font-semibold text-vgu-text">English</span>
                         </div>
                         <svg class="w-4 h-4 text-vgu-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l4-4 4 4m0 6l-4 4-4-4"></path>
                         </svg>
                     </button>
                 </div>
-                
+                                
                 <nav class="space-y-2 mb-8">
                     <a href="#home" class="block px-4 py-3 text-vgu-text hover:text-vgu-orange hover:bg-vgu-black rounded-lg transition-colors" data-i18n="nav.home">Home</a>
                     <a href="#about" class="block px-4 py-3 text-vgu-text hover:text-vgu-orange hover:bg-vgu-black rounded-lg transition-colors" data-i18n="nav.about">About</a>
