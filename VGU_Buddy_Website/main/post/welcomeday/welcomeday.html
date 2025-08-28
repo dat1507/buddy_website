@@ -23,7 +23,7 @@
         }
     </script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="welcomeday.css">
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.6.6/css/flag-icons.min.css">
@@ -46,7 +46,7 @@
                 
                 <!-- Desktop Navigation -->
                 <nav class="hidden lg:flex items-center space-x-8">
-                    <a href="../index.html" class="text-vgu-text hover:text-vgu-orange transition-colors" data-i18n="nav.home">Home</a>
+                    <a href="../../index.html" class="text-vgu-text hover:text-vgu-orange transition-colors" data-i18n="nav.home">Home</a>
                     <a href="#about" class="text-vgu-text hover:text-vgu-orange transition-colors" data-i18n="nav.about">About</a>
                     <a href="#features" class="text-vgu-text hover:text-vgu-orange transition-colors" data-i18n="nav.features">Features</a>
                     <a href="#community" class="text-vgu-text hover:text-vgu-orange transition-colors" data-i18n="nav.community">Community</a>
@@ -133,13 +133,117 @@
     </header>
 
 
-    <main class="pt-20 min-h-screen bg-vgu-black">
-        <section class="p-8 text-center">
-            <h1 class="text-3xl font-bold text-vgu-text">Welcome to VGU Buddy Program</h1>
-            <p class="text-vgu-muted mt-4">Content goes here...</p>
-        </section>
+    <!-- Main Content -->
+    <main class="main" role="main">
+        <div class="container">
+            <article class="article-container">
+                
+                <!-- Image Section -->
+                <section class="image-section" aria-labelledby="image-caption">
+                    <figure class="hero-image-container">
+                        <img 
+                            src="https://via.placeholder.com/1200x700/FF670D/FFFFFF?text=VGU+Welcome+Day" 
+                            alt="Students gathering at VGU Welcome Day event with banners and activities"
+                            class="hero-image"
+                            loading="eager">
+                        
+                        <!-- Image Caption -->
+                        <figcaption id="image-caption" class="image-caption" data-i18n="article.caption">
+                            Students arriving at Welcome Day
+                        </figcaption>
+                    </figure>
+                    
+                    <!-- Optional Thumbnail Gallery -->
+                    <div class="thumbnail-gallery" role="group" aria-label="Additional images">
+                        <button class="thumbnail active" aria-label="Main welcome day image">
+                            <img src="https://via.placeholder.com/120x80/FF670D/FFFFFF?text=1" alt="Welcome Day overview">
+                        </button>
+                        <button class="thumbnail" aria-label="Students registration">
+                            <img src="https://via.placeholder.com/120x80/000000/FFFFFF?text=2" alt="Registration area">
+                        </button>
+                        <button class="thumbnail" aria-label="Campus activities">
+                            <img src="https://via.placeholder.com/120x80/FF670D/FFFFFF?text=3" alt="Campus tour activities">
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Content Section -->
+                <section class="content-section">
+                    <header class="article-header">
+                        <h1 class="article-title" data-i18n="article.title">Welcome Day</h1>
+                        <time class="article-date" data-i18n="article.date" datetime="2025-09-10">
+                            September 10, 2025
+                        </time>
+                    </header>
+
+                    <!-- Article Summary -->
+                    <div class="article-summary">
+                        <p data-i18n="article.summary">
+                            Join us for an exciting introduction to university life at VGU, where new students discover their academic journey and connect with the vibrant campus community.
+                        </p>
+                    </div>
+
+                    <!-- Article Content -->
+                    <div class="article-content">
+                        <!-- Always visible paragraph -->
+                        <p class="content-paragraph" data-i18n="article.paragraph1">
+                            Welcome Day at Vietnamese-German University marks the beginning of an extraordinary academic adventure. As new students step onto our beautiful campus, they are greeted with a carefully orchestrated celebration that introduces them to the unique blend of Vietnamese warmth and German precision that defines our educational approach.
+                        </p>
+
+                        <!-- Expandable content -->
+                        <div id="expandable-content" class="expandable-content" aria-expanded="false">
+                            <p class="content-paragraph" data-i18n="article.paragraph2">
+                                The day begins with an inspiring opening ceremony featuring welcome speeches from university leadership, faculty presentations, and performances by our talented student organizations. New students receive their orientation materials, campus maps, and connect with their academic advisors who will guide them throughout their studies.
+                            </p>
+
+                            <p class="content-paragraph" data-i18n="article.paragraph3">
+                                Interactive campus tours showcase our state-of-the-art facilities, including modern laboratories, collaborative learning spaces, the comprehensive library, and recreational areas. Students explore different faculties, meet professors, and learn about the diverse academic programs, research opportunities, and international exchange possibilities that await them.
+                            </p>
+
+                            <p class="content-paragraph" data-i18n="article.paragraph4">
+                                The celebration continues with cultural activities, networking sessions, and a festive lunch where students begin forming friendships that will last throughout their university years. Don't miss this perfect opportunity to start your VGU journey on the right foot – follow our social media channels for live updates and behind-the-scenes moments from this special day.
+                            </p>
+                        </div>
+
+                        <!-- Read More Button -->
+                        <button 
+                            id="read-more-btn" 
+                            class="read-more-btn"
+                            aria-expanded="false"
+                            aria-controls="expandable-content"
+                            data-i18n="article.read_more">
+                            Read more
+                        </button>
+                    </div>
+
+                    <!-- Article Actions -->
+                    <div class="article-actions">
+                        <button class="share-btn" aria-label="Share this article">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
+                                <polyline points="16,6 12,2 8,6"></polyline>
+                                <line x1="12" y1="2" x2="12" y2="15"></line>
+                            </svg>
+                            <span data-i18n="meta.share">Share</span>
+                        </button>
+                    </div>
+                </section>
+
+            </article>
+        </div>
     </main>
 
+    <!-- Back to Top Button -->
+    <button 
+        id="back-to-top" 
+        class="back-to-top" 
+        aria-label="Back to top"
+        style="display: none;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="18,15 12,9 6,15"></polyline>
+        </svg>
+        <span class="sr-only" data-i18n="meta.back_to_top">Back to top</span>
+    </button>
 
 
     <!-- Footer -->
@@ -148,7 +252,7 @@
             <div class="grid md:grid-cols-4 gap-8">
                 <div class="md:col-span-2">
                     <div class="flex items-center space-x-3 mb-6">
-                        <img src="images/vguBuddy_logo.png" alt="VGU Buddy Logo" class="w-12 h-12 rounded-xl object-cover">
+                        <img src="../../images/vguBuddy_logo.png" alt="VGU Buddy Logo" class="w-12 h-12 rounded-xl object-cover">
                         <span class="font-bold text-xl text-vgu-text">VGU Buddy</span>
                     </div>
                     <p class="text-vgu-muted leading-relaxed mb-6" data-i18n="footer.description">
@@ -201,4 +305,59 @@
             </div>
         </div>
     </footer>
+
+    <!-- Auth Modal -->
+    <div id="authModal" class="fixed inset-0 bg-vgu-black/90 backdrop-blur-sm hidden z-50 flex items-center justify-center p-4">
+        <div class="bg-vgu-surface rounded-2xl max-w-md w-full p-8 transform transition-all">
+            <div class="text-center mb-8">
+                <div class="w-16 h-16 bg-vgu-orange rounded-xl flex items-center justify-center mx-auto mb-4">
+                    <span class="text-2xl">🎓</span>
+                </div>
+                <h2 id="authTitle" class="text-2xl font-bold text-vgu-text mb-2">Welcome Back</h2>
+                <p class="text-vgu-muted">Sign in to your VGU Buddy account</p>
+            </div>
+            
+            <form id="authForm" class="space-y-6">
+                <div id="nameField" class="hidden">
+                    <label class="block text-sm font-semibold text-vgu-text mb-2" data-i18n="auth.fullName">Full Name</label>
+                    <input type="text" name="name" class="w-full px-4 py-3 bg-vgu-black border border-vgu-surface rounded-lg text-vgu-text focus:border-vgu-orange focus:outline-none" placeholder="Enter your full name">
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-vgu-text mb-2" data-i18n="auth.email">Email</label>
+                    <input type="email" name="email" class="w-full px-4 py-3 bg-vgu-black border border-vgu-surface rounded-lg text-vgu-text focus:border-vgu-orange focus:outline-none" placeholder="Enter your email">
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-vgu-text mb-2" data-i18n="auth.password">Password</label>
+                    <input type="password" name="password" class="w-full px-4 py-3 bg-vgu-black border border-vgu-surface rounded-lg text-vgu-text focus:border-vgu-orange focus:outline-none" placeholder="Enter your password">
+                </div>
+                <div id="confirmPasswordField" class="hidden">
+                    <label class="block text-sm font-semibold text-vgu-text mb-2" data-i18n="auth.confirmPassword">Confirm Password</label>
+                    <input type="password" name="confirmPassword" class="w-full px-4 py-3 bg-vgu-black border border-vgu-surface rounded-lg text-vgu-text focus:border-vgu-orange focus:outline-none" placeholder="Confirm your password">
+                </div>
+                <button type="submit" class="w-full bg-vgu-orange text-vgu-black py-3 rounded-lg font-bold hover:bg-vgu-orange-dark transition-colors">
+                    <span id="authButtonText">Sign In</span>
+                </button>
+            </form>
+            
+            <div class="mt-6 text-center">
+                <p class="text-vgu-muted">
+                    <span id="authSwitchText">Don't have an account?</span>
+                    <button id="authSwitchButton" onclick="switchAuthMode()" class="text-vgu-orange font-semibold hover:text-vgu-orange-light transition-colors ml-1">Sign Up</button>
+                </p>
+            </div>
+            
+            <button onclick="closeAuthModal()" class="absolute top-4 right-4 text-vgu-muted hover:text-vgu-text transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <script src="welcomeday.js"></script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97128657528985e9',t:'MTc1NTUzMTc4NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+<script>
+  lucide.createIcons();
+</script>
+</body>
 
