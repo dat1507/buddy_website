@@ -169,3 +169,187 @@ function toggleMobileMenu() {
 // Initialize on Page Load
 // =======================
 document.addEventListener('DOMContentLoaded', initializeLanguage);
+
+// Main section related JavaScript functions
+(function() {
+    'use strict';
+
+    // Configuration
+    const CONFIG = {
+        animationDuration: 300
+    };
+
+    let isExpanded = false;
+    let currentLanguage = 'en';
+
+    // Embedded translations
+    const translations = {
+        en: {
+            article: {
+                title: 'Welcome Day',
+                date: 'September 10, 2025',
+                caption: 'VGU Welcome Day',
+                summary: 'Join us for an exciting introduction to university life at VGU, where new students discover their academic journey and connect with our vibrant community.',
+                paragraph1: 'Welcome Day at Vietnamese-German University marks the beginning of an extraordinary academic adventure. This special event introduces new students to our unique educational environment that combines Vietnamese hospitality with German academic excellence.',
+                paragraph2: 'The day begins with an inspiring opening ceremony featuring welcome speeches from university leadership, faculty presentations, and vibrant performances by our student organizations. New students receive comprehensive orientation materials and meet their academic advisors.',
+                paragraph3: 'Interactive campus tours showcase our state-of-the-art facilities, modern laboratories, collaborative learning spaces, and recreational areas. Students explore different faculties, connect with professors, and discover the diverse academic programs and international opportunities available at VGU.',
+                show_more: 'Show More',
+                show_less: 'Show Less'
+            },
+        },
+        de: {
+            article: {
+                title: 'Willkommenstag',
+                date: '10. September 2025',
+                caption: 'Studenten feiern am VGU Willkommenstag',
+                summary: 'Begleiten Sie uns zu einer aufregenden Einführung ins Universitätsleben an der VGU, wo neue Studenten ihre akademische Reise entdecken und sich mit unserer lebendigen Gemeinschaft verbinden.',
+                paragraph1: 'Der Willkommenstag an der Vietnamesisch-Deutschen Universität markiert den Beginn eines außergewöhnlichen akademischen Abenteuers. Diese besondere Veranstaltung führt neue Studenten in unser einzigartiges Bildungsumfeld ein, das vietnamesische Gastfreundschaft mit deutscher akademischer Exzellenz verbindet.',
+                paragraph2: 'Der Tag beginnt mit einer inspirierenden Eröffnungszeremonie mit Begrüßungsreden der Universitätsleitung, Fakultätspräsentationen und lebendigen Aufführungen unserer Studentenorganisationen. Neue Studenten erhalten umfassende Orientierungsmaterialien und treffen ihre akademischen Berater.',
+                paragraph3: 'Interaktive Campus-Touren zeigen unsere hochmodernen Einrichtungen, moderne Labore, kollaborative Lernräume und Erholungsbereiche. Studenten erkunden verschiedene Fakultäten, knüpfen Kontakte zu Professoren und entdecken die vielfältigen Studienprogramme und internationalen Möglichkeiten, die an der VGU verfügbar sind.',
+                show_more: 'Mehr anzeigen',
+                show_less: 'Weniger anzeigen'
+            },
+        }
+    };
+
+    // DOM Elements
+    const elements = {
+        readMoreBtn: document.getElementById('read-more-btn'),
+        expandableContent: document.getElementById('expandable-content'),
+        translatableElements: document.querySelectorAll('[data-i18n]')
+    };
+
+    // Read More Functionality
+    function toggleReadMore() {
+        if (!elements.readMoreBtn || !elements.expandableContent) return;
+        
+        isExpanded = !isExpanded;
+        
+        // Update content visibility
+        elements.expandableContent.classList.toggle('expanded', isExpanded);
+        
+        // Update ARIA attributes
+        elements.readMoreBtn.setAttribute('aria-expanded', isExpanded.toString());
+        elements.expandableContent.setAttribute('aria-expanded', isExpanded.toString());
+        
+        // Update button text
+        updateReadMoreButton();
+        
+        // Smooth scroll to content if expanding
+        if (isExpanded) {
+            setTimeout(() => {
+                elements.expandableContent.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'nearest'
+                });
+            }, CONFIG.animationDuration);
+        }
+        
+        console.log(`📖 Article ${isExpanded ? 'expanded' : 'collapsed'}`);
+    }
+
+    function updateReadMoreButton() {
+        if (!elements.readMoreBtn) return;
+        
+        const key = isExpanded ? 'article.show_less' : 'article.show_more';
+        const text = getNestedValue(translations[currentLanguage], key);
+        
+        if (text) {
+            elements.readMoreBtn.textContent = text;
+        }
+    }
+
+    // Thumbnail Gallery
+    function initializeThumbnails() {
+        const thumbnails = document.querySelectorAll('.thumbnail');
+        const heroImage = document.querySelector('.hero-image');
+        
+        if (!thumbnails.length || !heroImage) return;
+        
+        thumbnails.forEach((thumbnail, index) => {
+            thumbnail.addEventListener('click', () => {
+                // Update active state
+                thumbnails.forEach(t => t.classList.remove('active'));
+                thumbnail.classList.add('active');
+                
+                // Visual effect for demo
+                heroImage.style.transform = 'scale(0.98)';
+                setTimeout(() => {
+                    heroImage.style.transform = 'scale(1)';
+                }, 150);
+                
+                console.log(`🖼️ Thumbnail ${index + 1} selected`);
+            });
+        });
+    }
+
+    // Language Support
+    function updateContent() {
+        elements.translatableElements.forEach(element => {
+            const key = element.dataset.i18n;
+            const translation = getNestedValue(translations[currentLanguage], key);
+            
+            if (translation) {
+                element.textContent = translation;
+            }
+        });
+        
+        updateReadMoreButton();
+    }
+
+    function getNestedValue(obj, path) {
+        return path.split('.').reduce((current, key) => current && current[key], obj);
+    }
+
+    // Event Listeners
+    function setupEventListeners() {
+        // Read more toggle
+        if (elements.readMoreBtn) {
+            elements.readMoreBtn.addEventListener('click', toggleReadMore);
+        }
+
+    }
+
+    // Initialize
+    function init() {
+        setupEventListeners();
+        initializeThumbnails();
+        updateContent();
+        
+        // Set initial ARIA attributes
+        if (elements.readMoreBtn && elements.expandableContent) {
+            elements.readMoreBtn.setAttribute('aria-expanded', 'false');
+            elements.expandableContent.setAttribute('aria-expanded', 'false');
+        }
+        
+        console.log('✅ Main section initialized');
+    }
+
+    // Initialize when DOM is ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+
+    const heroImage = document.getElementById('hero-image');
+    const heroCaption = document.getElementById('image-caption');
+    const thumbnails = document.querySelectorAll('.thumbnail');
+
+    thumbnails.forEach(thumbnail => {
+        thumbnail.addEventListener('click', () => {
+            // Lấy đường dẫn ảnh và caption từ data attribute
+            const newSrc = thumbnail.getAttribute('data-src');
+            const newCaption = thumbnail.getAttribute('data-caption');
+
+            // Thay đổi ảnh chính và caption
+            heroImage.src = newSrc;
+            heroCaption.textContent = newCaption;
+
+            // Cập nhật trạng thái active cho thumbnail
+            thumbnails.forEach(btn => btn.classList.remove('active'));
+            thumbnail.classList.add('active');
+        });
+    });
+
+})();

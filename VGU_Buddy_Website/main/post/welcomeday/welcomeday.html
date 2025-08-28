@@ -133,8 +133,7 @@
     </header>
 
 
-    <!-- Main Content -->
-    <main class="main" role="main">
+    <main class="pt-20 min-h-screen bg-gradient-to-br from-vgu-surface to-vgu-black">
         <div class="container">
             <article class="article-container">
                 
@@ -142,30 +141,32 @@
                 <section class="image-section" aria-labelledby="image-caption">
                     <figure class="hero-image-container">
                         <img 
-                            src="https://via.placeholder.com/1200x700/FF670D/FFFFFF?text=VGU+Welcome+Day" 
-                            alt="Students gathering at VGU Welcome Day event with banners and activities"
+                            id="hero-image"
+                            src="../../images/welcomeday.jpg" 
+                            alt="VGU Welcome Day"
                             class="hero-image"
                             loading="eager">
                         
                         <!-- Image Caption -->
                         <figcaption id="image-caption" class="image-caption" data-i18n="article.caption">
-                            Students arriving at Welcome Day
+                            VGU Welcome Day
                         </figcaption>
                     </figure>
                     
-                    <!-- Optional Thumbnail Gallery -->
+                    <!-- Thumbnail Gallery -->
                     <div class="thumbnail-gallery" role="group" aria-label="Additional images">
-                        <button class="thumbnail active" aria-label="Main welcome day image">
-                            <img src="https://via.placeholder.com/120x80/FF670D/FFFFFF?text=1" alt="Welcome Day overview">
+                        <button class="thumbnail active" data-src="../../images/welcomeday.jpg" data-caption="VGU Welcome Day">
+                            <img src="../../images/welcomeday.jpg" alt="Welcome Day overview">
                         </button>
-                        <button class="thumbnail" aria-label="Students registration">
-                            <img src="https://via.placeholder.com/120x80/000000/FFFFFF?text=2" alt="Registration area">
+                        <button class="thumbnail" data-src="../../images/new_logo.jpg" data-caption="Our new logo for this event">
+                            <img src="../../images/new_logo.jpg" alt="Registration area">
                         </button>
-                        <button class="thumbnail" aria-label="Campus activities">
-                            <img src="https://via.placeholder.com/120x80/FF670D/FFFFFF?text=3" alt="Campus tour activities">
+                        <button class="thumbnail" data-src="../../images/welcomeweek.png" data-caption="Stay tune for the welcome week !">
+                            <img src="../../images/welcomeweek.png" alt="Campus tour activities">
                         </button>
                     </div>
                 </section>
+
 
                 <!-- Content Section -->
                 <section class="content-section">
@@ -179,7 +180,7 @@
                     <!-- Article Summary -->
                     <div class="article-summary">
                         <p data-i18n="article.summary">
-                            Join us for an exciting introduction to university life at VGU, where new students discover their academic journey and connect with the vibrant campus community.
+                            Join us for an exciting introduction to university life at VGU, where new students discover their academic journey and connect with our vibrant community.
                         </p>
                     </div>
 
@@ -187,21 +188,17 @@
                     <div class="article-content">
                         <!-- Always visible paragraph -->
                         <p class="content-paragraph" data-i18n="article.paragraph1">
-                            Welcome Day at Vietnamese-German University marks the beginning of an extraordinary academic adventure. As new students step onto our beautiful campus, they are greeted with a carefully orchestrated celebration that introduces them to the unique blend of Vietnamese warmth and German precision that defines our educational approach.
+                            Welcome Day at Vietnamese-German University marks the beginning of an extraordinary academic adventure. This special event introduces new students to our unique educational environment that combines Vietnamese hospitality with German academic excellence.
                         </p>
 
                         <!-- Expandable content -->
                         <div id="expandable-content" class="expandable-content" aria-expanded="false">
                             <p class="content-paragraph" data-i18n="article.paragraph2">
-                                The day begins with an inspiring opening ceremony featuring welcome speeches from university leadership, faculty presentations, and performances by our talented student organizations. New students receive their orientation materials, campus maps, and connect with their academic advisors who will guide them throughout their studies.
+                                The day begins with an inspiring opening ceremony featuring welcome speeches from university leadership, faculty presentations, and vibrant performances by our student organizations. New students receive comprehensive orientation materials and meet their academic advisors.
                             </p>
 
                             <p class="content-paragraph" data-i18n="article.paragraph3">
-                                Interactive campus tours showcase our state-of-the-art facilities, including modern laboratories, collaborative learning spaces, the comprehensive library, and recreational areas. Students explore different faculties, meet professors, and learn about the diverse academic programs, research opportunities, and international exchange possibilities that await them.
-                            </p>
-
-                            <p class="content-paragraph" data-i18n="article.paragraph4">
-                                The celebration continues with cultural activities, networking sessions, and a festive lunch where students begin forming friendships that will last throughout their university years. Don't miss this perfect opportunity to start your VGU journey on the right foot – follow our social media channels for live updates and behind-the-scenes moments from this special day.
+                                Interactive campus tours showcase our state-of-the-art facilities, modern laboratories, collaborative learning spaces, and recreational areas. Students explore different faculties, connect with professors, and discover the diverse academic programs and international opportunities available at VGU.
                             </p>
                         </div>
 
@@ -211,39 +208,16 @@
                             class="read-more-btn"
                             aria-expanded="false"
                             aria-controls="expandable-content"
-                            data-i18n="article.read_more">
-                            Read more
+                            data-i18n="article.show_more">
+                            Show More
                         </button>
                     </div>
 
-                    <!-- Article Actions -->
-                    <div class="article-actions">
-                        <button class="share-btn" aria-label="Share this article">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
-                                <polyline points="16,6 12,2 8,6"></polyline>
-                                <line x1="12" y1="2" x2="12" y2="15"></line>
-                            </svg>
-                            <span data-i18n="meta.share">Share</span>
-                        </button>
-                    </div>
                 </section>
 
             </article>
         </div>
     </main>
-
-    <!-- Back to Top Button -->
-    <button 
-        id="back-to-top" 
-        class="back-to-top" 
-        aria-label="Back to top"
-        style="display: none;">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <polyline points="18,15 12,9 6,15"></polyline>
-        </svg>
-        <span class="sr-only" data-i18n="meta.back_to_top">Back to top</span>
-    </button>
 
 
     <!-- Footer -->
