@@ -31,16 +31,8 @@
     "demoMessage": "Dies ist eine Demo - die vollständige Authentifizierung würde mit sicheren Backend-Services implementiert."
   },
   "stats": {
-    "title": "VGU Buddy in Zahlen",
-    "subtitle": "Tritt einer blühenden Gemeinschaft bei, die das Universitätsleben für alle besser macht.",
-    "activeStudents": "Aktive Studenten",
-    "activeStudentsDesc": "Täglich verbunden und engagiert",
-    "eventsMonthly": "Monatliche Veranstaltungen",
-    "eventsMonthlyDesc": "Kultureller Austausch & Aktivitäten",
-    "studyGroups": "Lerngruppen",
-    "studyGroupsDesc": "Akademische Unterstützungsnetzwerke",
-    "satisfaction": "Zufriedenheitsrate",
-    "satisfactionDesc": "Studenten lieben VGU Buddy"
+    "title": "Das Buddies-Event",
+    "subtitle": "Nimm an spannenden Veranstaltungen teil, die das Uni-Leben für alle bereichern."
   },
   "about": {
     "title": "Warum VGU Buddy wählen?",

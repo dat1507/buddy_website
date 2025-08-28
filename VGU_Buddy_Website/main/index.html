@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VGU Buddy Program - Connect, Learn, Grow</title>
+    <title>VGU Buddy Program</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -27,6 +27,7 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.6.6/css/flag-icons.min.css">
+    <link rel="icon" type="image/png" href="./images/vguBuddy_logo.png">
 <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9760834b34598976',t:'MTc1NjM0OTU0OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
 </head>
 <body class="bg-vgu-black text-vgu-text overflow-x-hidden">
@@ -37,7 +38,7 @@
                 <!-- Logo -->
                 <div class="flex items-center space-x-3">
                     <a href="#home">
-                        <img src="images/hero.png" alt="VGU Buddy Logo" class="w-12 h-12 rounded-xl object-cover">
+                        <img src="images/vguBuddy_logo.png" alt="VGU Buddy Logo" class="w-12 h-12 rounded-xl object-cover">
                     </a>
                     <a href="#home" class="font-bold text-xl text-vgu-text">VGU Buddy</a>
                 </div>
@@ -54,7 +55,6 @@
                 <!-- Language Toggle & Auth -->
                 <div class="hidden lg:flex items-center space-x-4">
                     
-                    <!-- Language Toggle -->
                     <!-- Language Toggle -->
                     <button 
                         id="languageToggle" 
@@ -178,40 +178,33 @@
         </div>
     </section>
 
-    <!-- Stats Section -->
-    <section class="py-20 bg-vgu-surface">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="section-title text-4xl lg:text-6xl font-black text-vgu-text mb-6" data-i18n="stats.title">VGU Buddy by Numbers</h2>
-                <p class="text-xl text-vgu-muted max-w-3xl mx-auto" data-i18n="stats.subtitle">
-                    Join a thriving community that's making university life better for everyone.
-                </p>
+    <!-- Slider Section -->
+    <section class="py-20 bg-vgu-surface flex flex-col items-center justify-center">
+        <!-- Text Above Slider -->
+        <div class="text-center mb-16">
+            <h2 class="section-title text-4xl lg:text-6xl font-black text-vgu-text mb-6" data-i18n="stats.title">
+                The "Buddies" Events
+            </h2>
+            <p class="text-xl text-vgu-muted max-w-3xl mx-auto" data-i18n="stats.subtitle">
+                Join thriving events that's making university life better for everyone.
+            </p>
+        </div>
+
+        <!-- Image Slider -->
+        <div class="relative w-full max-w-4xl overflow-hidden rounded-2xl shadow-lg">
+            <!-- Slides -->
+            <div id="slider" class="flex transition-transform duration-700">
+                <img src="images/internationalday.jpg" class="w-full flex-shrink-0" alt="Slide 1">
+                <img src="images/knowthyself.jpg" class="w-full flex-shrink-0" alt="Slide 2">
+                <img src="images/welcomeday.jpg" class="w-full flex-shrink-0" alt="Slide 3">
             </div>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="text-center animate-counter">
-                    <div class="stats-counter">500+</div>
-                    <h3 class="text-xl font-bold text-vgu-text mb-2" data-i18n="stats.activeStudents">Active Students</h3>
-                    <p class="text-vgu-muted" data-i18n="stats.activeStudentsDesc">Connected and engaged daily</p>
-                </div>
-                <div class="text-center animate-counter">
-                    <div class="stats-counter">50+</div>
-                    <h3 class="text-xl font-bold text-vgu-text mb-2" data-i18n="stats.eventsMonthly">Events Monthly</h3>
-                    <p class="text-vgu-muted" data-i18n="stats.eventsMonthlyDesc">Cultural exchanges & activities</p>
-                </div>
-                <div class="text-center animate-counter">
-                    <div class="stats-counter">20+</div>
-                    <h3 class="text-xl font-bold text-vgu-text mb-2" data-i18n="stats.studyGroups">Study Groups</h3>
-                    <p class="text-vgu-muted" data-i18n="stats.studyGroupsDesc">Academic support networks</p>
-                </div>
-                <div class="text-center animate-counter">
-                    <div class="stats-counter">95%</div>
-                    <h3 class="text-xl font-bold text-vgu-text mb-2" data-i18n="stats.satisfaction">Satisfaction Rate</h3>
-                    <p class="text-vgu-muted" data-i18n="stats.satisfactionDesc">Students love VGU Buddy</p>
-                </div>
-            </div>
+            <!-- Navigation Buttons -->
+            <button onclick="prevSlide()" class="absolute top-1/2 left-4 -translate-y-1/2 bg-white/70 hover:bg-white p-2 rounded-full">◀</button>
+            <button onclick="nextSlide()" class="absolute top-1/2 right-4 -translate-y-1/2 bg-white/70 hover:bg-white p-2 rounded-full">▶</button>
         </div>
     </section>
+
+
 
     <!-- About Section -->
     <section id="about" class="py-20 bg-vgu-black">
@@ -510,7 +503,7 @@
             <div class="grid md:grid-cols-4 gap-8">
                 <div class="md:col-span-2">
                     <div class="flex items-center space-x-3 mb-6">
-                        <img src="images/hero.png" alt="VGU Buddy Logo" class="w-12 h-12 rounded-xl object-cover">
+                        <img src="images/vguBuddy_logo.png" alt="VGU Buddy Logo" class="w-12 h-12 rounded-xl object-cover">
                         <span class="font-bold text-xl text-vgu-text">VGU Buddy</span>
                     </div>
                     <p class="text-vgu-muted leading-relaxed mb-6" data-i18n="footer.description">

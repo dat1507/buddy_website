@@ -79,16 +79,8 @@ function getFallbackTranslations() {
                 "demoMessage": "Dies ist eine Demo - die vollständige Authentifizierung würde mit sicheren Backend-Services implementiert."
             },
             "stats": {
-                "title": "VGU Buddy in Zahlen",
-                "subtitle": "Tritt einer blühenden Gemeinschaft bei, die das Universitätsleben für alle besser macht.",
-                "activeStudents": "Aktive Studenten",
-                "activeStudentsDesc": "Täglich verbunden und engagiert",
-                "eventsMonthly": "Monatliche Veranstaltungen",
-                "eventsMonthlyDesc": "Kultureller Austausch & Aktivitäten",
-                "studyGroups": "Lerngruppen",
-                "studyGroupsDesc": "Akademische Unterstützungsnetzwerke",
-                "satisfaction": "Zufriedenheitsrate",
-                "satisfactionDesc": "Studenten lieben VGU Buddy"
+                "title": "Das Buddies-Event",
+                "subtitle": "Nimm an spannenden Veranstaltungen teil, die das Uni-Leben für alle bereichern.",
             },
             "about": {
                 "title": "Warum VGU Buddy wählen?",
@@ -223,16 +215,8 @@ function getFallbackTranslations() {
                 "demoMessage": "This is a demo - full authentication would be implemented with secure backend services."
             },
             "stats": {
-                "title": "VGU Buddy by Numbers",
-                "subtitle": "Join a thriving community that's making university life better for everyone.",
-                "activeStudents": "Active Students",
-                "activeStudentsDesc": "Connected and engaged daily",
-                "eventsMonthly": "Events Monthly",
-                "eventsMonthlyDesc": "Cultural exchanges & activities",
-                "studyGroups": "Study Groups",
-                "studyGroupsDesc": "Academic support networks",
-                "satisfaction": "Satisfaction Rate",
-                "satisfactionDesc": "Students love VGU Buddy"
+                "title": "The Buddies Event",
+                "subtitle": "Join thriving events that's making university life better for everyone.",
             },
             "about": {
                 "title": "Why Choose VGU Buddy?",
@@ -453,6 +437,32 @@ function updateAuthModal() {
 function scrollToSection(sectionId) {
     document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
 }
+
+// Slider Fuction
+let slider, slides, totalSlides, index = 0;
+
+function updateSlider() {
+    slider.style.transform = `translateX(-${index * 100}%)`;
+}
+
+function nextSlide() {
+    index = (index + 1) % totalSlides;
+    updateSlider();
+}
+
+function prevSlide() {
+    index = (index - 1 + totalSlides) % totalSlides;
+    updateSlider();
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    slider = document.getElementById('slider');
+    slides = slider.children;
+    totalSlides = slides.length;
+    setInterval(nextSlide, 5000);
+});
+
+
 
 // Demo Function
 function showDemo() {
