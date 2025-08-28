@@ -3,7 +3,7 @@ let isSignUp = false;
 let currentLanguage = 'en';
 let translations = {};
 
-// Language Management
+
 // Language Management
 const SUPPORTED_LANGUAGES = {
     'en': { 

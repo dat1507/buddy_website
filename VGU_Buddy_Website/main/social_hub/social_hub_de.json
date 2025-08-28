@@ -1,0 +1,39 @@
+{
+  "header": {
+    "title": "VGU Buddy",
+    "subtitle": "Soziales Zentrum"
+  },
+  "nav": {
+    "home": "Startseite",
+    "events": "Veranstaltungen",
+    "community": "Gemeinschaft"
+  },
+  "welcome": {
+    "title": "Bleiben Sie mit VGU verbunden",
+    "description": "Erhalten Sie die neuesten Updates, Ankündigungen und Nachrichten aus der VGU Buddy Program Community."
+  },
+  "posts": {
+    "author": "VGU Buddy Program Team",
+    "post1": {
+      "caption": "🎉 Aufregende Neuigkeiten! Wir freuen uns, die Eröffnung von 5 brandneuen Lernräumen in unserer Hauptbibliothek bekannt zu geben. Diese modernen, gut ausgestatteten Räume sind darauf ausgelegt, Ihr Lernerlebnis mit Hochgeschwindigkeits-WLAN, bequemen Sitzgelegenheiten, Whiteboards und Präsentationsausrüstung zu verbessern. Jeder Raum bietet Platz für bis zu 8 Personen und verfügt über Klimaanlage und natürliches Licht für die perfekte Lernumgebung."
+    },
+    "post2": {
+      "caption": "🎊 Das Winter-Kulturfestival kommt! Begleiten Sie uns zum aufregendsten kulturellen Ereignis des Jahres mit traditionellen vietnamesischen und deutschen Aufführungen, authentischem Essen, interaktiven Workshops und Sprachaustauschaktivitäten. Dies ist eine perfekte Gelegenheit, die wunderschöne Mischung der Kulturen zu erleben, die VGU einzigartig macht. Das Festival läuft von 10 bis 18 Uhr mit verschiedenen Aktivitäten den ganzen Tag über, einschließlich Volkstanzaufführungen, kulturellen Präsentationen, internationaler Speisemesse und Gruppenaktivitäten."
+    },
+    "post3": {
+      "caption": "📱 VGU Buddy App 2.0 ist da! Wir freuen uns, die Veröffentlichung unseres großen Updates bekannt zu geben, das mit neuen Funktionen basierend auf Ihrem Feedback vollgepackt ist. Die neue Version umfasst Echtzeit-Chat für sofortige Nachrichten mit Freunden und Lerngruppen, verbesserte Veranstaltungsbuchung mit einfacherer Navigation, verbesserte Benutzerprofile, wo Sie mit Interessen und Fähigkeiten anpassen können, Dunkelmodus für komfortables nächtliches Lernen, Offline-Modus für den Zugriff auf Zeitpläne ohne Internet und Push-Benachrichtigungen, damit Sie nie wichtige Ankündigungen verpassen."
+    },
+    "post4": {
+      "caption": "🏆 Jährliches Sportturnier 2024! Machen Sie sich bereit für das größte Sportereignis des Jahres mit drei Tagen intensiven Wettbewerbs, Teamgeist und Spaßaktivitäten. Wir veranstalten Wettbewerbe in Basketball (5v5 Teams), Volleyball (6v6 Teams), Badminton (Einzel und Doppel), Tischtennis und Fußball (7v7 Teams). Erstaunliche Preise warten, einschließlich Trophäen, Medaillen und Geldpreise für Gewinnerteams. Die Anmeldung ist bis zum 20. Dezember über die VGU Buddy App geöffnet. Verpassen Sie nicht diese Gelegenheit, Ihre sportlichen Fähigkeiten zu zeigen und Ihre Fakultät zu vertreten!"
+    }
+  },
+  "common": {
+    "readMore": "Mehr lesen...",
+    "readLess": "Weniger anzeigen",
+    "loadMore": "Weitere Beiträge laden"
+  },
+  "footer": {
+    "description": "Verbindung von Studenten an der Vietnamesisch-Deutschen Universität für eine außergewöhnliche Erfahrung.",
+    "copyright": "© 2024 VGU Buddy Programm. Verfügbar auf Englisch & Deutsch."
+  }
+}

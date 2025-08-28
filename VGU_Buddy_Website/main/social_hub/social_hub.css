@@ -1,0 +1,491 @@
+social_hub.css
+
+/* ============================================
+   SOCIAL HUB STYLES
+   ============================================ */
+
+/* Import Poppins font */
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* ============================================
+   ANIMATIONS - EDIT: Customize animation settings here
+   ============================================ */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+/* ============================================
+   PAGE LOAD ANIMATIONS
+   ============================================ */
+
+.animate-fade-in {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.post-card {
+    animation: slideInLeft 0.6s ease-out;
+    animation-fill-mode: both;
+}
+
+/* Stagger animation for posts */
+.post-card:nth-child(1) { animation-delay: 0.1s; }
+.post-card:nth-child(2) { animation-delay: 0.2s; }
+.post-card:nth-child(3) { animation-delay: 0.3s; }
+.post-card:nth-child(4) { animation-delay: 0.4s; }
+.post-card:nth-child(5) { animation-delay: 0.5s; }
+
+/* ============================================
+   POST CARD STYLES
+   ============================================ */
+
+.post-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(255, 103, 13, 0.1);
+}
+
+.post-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    border-color: rgba(255, 103, 13, 0.3);
+}
+
+/* Post media hover effects */
+.post-media > div {
+    transition: transform 0.3s ease;
+}
+
+.post-card:hover .post-media > div {
+    transform: scale(1.02);
+}
+
+/* ============================================
+   READ MORE FUNCTIONALITY
+   ============================================ */
+
+.post-caption {
+    position: relative;
+}
+
+.post-caption.collapsed p {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.post-caption.expanded p {
+    display: block;
+}
+
+.read-more-btn {
+    transition: all 0.2s ease;
+}
+
+.read-more-btn:hover {
+    transform: translateX(4px);
+}
+
+/* ============================================
+   LANGUAGE TOGGLE STYLES
+   ============================================ */
+
+.language-toggle {
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.language-toggle:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    background: rgba(31, 31, 31, 0.95);
+}
+
+.language-toggle:active {
+    transform: translateY(0);
+}
+
+/* ============================================
+   BUTTON STYLES
+   ============================================ */
+
+button {
+    transition: all 0.2s ease;
+}
+
+button:hover {
+    transform: translateY(-1px);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+/* Post action buttons */
+.post-card button {
+    transition: all 0.2s ease;
+}
+
+.post-card button:hover {
+    transform: scale(1.05);
+}
+
+/* ============================================
+   LOADING STATES
+   ============================================ */
+
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid #FF670D;
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 768px) {
+    .post-card {
+        animation-delay: 0s !important;
+    }
+    
+    .post-card:hover {
+        transform: translateY(-2px);
+    }
+    
+    .language-toggle {
+        top: 1rem;
+        right: 1rem;
+    }
+    
+    /* Adjust post spacing on mobile */
+    #postsFeed {
+        gap: 1.5rem;
+    }
+    
+    /* Make post actions stack on very small screens */
+    @media (max-width: 480px) {
+        .post-card .flex.items-center.space-x-6 {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+        
+        .post-card .flex.items-center.space-x-6 > button {
+            width: 100%;
+            justify-content: flex-start;
+        }
+    }
+}
+
+/* ============================================
+   CUSTOM SCROLLBAR
+   ============================================ */
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1F1F1F;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #FF670D;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #E55D0C;
+}
+
+/* ============================================
+   ACCESSIBILITY IMPROVEMENTS
+   ============================================ */
+
+/* Focus states */
+button:focus,
+a:focus {
+    outline: 2px solid #FF670D;
+    outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .post-card {
+        border: 2px solid #FF670D;
+    }
+    
+    .language-toggle {
+        border: 2px solid #FF670D;
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .post-card,
+    .language-toggle,
+    button,
+    .post-media > div {
+        animation: none !important;
+        transition: none !important;
+    }
+    
+    .animate-fade-in {
+        animation: none;
+    }
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+
+@media print {
+    .language-toggle,
+    .post-card button,
+    footer {
+        display: none;
+    }
+    
+    .post-card {
+        break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #000;
+        margin-bottom: 1rem;
+    }
+    
+    body {
+        background: white;
+        color: black;
+    }
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 0.6s ease;
+}
+
+.fade-out {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+}
+
+.scale-in {
+    animation: scaleIn 0.3s ease-out;
+}
+
+.pulse-animation {
+    animation: pulse 2s infinite;
+}
+
+/* ============================================
+   DARK THEME ENHANCEMENTS
+   ============================================ */
+
+/* Enhance text readability */
+.text-vgu-text {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Subtle glow effects for interactive elements */
+.post-card:hover {
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.3),
+        0 0 0 1px rgba(255, 103, 13, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* Backdrop blur support */
+.backdrop-blur-sm {
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+/* ============================================
+   PERFORMANCE OPTIMIZATIONS
+   ============================================ */
+
+/* GPU acceleration for animations */
+.post-card,
+.language-toggle,
+.post-media > div {
+    will-change: transform;
+}
+
+/* Optimize repaints */
+.post-card:hover {
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+/* ============================================
+   CUSTOM PROPERTIES FOR EASY THEMING
+   EDIT: Modify these values to customize colors
+   ============================================ */
+
+:root {
+    --vgu-orange: #FF670D;
+    --vgu-orange-dark: #E55D0C;
+    --vgu-orange-light: #FF8A3B;
+    --vgu-black: #000000;
+    --vgu-surface: #1F1F1F;
+    --vgu-text: #EFEFEF;
+    --vgu-muted: #BDBDBD;
+    
+    /* Animation durations */
+    --animation-fast: 0.2s;
+    --animation-normal: 0.3s;
+    --animation-slow: 0.6s;
+    
+    /* Spacing */
+    --post-spacing: 2rem;
+    --border-radius: 1rem;
+}
+
+/* Apply custom properties */
+.bg-vgu-orange { background-color: var(--vgu-orange); }
+.text-vgu-orange { color: var(--vgu-orange); }
+.border-vgu-orange { border-color: var(--vgu-orange); }
+
+/* ============================================
+   COMPONENT-SPECIFIC STYLES
+   ============================================ */
+
+/* Header enhancements */
+header {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+/* Post media aspect ratio containers */
+.aspect-video {
+    position: relative;
+    overflow: hidden;
+}
+
+.aspect-video::before {
+    content: '';
+    display: block;
+    padding-top: 56.25%; /* 16:9 aspect ratio */
+}
+
+.aspect-video > * {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Gradient overlays for better text readability */
+.gradient-overlay {
+    background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba(0, 0, 0, 0.1) 50%,
+        rgba(0, 0, 0, 0.3) 100%
+    );
+}
+
+/* ============================================
+   ERROR STATES
+   ============================================ */
+
+.error-state {
+    border-color: #ef4444;
+    background-color: rgba(239, 68, 68, 0.1);
+}
+
+.success-state {
+    border-color: #10b981;
+    background-color: rgba(16, 185, 129, 0.1);
+}
+
+/* ============================================
+   LOADING SKELETON (for future use)
+   ============================================ */
+
+.skeleton {
+    background: linear-gradient(90deg, #1F1F1F 25%, #2A2A2A 50%, #1F1F1F 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
