@@ -218,19 +218,19 @@
                     
                     <div class="space-y-6">
                         <div class="flex items-start space-x-4">
-                                <div class="w-12 h-12 bg-vgu-orange rounded-lg flex items-center justify-center flex-shrink-0">
+                            <div class="w-12 h-12 bg-vgu-orange rounded-lg flex items-center justify-center flex-shrink-0">
                                     <a href="social_hub/social_hub.html">
                                         <svg class="w-6 h-6 text-vgu-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
                                         </svg>
                                     </a>
                                 </div>
-                                <div>
-                                    <a href="social_hub/social_hub.html">
-                                        <h3 class="text-xl font-bold text-vgu-text mb-2" data-i18n="about.social.title">Social Networking</h3>
-                                        <p class="text-vgu-muted" data-i18n="about.social.desc">Connect with peers, share experiences, and build lasting friendships.</p>
-                                    </a>
-                                </div>
+                            <div>
+                                <a href="social_hub/social_hub.html">
+                                    <h3 class="text-xl font-bold text-vgu-text mb-2" data-i18n="about.social.title">Social Networking</h3>
+                                    <p class="text-vgu-muted" data-i18n="about.social.desc">Connect with peers, share experiences, and build lasting friendships.</p>
+                                </a>
+                            </div>
                         </div>
                         
                         <div class="flex items-start space-x-4">
@@ -285,13 +285,23 @@
             </div>
             
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="card-hover bg-vgu-black rounded-2xl p-8">
-                    <div class="w-16 h-16 bg-vgu-orange rounded-xl flex items-center justify-center mb-6">
-                        <span class="text-3xl">👥</span>
-                    </div>
-                    <a href="social_hub/social_hub.html"><h3 class="text-2xl font-bold text-vgu-text mb-4" data-i18n="features.social.title">Social Hub</h3></a>
-                    <p class="text-vgu-muted mb-6" data-i18n="features.social.desc">Connect, chat, and share with your VGU community in real-time.</p>
-                    <ul class="space-y-2">
+                <!-- đảm bảo parent cho phép overflow-visible -->
+                <div class="flex items-start space-x-4 overflow-visible">
+                <!-- apply transform & hover lên chính thẻ card (bg-vgu-black) -->
+                    <div class="card-hover bg-vgu-black rounded-2xl p-8 transform transition-transform duration-300 ease-out hover:scale-105 hover:-translate-y-1 hover:shadow-2xl hover:z-50 relative">
+                        <a href="social_hub/social_hub.html">
+                        <div class="w-16 h-16 bg-vgu-orange rounded-xl flex items-center justify-center mb-6 hover:scale-110 transition-transform duration-300">
+                            <span class="text-3xl">👥</span>
+                        </div>
+                        </a>
+
+                        <a href="social_hub/social_hub.html">
+                        <h3 class="text-2xl font-bold text-vgu-text mb-4" data-i18n="features.social.title">Social Hub</h3>
+                        </a>
+
+                        <p class="text-vgu-muted mb-6" data-i18n="features.social.desc">Connect, chat, and share with your VGU community in real-time.</p>
+
+                        <ul class="space-y-2">
                         <li class="flex items-center text-vgu-muted">
                             <span class="w-2 h-2 bg-vgu-orange rounded-full mr-3"></span>
                             <span data-i18n="features.social.item1">Friend connections</span>
@@ -304,10 +314,12 @@
                             <span class="w-2 h-2 bg-vgu-orange rounded-full mr-3"></span>
                             <span data-i18n="features.social.item3">Merchandise</span>
                         </li>
-                    </ul>
+                        </ul>
+                    </div>
                 </div>
+
                 
-                <div class="card-hover bg-vgu-black rounded-2xl p-8">
+                <div class="card-hover bg-vgu-black rounded-2xl p-8 transform transition-transform duration-300 ease-out hover:scale-105 hover:-translate-y-1 hover:shadow-2xl hover:z-50 relative">
                     <div class="w-16 h-16 bg-vgu-orange rounded-xl flex items-center justify-center mb-6">
                         <span class="text-3xl">📅</span>
                     </div>
@@ -329,7 +341,7 @@
                     </ul>
                 </div>
                 
-                <div class="card-hover bg-vgu-black rounded-2xl p-8">
+                <div class="card-hover bg-vgu-black rounded-2xl p-8 transform transition-transform duration-300 ease-out hover:scale-105 hover:-translate-y-1 hover:shadow-2xl hover:z-50 relative">
                     <div class="w-16 h-16 bg-vgu-orange rounded-xl flex items-center justify-center mb-6">
                         <span class="text-3xl">📚</span>
                     </div>
@@ -351,7 +363,7 @@
                     </ul>
                 </div>
                 
-                <div class="card-hover bg-vgu-black rounded-2xl p-8">
+                <div class="card-hover bg-vgu-black rounded-2xl p-8 transform transition-transform duration-300 ease-out hover:scale-105 hover:-translate-y-1 hover:shadow-2xl hover:z-50 relative">
                     <div class="w-16 h-16 bg-vgu-orange rounded-xl flex items-center justify-center mb-6">
                         <span class="text-3xl">🏃</span>
                     </div>
@@ -373,7 +385,7 @@
                     </ul>
                 </div>
                 
-                <div class="card-hover bg-vgu-black rounded-2xl p-8">
+                <div class="card-hover bg-vgu-black rounded-2xl p-8 transform transition-transform duration-300 ease-out hover:scale-105 hover:-translate-y-1 hover:shadow-2xl hover:z-50 relative">
                     <div class="w-16 h-16 bg-vgu-orange rounded-xl flex items-center justify-center mb-6">
                         <span class="text-3xl">🆘</span>
                     </div>
@@ -395,7 +407,7 @@
                     </ul>
                 </div>
                 
-                <div class="card-hover bg-vgu-black rounded-2xl p-8">
+                <div class="card-hover bg-vgu-black rounded-2xl p-8 transform transition-transform duration-300 ease-out hover:scale-105 hover:-translate-y-1 hover:shadow-2xl hover:z-50 relative">
                     <div class="w-16 h-16 bg-vgu-orange rounded-xl flex items-center justify-center mb-6">
                         <span class="text-3xl">🌍</span>
                     </div>
