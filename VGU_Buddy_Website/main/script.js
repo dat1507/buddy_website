@@ -440,21 +440,21 @@ function scrollToSection(sectionId) {
 
 // Slider Fuction
 const slider = document.getElementById('slider');
-let slides = document.querySelectorAll('#slider img');
+let slides = document.querySelectorAll('#slider a'); // Query <a> thay vì <img>
 const totalSlides = slides.length;
 let currentIndex = 1;
 
-// Clone first and last slides
+    // Clone first and last slides (bao gồm cả link)
 const firstClone = slides[0].cloneNode(true);
 const lastClone = slides[totalSlides - 1].cloneNode(true);
 
 slider.appendChild(firstClone);
 slider.insertBefore(lastClone, slides[0]);
 
-// Update slides NodeList
-slides = document.querySelectorAll('#slider img');
+    // Update slides NodeList
+slides = document.querySelectorAll('#slider a');
 
-// Set initial position
+    // Set initial position
 slider.style.transform = `translateX(-${100 * currentIndex}%)`;
 
 function updateSlider() {
@@ -474,19 +474,21 @@ function prevSlide() {
     updateSlider();
 }
 
-// Handle infinite loop
+    // Handle infinite loop
 slider.addEventListener('transitionend', () => {
-    if (slides[currentIndex].alt === 'Slide 1') {
+    if (slides[currentIndex].querySelector('img').alt === 'Slide 1') {
         slider.style.transition = 'none';
         currentIndex = 1;
         slider.style.transform = `translateX(-${100 * currentIndex}%)`;
     }
-    if (slides[currentIndex].alt === 'Slide 3') {
+    if (slides[currentIndex].querySelector('img').alt === 'Slide 3') {
         slider.style.transition = 'none';
         currentIndex = totalSlides;
         slider.style.transform = `translateX(-${100 * currentIndex}%)`;
     }
 });
+
+// End of Slider Function Section
 
 // Demo Function
 function showDemo() {
