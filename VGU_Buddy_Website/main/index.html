@@ -31,6 +31,8 @@
 <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9760834b34598976',t:'MTc1NjM0OTU0OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
 </head>
 <body class="bg-vgu-black text-vgu-text overflow-x-hidden">
+    <!--Page Reload-->
+    <div id="pageReveal" class="page-reveal" aria-hidden="true"></div>
     <!-- Header -->
     <header class="fixed top-0 w-full z-50 bg-vgu-black/95 backdrop-blur-sm border-b border-vgu-surface/50">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
@@ -135,30 +137,27 @@
     <section id="home" class="hero-gradient min-h-screen flex items-center relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-6 lg:px-8 py-20 relative z-10">
             <div class="grid lg:grid-cols-2 gap-12 items-center">
-                <!-- Content -->
-                <div class="space-y-8 animate-fade-in">
+                <!-- Content với slide-in từ trái -->
+                <div class="space-y-8 animate-slide-in-left">
                     <h1 class="text-5xl lg:text-7xl font-black leading-tight text-glow">
-                        <span class="text-vgu-text" data-i18n="hero.title1">Connect with</span>
-                        <span class="block text-vgu-orange" data-i18n="hero.title2">VGU Buddy</span>
+                        <span class="text-vgu-text animate-slide-in-left" data-i18n="hero.title1">Connect with</span>
+                        <span class="block text-vgu-orange animate-slide-in-left animate-delay-200" data-i18n="hero.title2">VGU Buddy</span>
                     </h1>
-                    <p class="text-xl lg:text-2xl text-vgu-muted leading-relaxed max-w-2xl" data-i18n="hero.subtitle">
+                    <p class="text-xl lg:text-2xl text-vgu-muted leading-relaxed max-w-2xl animate-fade-in-up animate-delay-400" data-i18n="hero.subtitle">
                         Join the ultimate Vietnamese-German University community. Build connections, share experiences, and thrive together.
                     </p>
-                    <div class="flex flex-col sm:flex-row gap-4">
-                        <button onclick="showSignUp()" class="btn-primary px-8 py-4 rounded-xl font-bold text-lg text-vgu-black" data-i18n="hero.joinNow">
-                            Join Now
-                        </button>
+                    <div class="flex flex-col sm:flex-row gap-4 animate-fade-in-up animate-delay-600">
                         <button onclick="scrollToSection('about')" class="btn-secondary px-8 py-4 rounded-xl font-bold text-lg" data-i18n="hero.learnMore">
                             Learn More
                         </button>
                     </div>
                 </div>
                 
-                <!-- Hero Card -->
-                <div class="relative animate-slide-up">
+                <!-- Hero Card với slide-in từ phải -->
+                <div class="relative animate-slide-in-right animate-delay-300">
                     <div class="card-hover bg-vgu-surface/80 backdrop-blur-sm rounded-2xl p-8 shadow-2xl">
                         <div class="text-center space-y-6">
-                            <div class="flex justify-center -space-x-4 mb-6">
+                            <div class="flex justify-center -space-x-4 mb-6 animate-fade-in-scale animate-delay-500">
                                 <div class="w-16 h-16 rounded-full bg-vgu-orange flex items-center justify-center border-4 border-vgu-surface">
                                     <span class="text-2xl">👨‍🎓</span>
                                 </div>
@@ -169,8 +168,12 @@
                                     <span class="text-2xl">👨‍💻</span>
                                 </div>
                             </div>
-                            <h3 class="text-2xl font-bold text-vgu-text mb-3" data-i18n="hero.cardTitle">Welcome to VGU Buddy</h3>
-                            <p class="text-vgu-muted leading-relaxed" data-i18n="hero.cardSubtitle">Your gateway to an amazing university experience with friends who care.</p>
+                            <h3 class="text-2xl font-bold text-vgu-text mb-3 animate-fade-in-up animate-delay-600" data-i18n="hero.cardTitle">
+                                Welcome to VGU Buddy
+                            </h3>
+                            <p class="text-vgu-muted leading-relaxed animate-fade-in-up animate-delay-700" data-i18n="hero.cardSubtitle">
+                                Your gateway to an amazing university experience with friends who care.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -178,26 +181,27 @@
         </div>
     </section>
 
+
     <!-- Slider Section -->
     <section class="py-20 bg-vgu-surface flex flex-col items-center justify-center">
         <!-- Text Above Slider -->
-        <div class="text-center mb-16">
+        <div class="text-center mb-16 animate-fade-in-up">
             <h2 class="section-title text-4xl lg:text-6xl font-black text-vgu-text mb-6" data-i18n="stats.title">
                 The "Buddies" Events
             </h2>
-            <p class="text-xl text-vgu-muted max-w-3xl mx-auto" data-i18n="stats.subtitle">
+            <p class="text-xl text-vgu-muted max-w-3xl mx-auto animate-fade-in-up animate-delay-200" data-i18n="stats.subtitle">
                 Join thriving events that's making university life better for everyone.
             </p>
         </div>
 
         <!-- Image Slider -->
-        <div class="relative w-full max-w-4xl overflow-hidden rounded-2xl shadow-lg">
+        <div class="relative w-full max-w-4xl overflow-hidden rounded-2xl shadow-lg animate-fade-in-scale animate-delay-400">
             <!-- Slides -->
             <div id="slider" class="flex transition-transform duration-700">
                 <a href="../main/post/internationalday/internationalday.html" class="w-full flex-shrink-0 block">
                     <img src="images/internationalday.jpg" class="w-full" alt="Slide 1">
                 </a>
-                <a href="knowthyself.html" class="w-full flex-shrink-0 block">
+                <a href="../main/post/knowthyself/knowthyself.html" class="w-full flex-shrink-0 block">
                     <img src="images/knowthyself.jpg" class="w-full" alt="Slide 2">
                 </a>
                 <a href="../main/post/welcomeday/welcomeday.html" class="w-full flex-shrink-0 block">
@@ -206,8 +210,8 @@
             </div>
 
             <!-- Navigation Buttons -->
-            <button onclick="prevSlide()" class="absolute top-1/2 left-4 -translate-y-1/2 bg-white/70 hover:bg-white p-2 rounded-full">◀</button>
-            <button onclick="nextSlide()" class="absolute top-1/2 right-4 -translate-y-1/2 bg-white/70 hover:bg-white p-2 rounded-full">▶</button>
+            <button onclick="prevSlide()" class="absolute top-1/2 left-4 -translate-y-1/2 bg-white/70 hover:bg-white p-2 rounded-full animate-fade-in animate-delay-600">◀</button>
+            <button onclick="nextSlide()" class="absolute top-1/2 right-4 -translate-y-1/2 bg-white/70 hover:bg-white p-2 rounded-full animate-fade-in animate-delay-600">▶</button>
         </div>
     </section>
 

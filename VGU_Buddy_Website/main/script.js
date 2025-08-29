@@ -616,3 +616,76 @@ window.addEventListener('error', function(e) {
     console.error('An error occurred:', e.error);
 });
 
+document.addEventListener('DOMContentLoaded', () => {
+      const pr = document.getElementById('pageReveal');
+      if (pr && !pr.dataset.initialized) {
+        pr.dataset.initialized = '1';
+        pr.classList.add('active');
+        pr.addEventListener('animationend', () => pr.classList.remove('active'), { once: true });
+      }
+    });
+
+
+/* =================== RELOAD / RESTORE ANIMATION + ANIMATION RESTARTER =================== */
+
+/**
+ * Replays any CSS animations for elements with classes that start with "animate-".
+ * This fixes the issue where animations only ran once when classes were hard-coded
+ * in the HTML and the page was restored from bfcache (back/forward navigation).
+ *
+ * How it works: remove animate-* classes, force a reflow, then add them back.
+ */
+function restartAnimations(root = document) {
+  const animated = root.querySelectorAll('[class*="animate-"]');
+  animated.forEach(el => {
+    const animClasses = Array.from(el.classList).filter(c => c.startsWith('animate-'));
+    if (!animClasses.length) return;
+    animClasses.forEach(c => el.classList.remove(c));
+    // Force reflow to reset animation timelines
+    void el.offsetWidth;
+    animClasses.forEach(c => el.classList.add(c));
+  });
+}
+
+/**
+ * Plays the page reveal overlay quickly, and applies a tiny body fade.
+ */
+function playPageReveal() {
+  const overlay = document.getElementById('pageReveal');
+  if (overlay) {
+    overlay.classList.add('active');
+    overlay.addEventListener('animationend', () => {
+      overlay.classList.remove('active');
+    }, { once: true });
+  }
+  document.body.classList.add('body-reveal');
+  // Remove the body class after the quick fade, so future CSS isn’t affected
+  setTimeout(() => document.body.classList.remove('body-reveal'), 300);
+}
+
+/**
+ * Respect Reduced Motion: if the OS requests reduced motion, don’t force animations.
+ * (Your CSS already disables the animate-* classes in that case. We mirror that here.)
+ */
+function prefersReducedMotion() {
+  return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
+
+// Run on normal loads
+window.addEventListener('DOMContentLoaded', () => {
+  if (!prefersReducedMotion()) {
+    playPageReveal();
+    restartAnimations();
+  }
+});
+
+// Run again when the page is restored from the back/forward cache (bfcache)
+window.addEventListener('pageshow', (e) => {
+  if (e.persisted && !prefersReducedMotion()) {
+    playPageReveal();
+    restartAnimations();
+  }
+});
+
+
+

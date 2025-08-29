@@ -1,3 +1,5 @@
+/* Fixed CSS Animation Code */
+
 * {
     font-family: 'Poppins', sans-serif;
 }
@@ -13,39 +15,143 @@
     animation: gradientShift 8s ease infinite;
 }
 
-/* Animations */
+/* ============================================
+   ANIMATION KEYFRAMES
+   ============================================ */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
 @keyframes gradientShift {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
 
+@keyframes glowPulse {
+    0%, 100% { text-shadow: 0 0 10px rgba(255, 165, 0, 0.7); }
+    50% { text-shadow: 0 0 20px rgba(255, 165, 0, 1); }
+}
+
+/* ============================================
+   ANIMATION CLASSES
+   ============================================ */
+
+/* Fade Animations */
 .animate-fade-in {
-    animation: fadeIn 0.8s ease-out;
+    animation: fadeIn 0.8s ease-out both;
+}
+
+.animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out both;
+}
+
+.animate-fade-in-scale {
+    animation: fadeInScale 0.8s ease-out both;
+}
+
+/* Slide Animations */
+.animate-slide-in-left {
+    animation: slideInLeft 0.8s ease-out both;
+}
+
+.animate-slide-in-right {
+    animation: slideInRight 0.8s ease-out both;
 }
 
 .animate-slide-up {
-    animation: slideUp 1s ease-out;
+    animation: fadeInUp 1s ease-out both;
 }
 
-.animate-counter {
-    animation: countUp 2s ease-out;
+/* ============================================
+   ANIMATION DELAYS
+   ============================================ */
+
+.animate-delay-100 {
+    animation-delay: 0.1s;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+.animate-delay-200 {
+    animation-delay: 0.2s;
 }
 
-@keyframes slideUp {
-    from { transform: translateY(50px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
+.animate-delay-300 {
+    animation-delay: 0.3s;
 }
-    
-@keyframes countUp {
-    from { transform: scale(0.5); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
+
+.animate-delay-400 {
+    animation-delay: 0.4s;
 }
+
+.animate-delay-500 {
+    animation-delay: 0.5s;
+}
+
+.animate-delay-600 {
+    animation-delay: 0.6s;
+}
+
+.animate-delay-700 {
+    animation-delay: 0.7s;
+}
+
+.animate-delay-800 {
+    animation-delay: 0.8s;
+}
+
+/* ============================================
+   COMPONENT STYLES
+   ============================================ */
 
 /* Button Styles */
 .btn-primary {
@@ -86,6 +192,7 @@
 /* Text Effects */
 .text-glow {
     text-shadow: 0 0 20px rgba(255, 103, 13, 0.5);
+    animation: glowPulse 2s infinite;
 }
 
 .stats-counter {
@@ -159,7 +266,10 @@
     transition: all 0.3s ease;
 }
 
-/* Responsive Design Adjustments */
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
 @media (max-width: 768px) {
     .stats-counter {
         font-size: 2rem;
@@ -188,6 +298,10 @@
         font-size: 1rem;
     }
 }
+
+/* ============================================
+   ACCESSIBILITY & PERFORMANCE
+   ============================================ */
 
 /* Focus States for Accessibility */
 input:focus, button:focus {
@@ -218,17 +332,20 @@ html {
     background: #E55D0C;
 }
 
-/* Accessibility improvements */
+/* Accessibility improvements - Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
-    .animate-fade-in,
-    .animate-slide-up,
-    .animate-counter {
-        animation: none;
-    }
-    
-    .hero-gradient {
-        animation: none;
-    }
+  .animate-fade-in,
+  .animate-fade-in-up,
+  .animate-fade-in-scale,
+  .animate-slide-in-left,
+  .animate-slide-in-right,
+  .animate-slide-up {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+  .hero-gradient { animation: none; }
+  .text-glow { animation: none; }
 }
 
 /* High contrast mode support */
@@ -240,11 +357,6 @@ html {
     .card-hover {
         border: 2px solid #FF670D;
     }
-}
-
-/* Dark mode preferences */
-@media (prefers-color-scheme: dark) {
-    /* Already optimized for dark theme */
 }
 
 /* Loading states */
@@ -262,6 +374,41 @@ html {
 /* Success states */
 .success {
     border-color: #44FF44 !important;
-    box-shadow: 0 0 0 2px rgba(68, 255, 68, 0.2);
+    box-shadow: 0 0 0 2px rgba(255, 68, 68, 0.2);
 }
 
+/* ======================================================================
+   PAGE RELOAD / REVEAL ANIMATION
+   ====================================================================== */
+
+/* Full-screen overlay that plays on every load or bfcache restore */
+.page-reveal {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(1200px 800px at 50% 50%, rgba(255,103,13,0.18), rgba(0,0,0,0.0) 70%),
+              linear-gradient(135deg, rgba(255,103,13,0.25), rgba(0,0,0,0) 60%);
+  opacity: 0;
+  z-index: 9999;
+}
+
+/* Keyframes for a quick “flash + fade” reveal */
+@keyframes pageRevealFade {
+  0%   { opacity: 0; }
+  10%  { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* When active, run the reveal once */
+.page-reveal.active {
+  animation: pageRevealFade 700ms ease-out forwards;
+}
+
+/* Optional: subtle body fade each time (kept very fast) */
+@keyframes bodyQuickIn {
+  from { opacity: 0.001; }
+  to   { opacity: 1; }
+}
+.body-reveal {
+  animation: bodyQuickIn 240ms ease-out both;
+}
