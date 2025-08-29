@@ -1,0 +1,34 @@
+{
+    "nav": {
+                "home": "Home",
+                "about": "About",
+                "features": "Features",
+                "community": "Community",
+                "contact": "Contact"
+            },
+    "footer": {
+        "description": "Connecting students at Vietnamese-German University for an extraordinary academic and social experience.",
+        "quickLinks": "Quick Links",
+        "support": "Support",
+        "helpCenter": "Help Center",
+        "emergency": "Emergency Contacts",
+        "mentalHealth": "Mental Health",
+        "technical": "Technical Support",
+        "copyright": "© 2025 VGU Buddy Program. All rights reserved. | Available in English & German"
+    },
+    "auth": {
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
+    "joinTitle": "Join VGU Buddy",
+    "welcomeBack": "Welcome Back",
+    "createAccount": "Create Account",
+    "haveAccount": "Already have an account?",
+    "noAccount": "Don't have an account?",
+    "fullName": "Full Name",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "welcomeMessage": "Welcome to VGU Buddy! 🎉",
+    "demoMessage": "This is a demo - full authentication would be implemented with secure backend services."
+    }
+}

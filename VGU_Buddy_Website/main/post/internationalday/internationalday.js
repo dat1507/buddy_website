@@ -186,11 +186,17 @@ document.addEventListener('DOMContentLoaded', initializeLanguage);
     const translations = {
         en: {
             article: {
-                title: 'Welcome Day',
+                title: 'International Day',
                 date: 'September 10, 2025',
-                caption: 'VGU Welcome Day',
+                caption: 'VGU International Day',
                 summary: 'Join us for an exciting introduction to university life at VGU, where new students discover their academic journey and connect with our vibrant community.',
-                paragraph1: 'Welcome Day at Vietnamese-German University marks the beginning of an extraordinary academic adventure. This special event introduces new students to our unique educational environment that combines Vietnamese hospitality with German academic excellence.',
+                paragraph1: `🚨 𝐀𝐭𝐭𝐞𝐧𝐭𝐢𝐨𝐧 𝐒𝐭𝐮𝐝𝐞𝐧𝐭𝐬!
+                            Get ready for an exciting opportunity! On 𝟏𝟕 𝐒𝐞𝐩𝐭𝐞𝐦𝐛𝐞𝐫 𝟐𝟎𝟐𝟓, the 𝐕𝐆𝐔 𝐈𝐧𝐭𝐞𝐫𝐧𝐚𝐭𝐢𝐨𝐧𝐚𝐥 𝐎𝐟𝐟𝐢𝐜𝐞 will host an 𝐈𝐧𝐟𝐨𝐫𝐦𝐚𝐭𝐢𝐨𝐧 𝐒𝐞𝐬𝐬𝐢𝐨𝐧 packed with everything you need to know about studying abroad.
+                            ✨ What’s waiting for you?
+                            🌍 𝐋𝐢𝐬𝐭 𝐨𝐟 𝐕𝐆𝐔 𝐏𝐚𝐫𝐭𝐧𝐞𝐫 𝐔𝐧𝐢𝐯𝐞𝐫𝐬𝐢𝐭𝐢𝐞𝐬
+                            📝 𝐀𝐩𝐩𝐥𝐢𝐜𝐚𝐭𝐢𝐨𝐧 𝐏𝐫𝐨𝐜𝐞𝐬𝐬 & 𝐓𝐢𝐩𝐬
+                            💰 𝐒𝐜𝐡𝐨𝐥𝐚𝐫𝐬𝐡𝐢𝐩𝐬 & 𝐅𝐢𝐧𝐚𝐧𝐜𝐢𝐚𝐥 𝐒𝐮𝐩𝐩𝐨𝐫𝐭
+                            🎒 𝐏𝐫𝐚𝐜𝐭𝐢𝐜𝐚𝐥 𝐈𝐧𝐟𝐨𝐫𝐦𝐚𝐭𝐢𝐨𝐧 𝐟𝐨𝐫 𝐘𝐨𝐮𝐫 𝐄𝐱𝐜𝐡𝐚𝐧𝐠𝐞 𝐒𝐞𝐦𝐞𝐬𝐭𝐞𝐫`,
                 paragraph2: 'The day begins with an inspiring opening ceremony featuring welcome speeches from university leadership, faculty presentations, and vibrant performances by our student organizations. New students receive comprehensive orientation materials and meet their academic advisors.',
                 paragraph3: 'Interactive campus tours showcase our state-of-the-art facilities, modern laboratories, collaborative learning spaces, and recreational areas. Students explore different faculties, connect with professors, and discover the diverse academic programs and international opportunities available at VGU.',
                 show_more: 'Show More',

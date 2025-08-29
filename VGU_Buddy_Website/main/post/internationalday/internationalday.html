@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VGU Buddy Program</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'vgu-orange': '#FF670D',
+                        'vgu-orange-dark': '#E55D0C',
+                        'vgu-orange-light': '#FF8A3B',
+                        'vgu-black': '#000000',
+                        'vgu-surface': '#1F1F1F',
+                        'vgu-text': '#EFEFEF',
+                        'vgu-muted': '#BDBDBD'
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="internationalday.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.6.6/css/flag-icons.min.css">
+    <link rel="icon" type="image/png" href="../../images/vguBuddy_logo.png">
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9760834b34598976',t:'MTc1NjM0OTU0OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+</head>
+
+<body class="bg-vgu-black text-vgu-text overflow-x-hidden">
+    <!-- Header -->
+    <header class="fixed top-0 w-full z-50 bg-vgu-black/95 backdrop-blur-sm border-b border-vgu-surface/50">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                    <a href="../index.html">
+                        <img src="../../images/vguBuddy_logo.png" alt="VGU Buddy Logo" class="w-12 h-12 rounded-xl object-cover">
+                    </a>
+                    <a href="../../index.html" class="font-bold text-xl text-vgu-text">VGU Buddy</a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <nav class="hidden lg:flex items-center space-x-8">
+                    <a href="../../index.html" class="text-vgu-text hover:text-vgu-orange transition-colors" data-i18n="nav.home">Home</a>
+                    <a href="#about" class="text-vgu-text hover:text-vgu-orange transition-colors" data-i18n="nav.about">About</a>
+                    <a href="#features" class="text-vgu-text hover:text-vgu-orange transition-colors" data-i18n="nav.features">Features</a>
+                    <a href="#community" class="text-vgu-text hover:text-vgu-orange transition-colors" data-i18n="nav.community">Community</a>
+                    <a href="#contact" class="text-vgu-text hover:text-vgu-orange transition-colors" data-i18n="nav.contact">Contact</a>
+                </nav>
+                
+                <!-- Language Toggle & Auth -->
+                <div class="hidden lg:flex items-center space-x-4">
+                    
+                    <!-- Language Toggle -->
+                    <button 
+                        id="languageToggle" 
+                        onclick="toggleLanguage()" 
+                        class="language-toggle flex items-center space-x-2 px-3 py-2 rounded-lg bg-vgu-surface hover:bg-vgu-surface/80 transition-all duration-200"
+                        aria-pressed="false"
+                        aria-label="Toggle language">
+                        <i id="languageFlag" class="fas fa-flag text-blue-500"></i>
+                        <span id="languageCode" class="text-sm font-semibold text-vgu-muted">EN</span>
+                    </button>
+
+                    <!-- Auth Buttons -->
+                    <button onclick="showSignIn()" class="px-4 py-2 text-vgu-text hover:text-vgu-orange transition-colors" data-i18n="auth.signIn">
+                        Sign In
+                    </button>
+                    <button onclick="showSignUp()" class="px-6 py-2 bg-vgu-orange text-vgu-black rounded-lg font-semibold hover:bg-vgu-orange-dark transition-colors" data-i18n="auth.signUp">
+                        Sign Up
+                    </button>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button onclick="toggleMobileMenu()" class="lg:hidden p-2 text-vgu-text hover:text-vgu-orange transition-colors">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="mobile-menu fixed top-0 right-0 h-full w-80 bg-vgu-surface shadow-2xl z-50 lg:hidden">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-8">
+                    <h2 class="text-xl font-bold text-vgu-text">Menu</h2>
+                    <button onclick="toggleMobileMenu()" class="p-2 text-vgu-text hover:text-vgu-orange transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+                
+                <!-- Mobile Language Toggle -->
+                <div class="mb-6">
+                    <button 
+                        onclick="toggleLanguage()" 
+                        class="w-full flex items-center justify-between p-3 rounded-lg bg-vgu-black hover:bg-vgu-black/80 transition-all duration-200">
+                        <div class="flex items-center space-x-3">
+                            <i id="mobileLanguageFlag" class="fas fa-flag text-blue-500"></i>
+                            <span id="mobileLanguageCode" class="font-semibold text-vgu-text">English</span>
+                        </div>
+                        <svg class="w-4 h-4 text-vgu-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l4-4 4 4m0 6l-4 4-4-4"></path>
+                        </svg>
+                    </button>
+                </div>
+                                
+                <nav class="space-y-2 mb-8">
+                    <a href="#home" class="block px-4 py-3 text-vgu-text hover:text-vgu-orange hover:bg-vgu-black rounded-lg transition-colors" data-i18n="nav.home">Home</a>
+                    <a href="#about" class="block px-4 py-3 text-vgu-text hover:text-vgu-orange hover:bg-vgu-black rounded-lg transition-colors" data-i18n="nav.about">About</a>
+                    <a href="#features" class="block px-4 py-3 text-vgu-text hover:text-vgu-orange hover:bg-vgu-black rounded-lg transition-colors" data-i18n="nav.features">Features</a>
+                    <a href="#community" class="block px-4 py-3 text-vgu-text hover:text-vgu-orange hover:bg-vgu-black rounded-lg transition-colors" data-i18n="nav.community">Community</a>
+                    <a href="#contact" class="block px-4 py-3 text-vgu-text hover:text-vgu-orange hover:bg-vgu-black rounded-lg transition-colors" data-i18n="nav.contact">Contact</a>
+                </nav>
+                
+                <div class="space-y-3">
+                    <button onclick="showSignIn()" class="w-full px-4 py-3 text-vgu-text hover:text-vgu-orange hover:bg-vgu-black rounded-lg transition-colors text-left" data-i18n="auth.signIn">
+                        Sign In
+                    </button>
+                    <button onclick="showSignUp()" class="w-full px-4 py-3 bg-vgu-orange text-vgu-black rounded-lg font-semibold hover:bg-vgu-orange-dark transition-colors" data-i18n="auth.signUp">
+                        Sign Up
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <main class="pt-20 min-h-[130vh] bg-gradient-to-br from-vgu-surface to-vgu-black">
+        <div class="container">
+            <article class="article-container">
+                
+                <!-- Image Section -->
+                <section class="image-section" aria-labelledby="image-caption">
+                    <figure class="hero-image-container">
+                        <img 
+                            id="hero-image"
+                            src="../../images/internationalday.jpg" 
+                            alt="VGU International Day"
+                            class="hero-image"
+                            loading="eager">
+                        
+                        <!-- Image Caption -->
+                        <figcaption id="image-caption" class="image-caption" data-i18n="article.caption">
+                            VGU International Day
+                        </figcaption>
+                    </figure>
+                    
+                    <!-- Thumbnail Gallery -->
+                    <div class="thumbnail-gallery" role="group" aria-label="Additional images">
+                        <button class="thumbnail active" data-src="../../images/internationalday.jpg" data-caption="VGU International Day">
+                            <img src="../../images/internationalday.jpg" alt="International Day overview">
+                        </button>
+                        <button class="thumbnail" data-src="../../images/agenda_guest.jpg" data-caption="Agenda for international guest and incoming student">
+                            <img src="../../images/agenda_guest.jpg" alt="Agenda for guest">
+                        </button>
+                        <button class="thumbnail" data-src="../../images/agenda_student.jpg" data-caption="Agenda for Student">
+                            <img src="../../images/agenda_student.jpg" alt="Agenda for student">
+                        </button>
+                    </div>
+                </section>
+
+
+                <!-- Content Section -->
+                <section class="content-section">
+                    <header class="article-header">
+                        <h1 class="article-title" data-i18n="article.title">International Day</h1>
+                        <time class="article-date" data-i18n="article.date" datetime="2025-09-10">
+                            September 10, 2025
+                        </time>
+                    </header>
+
+                    <!-- Article Summary -->
+                    <div class="article-summary">
+                        <p data-i18n="article.summary">
+                            Join us for an exciting introduction to university life at VGU, where new students discover their academic journey and connect with our vibrant community.
+                        </p>
+                    </div>
+
+                    <!-- Article Content -->
+                    <div class="article-content">
+                        <!-- Always visible paragraph -->
+                        <p class="content-paragraph" data-i18n="article.paragraph1">
+                            🚨 𝐀𝐭𝐭𝐞𝐧𝐭𝐢𝐨𝐧 𝐒𝐭𝐮𝐝𝐞𝐧𝐭𝐬!
+                            Get ready for an exciting opportunity! On 𝟏𝟕 𝐒𝐞𝐩𝐭𝐞𝐦𝐛𝐞𝐫 𝟐𝟎𝟐𝟓, the 𝐕𝐆𝐔 𝐈𝐧𝐭𝐞𝐫𝐧𝐚𝐭𝐢𝐨𝐧𝐚𝐥 𝐎𝐟𝐟𝐢𝐜𝐞 will host an 𝐈𝐧𝐟𝐨𝐫𝐦𝐚𝐭𝐢𝐨𝐧 𝐒𝐞𝐬𝐬𝐢𝐨𝐧 packed with everything you need to know about studying abroad.
+                            ✨ What’s waiting for you?
+                            🌍 𝐋𝐢𝐬𝐭 𝐨𝐟 𝐕𝐆𝐔 𝐏𝐚𝐫𝐭𝐧𝐞𝐫 𝐔𝐧𝐢𝐯𝐞𝐫𝐬𝐢𝐭𝐢𝐞𝐬
+                            📝 𝐀𝐩𝐩𝐥𝐢𝐜𝐚𝐭𝐢𝐨𝐧 𝐏𝐫𝐨𝐜𝐞𝐬𝐬 & 𝐓𝐢𝐩𝐬
+                            💰 𝐒𝐜𝐡𝐨𝐥𝐚𝐫𝐬𝐡𝐢𝐩𝐬 & 𝐅𝐢𝐧𝐚𝐧𝐜𝐢𝐚𝐥 𝐒𝐮𝐩𝐩𝐨𝐫𝐭
+                            🎒 𝐏𝐫𝐚𝐜𝐭𝐢𝐜𝐚𝐥 𝐈𝐧𝐟𝐨𝐫𝐦𝐚𝐭𝐢𝐨𝐧 𝐟𝐨𝐫 𝐘𝐨𝐮𝐫 𝐄𝐱𝐜𝐡𝐚𝐧𝐠𝐞 𝐒𝐞𝐦𝐞𝐬𝐭𝐞𝐫
+                        </p>
+
+                        <!-- Expandable content -->
+                        <div id="expandable-content" class="expandable-content" aria-expanded="false">
+                            <p class="content-paragraph" data-i18n="article.paragraph2">
+                                The day begins with an inspiring opening ceremony featuring welcome speeches from university leadership, faculty presentations, and vibrant performances by our student organizations. New students receive comprehensive orientation materials and meet their academic advisors.
+                            </p>
+
+                            <p class="content-paragraph" data-i18n="article.paragraph3">
+                                Interactive campus tours showcase our state-of-the-art facilities, modern laboratories, collaborative learning spaces, and recreational areas. Students explore different faculties, connect with professors, and discover the diverse academic programs and international opportunities available at VGU.
+                            </p>
+                        </div>
+
+                        <!-- Read More Button -->
+                        <button 
+                            id="read-more-btn" 
+                            class="read-more-btn"
+                            aria-expanded="false"
+                            aria-controls="expandable-content"
+                            data-i18n="article.show_more">
+                            Show More
+                        </button>
+                    </div>
+
+                </section>
+
+            </article>
+        </div>
+    </main>
+
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-vgu-surface py-16">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="md:col-span-2">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <img src="../../images/vguBuddy_logo.png" alt="VGU Buddy Logo" class="w-12 h-12 rounded-xl object-cover">
+                        <span class="font-bold text-xl text-vgu-text">VGU Buddy</span>
+                    </div>
+                    <p class="text-vgu-muted leading-relaxed mb-6" data-i18n="footer.description">
+                        Connecting students at Vietnamese-German University for an extraordinary academic and social experience.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="https://www.facebook.com/VGUBuddyProgram" target="_blank">
+                            <div class="w-10 h-10 bg-vgu-black rounded-lg flex items-center justify-center hover:bg-vgu-orange transition-colors cursor-pointer">
+                                <i data-lucide="facebook" class="text-vgu-orange hover:text-vgu-black w-6 h-6"></i>
+                            </div>
+                        </a>
+                        <a href="https://www.instagram.com/buddyprogram_vgu/" target="_blank">
+                            <div class="w-10 h-10 bg-vgu-black rounded-lg flex items-center justify-center hover:bg-vgu-orange transition-colors cursor-pointer">
+                                <i data-lucide="instagram" class="text-vgu-orange hover:text-vgu-black w-6 h-6"></i>
+                            </div>
+                        </a>
+                        <a href="#home">
+                            <div class="w-10 h-10 bg-vgu-black rounded-lg flex items-center justify-center hover:bg-vgu-orange transition-colors cursor-pointer">
+                                <i data-lucide="globe" class="text-vgu-orange hover:text-vgu-black w-6 h-6"></i>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-lg text-vgu-text mb-4" data-i18n="footer.quickLinks">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-vgu-muted hover:text-vgu-orange transition-colors" data-i18n="nav.home">Home</a></li>
+                        <li><a href="#about" class="text-vgu-muted hover:text-vgu-orange transition-colors" data-i18n="nav.about">About</a></li>
+                        <li><a href="#features" class="text-vgu-muted hover:text-vgu-orange transition-colors" data-i18n="nav.features">Features</a></li>
+                        <li><a href="#community" class="text-vgu-muted hover:text-vgu-orange transition-colors" data-i18n="nav.community">Community</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-lg text-vgu-text mb-4" data-i18n="footer.support">Support</h4>
+                    <ul class="space-y-2">
+                        <li class="text-vgu-muted hover:text-vgu-orange transition-colors cursor-pointer" data-i18n="footer.helpCenter">Help Center</li>
+                        <li class="text-vgu-muted hover:text-vgu-orange transition-colors cursor-pointer" data-i18n="footer.emergency">Emergency Contacts</li>
+                        <li class="text-vgu-muted hover:text-vgu-orange transition-colors cursor-pointer" data-i18n="footer.mentalHealth">Mental Health</li>
+                        <li class="text-vgu-muted hover:text-vgu-orange transition-colors cursor-pointer" data-i18n="footer.technical">Technical Support</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-vgu-black mt-12 pt-8 text-center">
+                <p class="text-vgu-muted" data-i18n="footer.copyright">
+                    &copy; 2024 VGU Buddy Program. All rights reserved. | Available in English & German
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Auth Modal -->
+    <div id="authModal" class="fixed inset-0 bg-vgu-black/90 backdrop-blur-sm hidden z-50 flex items-center justify-center p-4">
+        <div class="bg-vgu-surface rounded-2xl max-w-md w-full p-8 transform transition-all">
+            <div class="text-center mb-8">
+                <div class="w-16 h-16 bg-vgu-orange rounded-xl flex items-center justify-center mx-auto mb-4">
+                    <span class="text-2xl">🎓</span>
+                </div>
+                <h2 id="authTitle" class="text-2xl font-bold text-vgu-text mb-2">Welcome Back</h2>
+                <p class="text-vgu-muted">Sign in to your VGU Buddy account</p>
+            </div>
+            
+            <form id="authForm" class="space-y-6">
+                <div id="nameField" class="hidden">
+                    <label class="block text-sm font-semibold text-vgu-text mb-2" data-i18n="auth.fullName">Full Name</label>
+                    <input type="text" name="name" class="w-full px-4 py-3 bg-vgu-black border border-vgu-surface rounded-lg text-vgu-text focus:border-vgu-orange focus:outline-none" placeholder="Enter your full name">
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-vgu-text mb-2" data-i18n="auth.email">Email</label>
+                    <input type="email" name="email" class="w-full px-4 py-3 bg-vgu-black border border-vgu-surface rounded-lg text-vgu-text focus:border-vgu-orange focus:outline-none" placeholder="Enter your email">
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-vgu-text mb-2" data-i18n="auth.password">Password</label>
+                    <input type="password" name="password" class="w-full px-4 py-3 bg-vgu-black border border-vgu-surface rounded-lg text-vgu-text focus:border-vgu-orange focus:outline-none" placeholder="Enter your password">
+                </div>
+                <div id="confirmPasswordField" class="hidden">
+                    <label class="block text-sm font-semibold text-vgu-text mb-2" data-i18n="auth.confirmPassword">Confirm Password</label>
+                    <input type="password" name="confirmPassword" class="w-full px-4 py-3 bg-vgu-black border border-vgu-surface rounded-lg text-vgu-text focus:border-vgu-orange focus:outline-none" placeholder="Confirm your password">
+                </div>
+                <button type="submit" class="w-full bg-vgu-orange text-vgu-black py-3 rounded-lg font-bold hover:bg-vgu-orange-dark transition-colors">
+                    <span id="authButtonText">Sign In</span>
+                </button>
+            </form>
+            
+            <div class="mt-6 text-center">
+                <p class="text-vgu-muted">
+                    <span id="authSwitchText">Don't have an account?</span>
+                    <button id="authSwitchButton" onclick="switchAuthMode()" class="text-vgu-orange font-semibold hover:text-vgu-orange-light transition-colors ml-1">Sign Up</button>
+                </p>
+            </div>
+            
+            <button onclick="closeAuthModal()" class="absolute top-4 right-4 text-vgu-muted hover:text-vgu-text transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <script src="internationalday.js"></script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97128657528985e9',t:'MTc1NTUzMTc4NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+<script>
+  lucide.createIcons();
+</script>
+</body>
+
