@@ -79,7 +79,7 @@ function getFallbackTranslations() {
                 "demoMessage": "Dies ist eine Demo - die vollständige Authentifizierung würde mit sicheren Backend-Services implementiert."
             },
             "stats": {
-                "title": "Das Buddies-Event",
+                "title": "Besondere Veranstaltungen",
                 "subtitle": "Nimm an spannenden Veranstaltungen teil, die das Uni-Leben für alle bereichern.",
             },
             "about": {
@@ -215,7 +215,7 @@ function getFallbackTranslations() {
                 "demoMessage": "This is a demo - full authentication would be implemented with secure backend services."
             },
             "stats": {
-                "title": "The Buddies Event",
+                "title": "Featured Events",
                 "subtitle": "Join thriving events that's making university life better for everyone.",
             },
             "about": {
