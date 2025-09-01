@@ -1,162 +1,316 @@
-// Event data for easy management
-        const eventData = {
-            1: {
-                title: "Spring Tech Conference",
-                date: "March 2025",
-                description: "Join industry leaders for three days of cutting-edge technology discussions, networking opportunities, and hands-on workshops covering AI, web development, and digital innovation.",
-                location: "Convention Center Downtown",
-                duration: "3 days",
-                attendees: "500+ expected"
+// =======================
+// Global Variables
+// =======================
+let isSignUp = false;
+let currentLanguage = 'en';
+let translations = {};
+
+// =======================
+// Supported Languages
+// =======================
+const SUPPORTED_LANGUAGES = {
+    'en': { 
+        name: 'English', 
+        code: 'EN',
+        flagClass: 'fi fi-gb',
+        flagStyle: 'font-size: 16px;'
+    },
+    'de': { 
+        name: 'Deutsch', 
+        code: 'DE',
+        flagClass: 'fi fi-de',
+        flagStyle: 'font-size: 16px;'
+    }
+};
+
+// =======================
+// Initialize Language System
+// =======================
+async function initializeLanguage() {
+    currentLanguage = localStorage.getItem('vgu-language') || 'en';
+    await loadTranslations();
+    updateLanguageToggle();
+    translatePage();
+    console.log("Language initialized:", currentLanguage);
+}
+
+// =======================
+// Load Translation Files
+// =======================
+async function loadTranslations() {
+    try {
+        const response = await fetch(`${currentLanguage}.json`);
+        if (response.ok) {
+            translations = await response.json();
+        } else {
+            throw new Error('Translation file not found');
+        }
+    } catch (error) {
+        console.warn('Failed to load translations, using fallback:', error);
+        translations = getFallbackTranslations();
+    }
+}
+
+// =======================
+// Fallback Translations
+// =======================
+function getFallbackTranslations() {
+    if (currentLanguage === 'de') {
+        return {
+            "nav": {
+                "home": "Startseite",
+                "about": "Über uns",
+                "features": "Funktionen",
+                "community": "Gemeinschaft",
+                "contact": "Kontakt"
             },
-            2: {
-                title: "Design Summit",
-                date: "May 2025",
-                description: "A comprehensive gathering of designers, creatives, and UX professionals exploring the latest trends in digital design, user experience, and creative collaboration.",
-                location: "Creative Arts Center",
-                duration: "2 days",
-                attendees: "300+ expected"
+            "auth": {
+                "signIn": "Anmelden",
+                "signUp": "Registrieren",
+                "joinTitle": "Bei VGU Buddy beitreten",
+                "welcomeBack": "Willkommen zurück",
+                "createAccount": "Konto erstellen",
+                "haveAccount": "Bereits ein Konto?",
+                "noAccount": "Noch kein Konto?",
+                "fullName": "Vollständiger Name",
+                "email": "E-Mail",
+                "password": "Passwort",
+                "confirmPassword": "Passwort bestätigen",
+                "welcomeMessage": "Willkommen bei VGU Buddy! 🎉",
+                "demoMessage": "Dies ist eine Demo - die vollständige Authentifizierung würde mit sicheren Backend-Services implementiert."
             },
-            3: {
-                title: "Summer Innovation Workshop",
-                date: "July 2025",
-                description: "An intensive hands-on workshop focused on emerging technologies, startup methodologies, and innovative problem-solving techniques for the modern digital landscape.",
-                location: "Innovation Hub",
-                duration: "1 day",
-                attendees: "150+ expected"
-            },
-            4: {
-                title: "Autumn Networking Gala",
-                date: "September 2025",
-                description: "An elegant evening of professional networking, featuring keynote speakers, industry awards, and opportunities to connect with peers from various sectors.",
-                location: "Grand Ballroom Hotel",
-                duration: "Evening event",
-                attendees: "400+ expected"
-            },
-            5: {
-                title: "Digital Marketing Expo",
-                date: "November 2025",
-                description: "Explore the future of digital marketing with expert-led sessions on social media strategy, content creation, analytics, and emerging marketing technologies.",
-                location: "Business Conference Center",
-                duration: "2 days",
-                attendees: "600+ expected"
-            },
-            6: {
-                title: "Year-End Celebration",
-                date: "December 2025",
-                description: "Celebrate the year's achievements with our annual gathering featuring awards ceremony, entertainment, refreshments, and a look ahead to exciting plans for 2026.",
-                location: "Company Headquarters",
-                duration: "Evening event",
-                attendees: "All staff + guests"
+            "footer": {
+                "description": "Verbindung von Studenten an der Vietnamesisch-Deutschen Universität für eine außergewöhnliche akademische und soziale Erfahrung.",
+                "quickLinks": "Schnelle Links",
+                "support": "Unterstützung",
+                "helpCenter": "Hilfezentrum",
+                "emergency": "Notfallkontakte",
+                "mentalHealth": "Mentale Gesundheit",
+                "technical": "Technischer Support",
+                "copyright": "© 2025 VGU Buddy Programm. Alle Rechte vorbehalten. | Verfügbar auf Englisch & Deutsch"
             }
         };
-
-        // Initialize the calendar functionality
-        function initializeCalendar() {
-            const eventCards = document.querySelectorAll('.event-card');
-            
-            // Add click event listeners to all event cards
-            eventCards.forEach(card => {
-                card.addEventListener('click', handleEventClick);
-                card.addEventListener('keydown', handleEventKeydown);
-            });
-
-            console.log('Calendar initialized with', eventCards.length, 'events');
-        }
-
-        // Handle event card clicks
-        function handleEventClick(event) {
-            const eventId = event.currentTarget.getAttribute('data-event-id');
-            const eventInfo = eventData[eventId];
-            
-            if (eventInfo) {
-                logEventInteraction(eventInfo, 'click');
-                
-                // Visual feedback for click
-                event.currentTarget.style.transform = 'translateY(-6px) scale(1.01)';
-                setTimeout(() => {
-                    event.currentTarget.style.transform = '';
-                }, 150);
+    } else {
+        return {
+            "nav": {
+                "home": "Home",
+                "about": "About",
+                "features": "Features",
+                "community": "Community",
+                "contact": "Contact"
+            },
+            "auth": {
+                "signIn": "Sign In",
+                "signUp": "Sign Up",
+                "joinTitle": "Join VGU Buddy",
+                "welcomeBack": "Welcome Back",
+                "createAccount": "Create Account",
+                "haveAccount": "Already have an account?",
+                "noAccount": "Don't have an account?",
+                "fullName": "Full Name",
+                "email": "Email",
+                "password": "Password",
+                "confirmPassword": "Confirm Password",
+                "welcomeMessage": "Welcome to VGU Buddy! 🎉",
+                "demoMessage": "This is a demo - full authentication would be implemented with secure backend services."
+            },
+            "footer": {
+                "description": "Connecting students at Vietnamese-German University for an extraordinary academic and social experience.",
+                "quickLinks": "Quick Links",
+                "support": "Support",
+                "helpCenter": "Help Center",
+                "emergency": "Emergency Contacts",
+                "mentalHealth": "Mental Health",
+                "technical": "Technical Support",
+                "copyright": "© 2025 VGU Buddy Program. All rights reserved. | Available in English & German"
             }
-        }
+        };
+    }
+}
 
-        // Handle keyboard navigation
-        function handleEventKeydown(event) {
-            if (event.key === 'Enter' || event.key === ' ') {
-                event.preventDefault();
-                handleEventClick(event);
+// =======================
+// Update Language Toggle UI
+// =======================
+function updateLanguageToggle() {
+    const langData = SUPPORTED_LANGUAGES[currentLanguage];
+    
+    // Desktop toggle
+    const flagElement = document.getElementById('languageFlag');
+    const codeElement = document.getElementById('languageCode');
+    if (flagElement && codeElement) {
+        flagElement.className = langData.flagClass;
+        flagElement.style.cssText = langData.flagStyle;
+        codeElement.textContent = langData.code;
+    }
+    
+    // Mobile toggle
+    const mobileFlagElement = document.getElementById('mobileLanguageFlag');
+    const mobileCodeElement = document.getElementById('mobileLanguageCode');
+    if (mobileFlagElement && mobileCodeElement) {
+        mobileFlagElement.className = langData.flagClass;
+        mobileFlagElement.style.cssText = langData.flagStyle;
+        mobileCodeElement.textContent = langData.name;
+    }
+}
+
+// =======================
+// Translate Page Content
+// =======================
+function translatePage() {
+    const elements = document.querySelectorAll('[data-i18n]');
+    elements.forEach(element => {
+        const key = element.getAttribute('data-i18n');
+        const translation = getNestedTranslation(translations, key);
+        if (translation) {
+            element.textContent = translation;
+        }
+    });
+}
+
+// =======================
+// Get Nested Translation by Key
+// =======================
+function getNestedTranslation(obj, key) {
+    return key.split('.').reduce((o, k) => o && o[k], obj);
+}
+
+// =======================
+// Toggle Language
+// =======================
+async function toggleLanguage() {
+    currentLanguage = currentLanguage === 'en' ? 'de' : 'en';
+    localStorage.setItem('vgu-language', currentLanguage);
+    await loadTranslations();  // load lại bản dịch mới
+    updateLanguageToggle();
+    translatePage();
+    console.log("Language switched to:", currentLanguage);
+}
+
+
+// =======================
+// Mobile Menu Toggle
+// =======================
+function toggleMobileMenu() {
+    const menu = document.getElementById('mobileMenu');
+    menu.classList.toggle('active');
+}
+
+// =======================
+// Initialize on Page Load
+// =======================
+document.addEventListener('DOMContentLoaded', initializeLanguage);
+
+// Main section related JavaScript functions
+(function() {
+    'use strict';
+
+    // Configuration
+    const CONFIG = {
+        animationDuration: 300
+    };
+
+    let isExpanded = false;
+    let currentLanguage = 'en';
+
+    // Embedded translations
+    const translations = {
+        en: {
+            article: {
+                title: 'Welcome Day',
+                date: 'September 10, 2025',
+                caption: 'VGU Welcome Day',
+                summary: 'Join us for an exciting introduction to university life at VGU, where new students discover their academic journey and connect with our vibrant community.',
+                paragraph1: 'Welcome Day at Vietnamese-German University marks the beginning of an extraordinary academic adventure. This special event introduces new students to our unique educational environment that combines Vietnamese hospitality with German academic excellence.',
+                paragraph2: 'The day begins with an inspiring opening ceremony featuring welcome speeches from university leadership, faculty presentations, and vibrant performances by our student organizations. New students receive comprehensive orientation materials and meet their academic advisors.',
+                paragraph3: 'Interactive campus tours showcase our state-of-the-art facilities, modern laboratories, collaborative learning spaces, and recreational areas. Students explore different faculties, connect with professors, and discover the diverse academic programs and international opportunities available at VGU.',
+                show_more: 'Show More',
+                show_less: 'Show Less'
+            },
+        },
+        de: {
+            article: {
+                title: 'Willkommenstag',
+                date: '10. September 2025',
+                caption: 'Studenten feiern am VGU Willkommenstag',
+                summary: 'Begleiten Sie uns zu einer aufregenden Einführung ins Universitätsleben an der VGU, wo neue Studenten ihre akademische Reise entdecken und sich mit unserer lebendigen Gemeinschaft verbinden.',
+                paragraph1: 'Der Willkommenstag an der Vietnamesisch-Deutschen Universität markiert den Beginn eines außergewöhnlichen akademischen Abenteuers. Diese besondere Veranstaltung führt neue Studenten in unser einzigartiges Bildungsumfeld ein, das vietnamesische Gastfreundschaft mit deutscher akademischer Exzellenz verbindet.',
+                paragraph2: 'Der Tag beginnt mit einer inspirierenden Eröffnungszeremonie mit Begrüßungsreden der Universitätsleitung, Fakultätspräsentationen und lebendigen Aufführungen unserer Studentenorganisationen. Neue Studenten erhalten umfassende Orientierungsmaterialien und treffen ihre akademischen Berater.',
+                paragraph3: 'Interaktive Campus-Touren zeigen unsere hochmodernen Einrichtungen, moderne Labore, kollaborative Lernräume und Erholungsbereiche. Studenten erkunden verschiedene Fakultäten, knüpfen Kontakte zu Professoren und entdecken die vielfältigen Studienprogramme und internationalen Möglichkeiten, die an der VGU verfügbar sind.',
+                show_more: 'Mehr anzeigen',
+                show_less: 'Weniger anzeigen'
+            },
+        }
+    };
+
+    // DOM Elements
+    const elements = {
+        readMoreBtn: document.getElementById('read-more-btn'),
+        expandableContent: document.getElementById('expandable-content'),
+        translatableElements: document.querySelectorAll('[data-i18n]')
+    };
+
+    // Language Support
+    function updateContent() {
+        elements.translatableElements.forEach(element => {
+            const key = element.dataset.i18n;
+            const translation = getNestedValue(translations[currentLanguage], key);
+            
+            if (translation) {
+                element.textContent = translation;
             }
-        }
-
-        // Log event interaction details
-        function logEventInteraction(eventInfo, interactionType) {
-            console.group(`🎉 Event ${interactionType.toUpperCase()}: ${eventInfo.title}`);
-            console.log('📅 Date:', eventInfo.date);
-            console.log('📍 Location:', eventInfo.location);
-            console.log('⏱️ Duration:', eventInfo.duration);
-            console.log('👥 Expected Attendees:', eventInfo.attendees);
-            console.log('📝 Description:', eventInfo.description);
-            console.log('🕒 Interaction Time:', new Date().toLocaleString());
-            console.groupEnd();
-            
-            // Simulate analytics tracking
-            trackEventInteraction(eventInfo.title, interactionType);
-        }
-
-        // Simulate analytics tracking
-        function trackEventInteraction(eventTitle, interactionType) {
-            // In a real application, this would send data to analytics service
-            console.log(`📊 Analytics: Event "${eventTitle}" ${interactionType} tracked at ${Date.now()}`);
-        }
-
-        // Add hover analytics (optional)
-        function addHoverTracking() {
-            const eventCards = document.querySelectorAll('.event-card');
-            
-            eventCards.forEach(card => {
-                let hoverTimer;
-                
-                card.addEventListener('mouseenter', () => {
-                    const eventId = card.getAttribute('data-event-id');
-                    const eventInfo = eventData[eventId];
-                    
-                    // Track hover after 2 seconds (indicates genuine interest)
-                    hoverTimer = setTimeout(() => {
-                        console.log(`👀 User showing interest in: ${eventInfo.title}`);
-                    }, 2000);
-                });
-                
-                card.addEventListener('mouseleave', () => {
-                    clearTimeout(hoverTimer);
-                });
-            });
-        }
-
-        // Accessibility enhancements
-        function enhanceAccessibility() {
-            const eventCards = document.querySelectorAll('.event-card');
-            
-            eventCards.forEach((card, index) => {
-                // Add ARIA labels for screen readers
-                card.setAttribute('aria-label', `Event ${index + 1}: Click to view details`);
-                card.setAttribute('role', 'button');
-            });
-        }
-
-        // Initialize everything when DOM is loaded
-        document.addEventListener('DOMContentLoaded', () => {
-            console.log('🚀 Calendar Events Page Loaded');
-            
-            initializeCalendar();
-            addHoverTracking();
-            enhanceAccessibility();
-            
-            console.log('✅ All calendar functionality initialized');
-            console.log('💡 Click on any event card to see detailed information in the console');
         });
+        
+        updateReadMoreButton();
+    }
 
-        // Export functions for potential external use
-        window.CalendarEvents = {
-            eventData,
-            logEventInteraction,
-            trackEventInteraction
-        };
+    function getNestedValue(obj, path) {
+        return path.split('.').reduce((current, key) => current && current[key], obj);
+    }
+})();
+
+// Authentication Functions
+function showSignIn() {
+    isSignUp = false;
+    updateAuthModal();
+    document.getElementById('authModal').classList.remove('hidden');
+}
+
+function showSignUp() {
+    isSignUp = true;
+    updateAuthModal();
+    document.getElementById('authModal').classList.remove('hidden');
+}
+
+function closeAuthModal() {
+    document.getElementById('authModal').classList.add('hidden');
+}
+
+function switchAuthMode() {
+    isSignUp = !isSignUp;
+    updateAuthModal();
+}
+
+function updateAuthModal() {
+    const title = document.getElementById('authTitle');
+    const buttonText = document.getElementById('authButtonText');
+    const switchText = document.getElementById('authSwitchText');
+    const switchButton = document.getElementById('authSwitchButton');
+    const nameField = document.getElementById('nameField');
+    const confirmPasswordField = document.getElementById('confirmPasswordField');
+    
+    if (isSignUp) {
+        title.textContent = getNestedTranslation(translations, 'auth.joinTitle') || 'Join VGU Buddy';
+        buttonText.textContent = getNestedTranslation(translations, 'auth.createAccount') || 'Create Account';
+        switchText.textContent = getNestedTranslation(translations, 'auth.haveAccount') || 'Already have an account?';
+        switchButton.textContent = getNestedTranslation(translations, 'auth.signIn') || 'Sign In';
+        nameField.classList.remove('hidden');
+        confirmPasswordField.classList.remove('hidden');
+    } else {
+        title.textContent = getNestedTranslation(translations, 'auth.welcomeBack') || 'Welcome Back';
+        buttonText.textContent = getNestedTranslation(translations, 'auth.signIn') || 'Sign In';
+        switchText.textContent = getNestedTranslation(translations, 'auth.noAccount') || "Don't have an account?";
+        switchButton.textContent = getNestedTranslation(translations, 'auth.signUp') || 'Sign Up';
+        nameField.classList.add('hidden');
+        confirmPasswordField.classList.add('hidden');
+    }
+}

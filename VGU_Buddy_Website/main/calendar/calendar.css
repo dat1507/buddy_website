@@ -1,142 +1,274 @@
 @import url("../style.css");
 
-/* Events grid */
-        .events-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        /* Event card */
-        .event-card {
-            background: gray;
-            border-radius: 12px;
-            padding: 2rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            border: 2px solid transparent;
-        }
+html {
+    scroll-behavior: smooth;
+}
 
-        .event-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: #FF670D;
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    color: #000000;
+    line-height: 1.6;
+    min-height: 100vh;
+    padding: 0;
+}
 
-        .event-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-            border-color: #FF670D;
-        }
 
-        .event-card:hover::before {
-            transform: scaleX(1);
-        }
+/* Main container */
+.calendar-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
 
-        .event-date {
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: #FF670D;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 1rem;
-        }
+/* Page header */
+.page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
 
-        .event-title {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: #ffffff;
-            margin-bottom: 1rem;
-            line-height: 1.3;
-        }
+.page-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #000000;
+    margin-bottom: 0.5rem;
+}
 
-        .event-description {
-            font-size: 1rem;
-            color: #555;
-            line-height: 1.6;
-        }
+.page-subtitle {
+    font-size: 1.1rem;
+    color: #666;
+    font-weight: 400;
+}
 
-        /* Click indicator */
-        .event-card:active {
-            transform: translateY(-6px) scale(1.01);
-        }
+/* Events list container */
+.events-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
 
-        /* Responsive design */
-        @media (max-width: 768px) {
-            body {
-                padding: 1rem 0.5rem;
-            }
+/* Event block */
+.event-block {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 2rem;
+    width: 100%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    border-left: 4px solid #FF670D;
+}
 
-            .page-title {
-                font-size: 2rem;
-            }
+.event-block::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(255, 103, 13, 0.05) 0%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
 
-            .events-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-                padding: 0 0.5rem;
-            }
+.event-block:hover {
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    border-left-width: 6px;
+}
 
-            .event-card {
-                padding: 1.5rem;
-            }
+.event-block:hover::before {
+    opacity: 1;
+}
 
-            .event-title {
-                font-size: 1.2rem;
-            }
-        }
+/* Event content layout */
+.event-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+}
 
-        @media (max-width: 1024px) and (min-width: 769px) {
-            .events-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
+.event-info {
+    flex: 1;
+}
 
-        /* Loading animation for cards */
-        .event-card {
-            animation: fadeInUp 0.6s ease forwards;
-            opacity: 0;
-            transform: translateY(30px);
-        }
+.event-date {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #FF670D;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.5rem;
+}
 
-        .event-card:nth-child(1) { animation-delay: 0.1s; }
-        .event-card:nth-child(2) { animation-delay: 0.2s; }
-        .event-card:nth-child(3) { animation-delay: 0.3s; }
-        .event-card:nth-child(4) { animation-delay: 0.4s; }
-        .event-card:nth-child(5) { animation-delay: 0.5s; }
-        .event-card:nth-child(6) { animation-delay: 0.6s; }
+.event-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #000000;
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+}
 
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+.event-description {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.6;
+}
 
-        /* Accessibility improvements */
-        .event-card:focus {
-            outline: 3px solid #FF670D;
-            outline-offset: 2px;
-        }
+/* Event meta info */
+.event-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    min-width: 120px;
+    text-align: right;
+}
 
-        @media (prefers-reduced-motion: reduce) {
-            .event-card {
-                animation: none;
-                opacity: 1;
-                transform: none;
-            }
-            
-            .event-card:hover {
-                transform: none;
-            }
-        }
+.event-status {
+    background: #FF670D;
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.5rem;
+}
+
+.event-attendees {
+    font-size: 0.85rem;
+    color: #666;
+    font-weight: 500;
+}
+
+/* Click animation */
+.event-block:active {
+    transform: translateY(-2px) scale(1.005);
+}
+
+/* Loading animation */
+.event-block {
+    animation: slideInUp 0.6s ease forwards;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.event-block:nth-child(1) { animation-delay: 0.1s; }
+.event-block:nth-child(2) { animation-delay: 0.2s; }
+.event-block:nth-child(3) { animation-delay: 0.3s; }
+.event-block:nth-child(4) { animation-delay: 0.4s; }
+.event-block:nth-child(5) { animation-delay: 0.5s; }
+.event-block:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes slideInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    body {
+        padding: 1rem 0;
+    }
+
+    .calendar-container {
+        padding: 0 0.75rem;
+    }
+
+    .page-title {
+        font-size: 2rem;
+    }
+
+    .page-subtitle {
+        font-size: 1rem;
+    }
+
+    .event-block {
+        padding: 1.5rem;
+    }
+
+    .event-content {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .event-meta {
+        align-items: flex-start;
+        text-align: left;
+        min-width: auto;
+        width: 100%;
+    }
+
+    .event-title {
+        font-size: 1.3rem;
+    }
+
+    .event-description {
+        font-size: 0.95rem;
+    }
+
+    .events-list {
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .calendar-container {
+        padding: 0 0.5rem;
+    }
+
+    .event-block {
+        padding: 1.25rem;
+    }
+
+    .page-title {
+        font-size: 1.75rem;
+    }
+}
+
+/* Accessibility improvements */
+.event-block:focus {
+    outline: 3px solid #FF670D;
+    outline-offset: 2px;
+}
+
+/* Smooth scrolling enhancement */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+    
+    .event-block {
+        animation: none;
+        opacity: 1;
+        transform: none;
+    }
+    
+    .event-block:hover {
+        transform: none;
+    }
+}
+
+/* Additional visual enhancements */
+.event-block:hover .event-title {
+    color: #FF670D;
+    transition: color 0.3s ease;
+}
+
+.event-block:hover .event-status {
+    background: #000000;
+    transition: background-color 0.3s ease;
+}
