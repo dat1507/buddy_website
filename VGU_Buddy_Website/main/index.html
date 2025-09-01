@@ -520,19 +520,24 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="py-20 bg-gradient-to-br from-vgu-surface to-vgu-black">
-        <div class="max-w-4xl mx-auto text-center px-6 lg:px-8">
-            <h2 class="text-4xl lg:text-6xl font-black text-vgu-text mb-8" data-i18n="cta.title">Ready to Transform Your University Experience?</h2>
-            <p class="text-xl lg:text-2xl text-vgu-muted mb-12" data-i18n="cta.subtitle">
+    <section class="py-20 bg-gradient-to-br from-vgu-surface to-vgu-black relative">
+        <div class="max-w-4xl mx-auto text-center px-6 lg:px-8 relative z-10">
+            <h2 class="text-4xl lg:text-6xl font-black text-vgu-text mb-8">
+                Ready to Transform Your University Experience?
+            </h2>
+            <p class="text-xl lg:text-2xl text-vgu-muted mb-12">
                 Join thousands of VGU students who are already making the most of their university journey.
             </p>
             <div class="flex flex-col sm:flex-row gap-6 justify-center">
-                <button onclick="showSignUp()" class="btn-primary px-8 py-4 rounded-xl font-bold text-lg text-vgu-black" data-i18n="cta.join">
-                    Join the Community
+                <button onclick="showSignUp()" 
+                        class="btn-primary px-8 py-4 rounded-xl font-bold text-lg text-vgu-black bg-orange-500 hover:bg-orange-400 transition">
+                Join the Community
                 </button>
-                <button onclick="showDemo()" class="btn-secondary px-8 py-4 rounded-xl font-bold text-lg" data-i18n="cta.demo">
+                <a href="https://www.facebook.com/reel/798959982488066">
+                    <button onclick="showDemo()" class="btn-secondary px-8 py-4 rounded-xl font-bold text-lg bg-gray-800 text-white hover:bg-gray-700 transition">
                     Watch Demo
-                </button>
+                    </button>
+                </a>
             </div>
         </div>
     </section>

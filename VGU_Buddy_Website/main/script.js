@@ -171,9 +171,6 @@ function getFallbackTranslations() {
                 "technical": "Technischer Support",
                 "copyright": "© 2025 VGU Buddy Programm. Alle Rechte vorbehalten. | Verfügbar auf Englisch & Deutsch"
             },
-            "demo": {
-                "message": "🎬 Demo kommt bald! Dies würde alle erstaunlichen Funktionen von VGU Buddy in Aktion zeigen."
-            },
             "validation": {
                 "invalidEmail": "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
                 "shortPassword": "Das Passwort muss mindestens 6 Zeichen lang sein.",
@@ -306,9 +303,6 @@ function getFallbackTranslations() {
                 "mentalHealth": "Mental Health",
                 "technical": "Technical Support",
                 "copyright": "© 2025 VGU Buddy Program. All rights reserved. | Available in English & German"
-            },
-            "demo": {
-                "message": "🎬 Demo coming soon! This would showcase all the amazing features of VGU Buddy in action."
             },
             "validation": {
                 "invalidEmail": "Please enter a valid email address.",
@@ -490,12 +484,8 @@ slider.addEventListener('transitionend', () => {
 
 // End of Slider Function Section
 
-// Demo Function
-function showDemo() {
-    const message = getNestedTranslation(translations, 'demo.message') || 
-        '🎬 Demo coming soon! This would showcase all the amazing features of VGU Buddy in action.';
-    alert(message);
-}
+
+
 
 // Form Validation
 function validateForm(formData) {
@@ -686,6 +676,5 @@ window.addEventListener('pageshow', (e) => {
     restartAnimations();
   }
 });
-
 
 
