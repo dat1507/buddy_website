@@ -1,5 +1,4 @@
 // Global Variables
-let isSignUp = false;
 let currentLanguage = 'en';
 let translations = {};
 
@@ -62,21 +61,6 @@ function getFallbackTranslations() {
                 "learnMore": "Mehr erfahren",
                 "cardTitle": "Willkommen bei VGU Buddy",
                 "cardSubtitle": "Dein Tor zu einer erstaunlichen Universitätserfahrung mit Freunden, die sich kümmern."
-            },
-            "auth": {
-                "signIn": "Anmelden",
-                "signUp": "Registrieren",
-                "joinTitle": "Bei VGU Buddy beitreten",
-                "welcomeBack": "Willkommen zurück",
-                "createAccount": "Konto erstellen",
-                "haveAccount": "Bereits ein Konto?",
-                "noAccount": "Noch kein Konto?",
-                "fullName": "Vollständiger Name",
-                "email": "E-Mail",
-                "password": "Passwort",
-                "confirmPassword": "Passwort bestätigen",
-                "welcomeMessage": "Willkommen bei VGU Buddy! 🎉",
-                "demoMessage": "Dies ist eine Demo - die vollständige Authentifizierung würde mit sicheren Backend-Services implementiert."
             },
             "stats": {
                 "title": "Besondere Veranstaltungen",
@@ -195,21 +179,6 @@ function getFallbackTranslations() {
                 "learnMore": "Learn More",
                 "cardTitle": "Welcome to VGU Buddy",
                 "cardSubtitle": "Your gateway to an amazing university experience with friends who care."
-            },
-            "auth": {
-                "signIn": "Sign In",
-                "signUp": "Sign Up",
-                "joinTitle": "Join VGU Buddy",
-                "welcomeBack": "Welcome Back",
-                "createAccount": "Create Account",
-                "haveAccount": "Already have an account?",
-                "noAccount": "Don't have an account?",
-                "fullName": "Full Name",
-                "email": "Email",
-                "password": "Password",
-                "confirmPassword": "Confirm Password",
-                "welcomeMessage": "Welcome to VGU Buddy! 🎉",
-                "demoMessage": "This is a demo - full authentication would be implemented with secure backend services."
             },
             "stats": {
                 "title": "Featured Events",
@@ -380,52 +349,6 @@ function toggleMobileMenu() {
     menu.classList.toggle('active');
 }
 
-// Authentication Functions
-function showSignIn() {
-    isSignUp = false;
-    updateAuthModal();
-    document.getElementById('authModal').classList.remove('hidden');
-}
-
-function showSignUp() {
-    isSignUp = true;
-    updateAuthModal();
-    document.getElementById('authModal').classList.remove('hidden');
-}
-
-function closeAuthModal() {
-    document.getElementById('authModal').classList.add('hidden');
-}
-
-function switchAuthMode() {
-    isSignUp = !isSignUp;
-    updateAuthModal();
-}
-
-function updateAuthModal() {
-    const title = document.getElementById('authTitle');
-    const buttonText = document.getElementById('authButtonText');
-    const switchText = document.getElementById('authSwitchText');
-    const switchButton = document.getElementById('authSwitchButton');
-    const nameField = document.getElementById('nameField');
-    const confirmPasswordField = document.getElementById('confirmPasswordField');
-    
-    if (isSignUp) {
-        title.textContent = getNestedTranslation(translations, 'auth.joinTitle') || 'Join VGU Buddy';
-        buttonText.textContent = getNestedTranslation(translations, 'auth.createAccount') || 'Create Account';
-        switchText.textContent = getNestedTranslation(translations, 'auth.haveAccount') || 'Already have an account?';
-        switchButton.textContent = getNestedTranslation(translations, 'auth.signIn') || 'Sign In';
-        nameField.classList.remove('hidden');
-        confirmPasswordField.classList.remove('hidden');
-    } else {
-        title.textContent = getNestedTranslation(translations, 'auth.welcomeBack') || 'Welcome Back';
-        buttonText.textContent = getNestedTranslation(translations, 'auth.signIn') || 'Sign In';
-        switchText.textContent = getNestedTranslation(translations, 'auth.noAccount') || "Don't have an account?";
-        switchButton.textContent = getNestedTranslation(translations, 'auth.signUp') || 'Sign Up';
-        nameField.classList.add('hidden');
-        confirmPasswordField.classList.add('hidden');
-    }
-}
 
 // Navigation Functions
 function scrollToSection(sectionId) {
@@ -485,74 +408,9 @@ slider.addEventListener('transitionend', () => {
 // End of Slider Function Section
 
 
-
-
-// Form Validation
-function validateForm(formData) {
-    const email = formData.get('email');
-    const password = formData.get('password');
-    
-    if (!email || !email.includes('@')) {
-        const message = getNestedTranslation(translations, 'validation.invalidEmail') || 
-            'Please enter a valid email address.';
-        alert(message);
-        return false;
-    }
-    
-    if (!password || password.length < 6) {
-        const message = getNestedTranslation(translations, 'validation.shortPassword') || 
-            'Password must be at least 6 characters long.';
-        alert(message);
-        return false;
-    }
-    
-    if (isSignUp) {
-        const name = formData.get('name');
-        const confirmPassword = formData.get('confirmPassword');
-        
-        if (!name || name.trim().length < 2) {
-            const message = getNestedTranslation(translations, 'validation.invalidName') || 
-                'Please enter your full name.';
-            alert(message);
-            return false;
-        }
-        
-        if (password !== confirmPassword) {
-            const message = getNestedTranslation(translations, 'validation.passwordMismatch') || 
-                'Passwords do not match.';
-            alert(message);
-            return false;
-        }
-    }
-    
-    return true;
-}
-
 // Event Listeners
 document.addEventListener('DOMContentLoaded', function() {
     initializeLanguage();
-    
-    document.getElementById('authForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        const formData = new FormData(this);
-        
-        if (validateForm(formData)) {
-            const action = isSignUp ? 
-                (getNestedTranslation(translations, 'auth.welcomeMessage') || 'Welcome to VGU Buddy! 🎉') : 
-                (getNestedTranslation(translations, 'auth.welcomeBack') || 'Welcome back! 👋');
-            const demoMessage = getNestedTranslation(translations, 'auth.demoMessage') || 
-                'This is a demo - full authentication would be implemented with secure backend services.';
-            alert(action + ' ' + demoMessage);
-            closeAuthModal();
-        }
-    });
-    
-    document.getElementById('authModal').addEventListener('click', function(e) {
-        if (e.target === this) {
-            closeAuthModal();
-        }
-    });
     
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
@@ -567,7 +425,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') {
-            closeAuthModal();
             document.getElementById('mobileMenu').classList.remove('active');
         }
     });

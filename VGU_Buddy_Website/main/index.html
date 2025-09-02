@@ -67,14 +67,6 @@
                         <i id="languageFlag" class="fas fa-flag text-blue-500"></i>
                         <span id="languageCode" class="text-sm font-semibold text-vgu-muted">EN</span>
                     </button>
-
-                    <!-- Auth Buttons -->
-                    <button onclick="showSignIn()" class="px-4 py-2 text-vgu-text hover:text-vgu-orange transition-colors" data-i18n="auth.signIn">
-                        Sign In
-                    </button>
-                    <button onclick="showSignUp()" class="px-6 py-2 bg-vgu-orange text-vgu-black rounded-lg font-semibold hover:bg-vgu-orange-dark transition-colors" data-i18n="auth.signUp">
-                        Sign Up
-                    </button>
                 </div>
                 
                 <!-- Mobile Menu Button -->
@@ -121,14 +113,6 @@
                     <a href="#contact" class="block px-4 py-3 text-vgu-text hover:text-vgu-orange hover:bg-vgu-black rounded-lg transition-colors" data-i18n="nav.contact">Contact</a>
                 </nav>
                 
-                <div class="space-y-3">
-                    <button onclick="showSignIn()" class="w-full px-4 py-3 text-vgu-text hover:text-vgu-orange hover:bg-vgu-black rounded-lg transition-colors text-left" data-i18n="auth.signIn">
-                        Sign In
-                    </button>
-                    <button onclick="showSignUp()" class="w-full px-4 py-3 bg-vgu-orange text-vgu-black rounded-lg font-semibold hover:bg-vgu-orange-dark transition-colors" data-i18n="auth.signUp">
-                        Sign Up
-                    </button>
-                </div>
             </div>
         </div>
     </header>
@@ -531,8 +515,7 @@
                 Join thousands of VGU students who are already making the most of their university journey.
             </p>
             <div class="flex flex-col sm:flex-row gap-6 justify-center">
-                <button onclick="showSignUp()"
-                        class="btn-primary px-8 py-4 rounded-xl font-bold text-lg text-vgu-black bg-orange-400 hover:bg-orange-500 transition">
+                <button class="btn-primary px-8 py-4 rounded-xl font-bold text-lg text-vgu-black bg-orange-400 hover:bg-orange-500 transition">
                     Join the Community
                 </button>
                 <button onclick="showDemo()"
@@ -616,53 +599,6 @@
         </div>
     </footer>
 
-    <!-- Auth Modal -->
-    <div id="authModal" class="fixed inset-0 bg-vgu-black/90 backdrop-blur-sm hidden z-50 flex items-center justify-center p-4">
-        <div class="bg-vgu-surface rounded-2xl max-w-md w-full p-8 transform transition-all">
-            <div class="text-center mb-8">
-                <div class="w-16 h-16 bg-vgu-orange rounded-xl flex items-center justify-center mx-auto mb-4">
-                    <span class="text-2xl">🎓</span>
-                </div>
-                <h2 id="authTitle" class="text-2xl font-bold text-vgu-text mb-2">Welcome Back</h2>
-                <p class="text-vgu-muted">Sign in to your VGU Buddy account</p>
-            </div>
-            
-            <form id="authForm" class="space-y-6">
-                <div id="nameField" class="hidden">
-                    <label class="block text-sm font-semibold text-vgu-text mb-2" data-i18n="auth.fullName">Full Name</label>
-                    <input type="text" name="name" class="w-full px-4 py-3 bg-vgu-black border border-vgu-surface rounded-lg text-vgu-text focus:border-vgu-orange focus:outline-none" placeholder="Enter your full name">
-                </div>
-                <div>
-                    <label class="block text-sm font-semibold text-vgu-text mb-2" data-i18n="auth.email">Email</label>
-                    <input type="email" name="email" class="w-full px-4 py-3 bg-vgu-black border border-vgu-surface rounded-lg text-vgu-text focus:border-vgu-orange focus:outline-none" placeholder="Enter your email">
-                </div>
-                <div>
-                    <label class="block text-sm font-semibold text-vgu-text mb-2" data-i18n="auth.password">Password</label>
-                    <input type="password" name="password" class="w-full px-4 py-3 bg-vgu-black border border-vgu-surface rounded-lg text-vgu-text focus:border-vgu-orange focus:outline-none" placeholder="Enter your password">
-                </div>
-                <div id="confirmPasswordField" class="hidden">
-                    <label class="block text-sm font-semibold text-vgu-text mb-2" data-i18n="auth.confirmPassword">Confirm Password</label>
-                    <input type="password" name="confirmPassword" class="w-full px-4 py-3 bg-vgu-black border border-vgu-surface rounded-lg text-vgu-text focus:border-vgu-orange focus:outline-none" placeholder="Confirm your password">
-                </div>
-                <button type="submit" class="w-full bg-vgu-orange text-vgu-black py-3 rounded-lg font-bold hover:bg-vgu-orange-dark transition-colors">
-                    <span id="authButtonText">Sign In</span>
-                </button>
-            </form>
-            
-            <div class="mt-6 text-center">
-                <p class="text-vgu-muted">
-                    <span id="authSwitchText">Don't have an account?</span>
-                    <button id="authSwitchButton" onclick="switchAuthMode()" class="text-vgu-orange font-semibold hover:text-vgu-orange-light transition-colors ml-1">Sign Up</button>
-                </p>
-            </div>
-            
-            <button onclick="closeAuthModal()" class="absolute top-4 right-4 text-vgu-muted hover:text-vgu-text transition-colors">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                </svg>
-            </button>
-        </div>
-    </div>
 
     <script src="script.js"></script>
 <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97128657528985e9',t:'MTc1NTUzMTc4NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
