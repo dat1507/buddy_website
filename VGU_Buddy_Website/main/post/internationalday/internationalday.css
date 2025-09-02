@@ -434,3 +434,21 @@
 .thumbnail img {
     cursor: pointer;
 }
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1F1F1F;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #FF670D;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #E55D0C;
+}
