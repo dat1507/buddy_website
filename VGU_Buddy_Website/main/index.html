@@ -23,7 +23,7 @@
         }
     </script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.6.6/css/flag-icons.min.css">
@@ -473,12 +473,14 @@
             <div class="grid md:grid-cols-3 gap-8">
                 <div class="testimonial-card rounded-2xl p-8">
                     <div class="flex items-center mb-6">
-                        <div class="w-16 h-16 bg-vgu-orange rounded-full flex items-center justify-center mr-4">
-                            <span class="text-2xl">👨‍🎓</span>
-                        </div>
-                        <div>
-                            <h4 class="text-xl font-bold text-vgu-text">Minh Nguyen</h4>
-                            <p class="text-vgu-muted">Computer Science, Year 3</p>
+                        <div class="flex items-center mb-6">
+                            <div class="w-16 h-16 bg-vgu-orange rounded-full flex items-center justify-center mr-4 overflow-hidden">
+                                <img src="images/lamden.jpg" class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-vgu-text">Lam Den</h4>
+                                <p class="text-vgu-muted">Computer Science, Year 3</p>
+                            </div>
                         </div>
                     </div>
                     <p class="text-vgu-muted leading-relaxed" data-i18n="community.testimonial1">
@@ -520,7 +522,7 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="py-20 bg-gradient-to-br from-vgu-surface to-vgu-black relative">
+    <section class="py-20 bg-gradient-to-br from-vgu-surface to-vgu-black relative min-h-screen flex items-center">
         <div class="max-w-4xl mx-auto text-center px-6 lg:px-8 relative z-10">
             <h2 class="text-4xl lg:text-6xl font-black text-vgu-text mb-8">
                 Ready to Transform Your University Experience?
@@ -529,18 +531,30 @@
                 Join thousands of VGU students who are already making the most of their university journey.
             </p>
             <div class="flex flex-col sm:flex-row gap-6 justify-center">
-                <button onclick="showSignUp()" 
-                        class="btn-primary px-8 py-4 rounded-xl font-bold text-lg text-vgu-black bg-orange-500 hover:bg-orange-400 transition">
-                Join the Community
+                <button onclick="showSignUp()"
+                        class="btn-primary px-8 py-4 rounded-xl font-bold text-lg text-vgu-black bg-orange-400 hover:bg-orange-500 transition">
+                    Join the Community
                 </button>
-                <a href="https://www.facebook.com/reel/798959982488066">
-                    <button onclick="showDemo()" class="btn-secondary px-8 py-4 rounded-xl font-bold text-lg bg-gray-800 text-white hover:bg-gray-700 transition">
+                <button onclick="showDemo()"
+                        class="btn-secondary px-8 py-4 rounded-xl font-bold text-lg bg-gray-800 text-white hover:bg-gray-700 transition">
                     Watch Demo
-                    </button>
-                </a>
+                </button>
             </div>
         </div>
     </section>
+
+    <!-- Video Modal -->
+    <div id="videoModal" class="video-modal" onclick="closeModal(event)">
+        <div class="video-container" onclick="event.stopPropagation()">
+            <button class="close-button" onclick="closeModal()" aria-label="Close video">
+                ×
+            </button>
+            <video id="demoVideo" class="demo-video" controls preload="none" style="display: none;">
+                <source src="images/Demo.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer id="contact" class="bg-vgu-surface py-16">

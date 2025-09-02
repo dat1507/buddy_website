@@ -677,4 +677,58 @@ window.addEventListener('pageshow', (e) => {
   }
 });
 
+function showSignUp() {
+    alert('Sign up functionality would go here!');
+}
+
+// Show demo video modal
+function showDemo() {
+    const modal = document.getElementById('videoModal');
+    const video = document.getElementById('demoVideo');
+    
+    // Show the video element
+    video.style.display = 'block';
+    
+    modal.classList.add('show');
+    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    
+    // Optional: Auto-play video when modal opens
+    // video.play();
+}
+
+// Close modal function
+function closeModal(event) {
+    // Only close if clicking on the overlay or close button
+    if (!event || event.target.id === 'videoModal' || event.target.classList.contains('close-button')) {
+        const modal = document.getElementById('videoModal');
+        const video = document.getElementById('demoVideo');
+        
+        modal.classList.remove('show');
+        document.body.style.overflow = 'auto'; // Restore scrolling
+        
+        // Pause video and hide it when closing
+        video.pause();
+        video.currentTime = 0; // Reset to beginning
+        
+        // Hide the video element after a short delay to allow animation to complete
+        setTimeout(() => {
+            if (!modal.classList.contains('show')) {
+                video.style.display = 'none';
+            }
+        }, 300);
+    }
+}
+
+// Close modal with Escape key
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        closeModal();
+    }
+});
+
+// Prevent video controls from closing modal
+document.getElementById('demoVideo').addEventListener('click', function(event) {
+    event.stopPropagation();
+});
+
 

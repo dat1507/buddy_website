@@ -10,10 +10,11 @@
 }
 
 .hero-gradient {
-    background: linear-gradient(135deg, #000000 0%, #FF670D 100%);
+    background: linear-gradient(135deg, #000000 0%, rgba(255, 103, 13, 0.6) 100%);
     background-size: 400% 400%;
-    animation: gradientShift 8s ease infinite;
+    
 }
+
 
 /* ============================================
    ANIMATION KEYFRAMES
@@ -413,3 +414,128 @@ html {
   animation: bodyQuickIn 240ms ease-out both;
 }
 
+.bg-vgu-surface { background-color: var(--vgu-surface); }
+.bg-vgu-black { background-color: var(--vgu-black); }
+.text-vgu-text { color: var(--vgu-text); }
+.text-vgu-muted { color: var(--vgu-muted); }
+.text-vgu-black { color: var(--vgu-black); }
+
+/* Video Modal Styles */
+.video-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    backdrop-filter: blur(5px);
+    opacity: 0;
+    visibility: hidden;
+}
+
+.video-modal.show {
+    display: flex;
+    opacity: 1;
+    visibility: visible;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.video-container {
+    position: relative;
+    background: #000;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    max-width: 90vw;
+    max-height: 90vh;
+    animation: slideIn 0.3s ease-out;
+}
+
+.close-button {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 40px;
+    height: 40px;
+    background: #ff4444;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 15px rgba(255, 68, 68, 0.4);
+}
+
+.close-button:hover {
+    background: #ff2222;
+    transform: scale(1.1);
+}
+
+.demo-video {
+    width: 100%;
+    height: auto;
+    display: block;
+    min-width: 320px;
+    min-height: 240px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { 
+        opacity: 0;
+        transform: scale(0.8) translateY(20px);
+    }
+    to { 
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* Responsive video sizing */
+@media (min-width: 768px) {
+    .demo-video {
+        width: 800px;
+        height: 450px;
+    }
+}
+
+@media (max-width: 767px) {
+    .demo-video {
+        width: 100%;
+        max-width: 400px;
+        height: auto;
+    }
+    
+    .video-container {
+        margin: 20px;
+    }
+}
+
+/* Button styles */
+.btn-primary, .btn-secondary {
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(255, 165, 0, 0.3);
+}
+
+.btn-secondary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
