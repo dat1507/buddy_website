@@ -1,7 +1,6 @@
 // =======================
 // Global Variables
 // =======================
-let isSignUp = false;
 let currentLanguage = "en";
 let translations = {};
 
@@ -368,60 +367,3 @@ document.addEventListener("DOMContentLoaded", initializeLanguage);
   });
 })();
 
-// Authentication Functions
-function showSignIn() {
-  isSignUp = false;
-  updateAuthModal();
-  document.getElementById("authModal").classList.remove("hidden");
-}
-
-function showSignUp() {
-  isSignUp = true;
-  updateAuthModal();
-  document.getElementById("authModal").classList.remove("hidden");
-}
-
-function closeAuthModal() {
-  document.getElementById("authModal").classList.add("hidden");
-}
-
-function switchAuthMode() {
-  isSignUp = !isSignUp;
-  updateAuthModal();
-}
-
-function updateAuthModal() {
-  const title = document.getElementById("authTitle");
-  const buttonText = document.getElementById("authButtonText");
-  const switchText = document.getElementById("authSwitchText");
-  const switchButton = document.getElementById("authSwitchButton");
-  const nameField = document.getElementById("nameField");
-  const confirmPasswordField = document.getElementById("confirmPasswordField");
-
-  if (isSignUp) {
-    title.textContent =
-      getNestedTranslation(translations, "auth.joinTitle") || "Join VGU Buddy";
-    buttonText.textContent =
-      getNestedTranslation(translations, "auth.createAccount") ||
-      "Create Account";
-    switchText.textContent =
-      getNestedTranslation(translations, "auth.haveAccount") ||
-      "Already have an account?";
-    switchButton.textContent =
-      getNestedTranslation(translations, "auth.signIn") || "Sign In";
-    nameField.classList.remove("hidden");
-    confirmPasswordField.classList.remove("hidden");
-  } else {
-    title.textContent =
-      getNestedTranslation(translations, "auth.welcomeBack") || "Welcome Back";
-    buttonText.textContent =
-      getNestedTranslation(translations, "auth.signIn") || "Sign In";
-    switchText.textContent =
-      getNestedTranslation(translations, "auth.noAccount") ||
-      "Don't have an account?";
-    switchButton.textContent =
-      getNestedTranslation(translations, "auth.signUp") || "Sign Up";
-    nameField.classList.add("hidden");
-    confirmPasswordField.classList.add("hidden");
-  }
-}

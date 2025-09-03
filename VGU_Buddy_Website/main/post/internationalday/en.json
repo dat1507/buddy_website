@@ -15,20 +15,5 @@
         "mentalHealth": "Mental Health",
         "technical": "Technical Support",
         "copyright": "© 2025 VGU Buddy Program. All rights reserved. | Available in English & German"
-    },
-    "auth": {
-    "signIn": "Sign In",
-    "signUp": "Sign Up",
-    "joinTitle": "Join VGU Buddy",
-    "welcomeBack": "Welcome Back",
-    "createAccount": "Create Account",
-    "haveAccount": "Already have an account?",
-    "noAccount": "Don't have an account?",
-    "fullName": "Full Name",
-    "email": "Email",
-    "password": "Password",
-    "confirmPassword": "Confirm Password",
-    "welcomeMessage": "Welcome to VGU Buddy! 🎉",
-    "demoMessage": "This is a demo - full authentication would be implemented with secure backend services."
     }
 }

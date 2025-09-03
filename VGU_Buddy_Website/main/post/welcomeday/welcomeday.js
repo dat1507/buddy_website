@@ -1,7 +1,6 @@
 // =======================
 // Global Variables
 // =======================
-let isSignUp = false;
 let currentLanguage = 'en';
 let translations = {};
 
@@ -116,6 +115,7 @@ function updateLanguageToggle() {
     // Mobile toggle
     const mobileFlagElement = document.getElementById('mobileLanguageFlag');
     const mobileCodeElement = document.getElementById('mobileLanguageCode');
+    
     if (mobileFlagElement && mobileCodeElement) {
         mobileFlagElement.className = langData.flagClass;
         mobileFlagElement.style.cssText = langData.flagStyle;
@@ -302,6 +302,7 @@ document.addEventListener('DOMContentLoaded', initializeLanguage);
     }
 
     // Event Listeners
+
     function setupEventListeners() {
         // Read more toggle
         if (elements.readMoreBtn) {
@@ -354,49 +355,34 @@ document.addEventListener('DOMContentLoaded', initializeLanguage);
 
 })();
 
-// Authentication Functions
-function showSignIn() {
-    isSignUp = false;
-    updateAuthModal();
-    document.getElementById('authModal').classList.remove('hidden');
-}
-
-function showSignUp() {
-    isSignUp = true;
-    updateAuthModal();
-    document.getElementById('authModal').classList.remove('hidden');
-}
-
-function closeAuthModal() {
-    document.getElementById('authModal').classList.add('hidden');
-}
-
-function switchAuthMode() {
-    isSignUp = !isSignUp;
-    updateAuthModal();
-}
-
-function updateAuthModal() {
-    const title = document.getElementById('authTitle');
-    const buttonText = document.getElementById('authButtonText');
-    const switchText = document.getElementById('authSwitchText');
-    const switchButton = document.getElementById('authSwitchButton');
-    const nameField = document.getElementById('nameField');
-    const confirmPasswordField = document.getElementById('confirmPasswordField');
+// Event Listeners
+document.addEventListener('DOMContentLoaded', function() {
+    initializeLanguage();
     
-    if (isSignUp) {
-        title.textContent = getNestedTranslation(translations, 'auth.joinTitle') || 'Join VGU Buddy';
-        buttonText.textContent = getNestedTranslation(translations, 'auth.createAccount') || 'Create Account';
-        switchText.textContent = getNestedTranslation(translations, 'auth.haveAccount') || 'Already have an account?';
-        switchButton.textContent = getNestedTranslation(translations, 'auth.signIn') || 'Sign In';
-        nameField.classList.remove('hidden');
-        confirmPasswordField.classList.remove('hidden');
-    } else {
-        title.textContent = getNestedTranslation(translations, 'auth.welcomeBack') || 'Welcome Back';
-        buttonText.textContent = getNestedTranslation(translations, 'auth.signIn') || 'Sign In';
-        switchText.textContent = getNestedTranslation(translations, 'auth.noAccount') || "Don't have an account?";
-        switchButton.textContent = getNestedTranslation(translations, 'auth.signUp') || 'Sign Up';
-        nameField.classList.add('hidden');
-        confirmPasswordField.classList.add('hidden');
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+                document.getElementById('mobileMenu').classList.remove('active');
+            }
+        });
+    });
+    
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            document.getElementById('mobileMenu').classList.remove('active');
+        }
+    });
+});
+
+// Responsive Navigation
+function handleResize() {
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (window.innerWidth >= 768) {
+        mobileMenu.classList.remove('active');
     }
 }
+
+
