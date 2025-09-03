@@ -167,6 +167,7 @@ body.show-chatbot .chatbot-popup {
 .chat-body .bot-message .message-text{
     background: #f2f2ff;
     border-radius: 13px 13px 13px 3px;
+    color: #000000;
 }
 
 .chat-body .user-message .message-text{
@@ -258,6 +259,7 @@ body.show-chatbot .chatbot-popup {
     border-radius: inherit; 
     scrollbar-width: thin;
     scrollbar-color: transparent transparent;
+    color: #000000;
 }
 
 .chat-form .message-input:hover { 
