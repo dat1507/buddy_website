@@ -130,15 +130,24 @@ function updateLanguageToggle() {
 // Translate Page Content
 // =======================
 function translatePage() {
-  const elements = document.querySelectorAll("[data-i18n]");
+  const elements = document.querySelectorAll("[data-i18n], [data-i18n-html]");
+
   elements.forEach((element) => {
-    const key = element.getAttribute("data-i18n");
+    const key = element.getAttribute("data-i18n") || element.getAttribute("data-i18n-html");
     const translation = getNestedTranslation(translations, key);
+
     if (translation) {
-      element.textContent = translation;
+      if (element.hasAttribute("data-i18n-html")) {
+        // Allow HTML, also convert \n → <br>
+        element.innerHTML = translation.replace(/\n/g, "<br>");
+      } else {
+        // Safe plain text
+        element.textContent = translation;
+      }
     }
   });
 }
+
 
 // =======================
 // Get Nested Translation by Key
@@ -188,17 +197,17 @@ document.addEventListener("DOMContentLoaded", initializeLanguage);
   const translations = {
     en: {
       article: {
-        title: "Knowthyself",
-        date: "September 10, 2025",
-        caption: "Knowthyself",
+        title: "Gameday: Scavenger Hunt",
+        date: " September 16th, 2025",
+        caption: "Gameday: Scavenger Hunt",
         summary:
-          "Join us for an exciting introduction to university life at VGU, where new students discover their academic journey and connect with our vibrant community.",
+          "Are you ready for an unforgettable journey through your new campus?\nAs part of Welcome Week, VGU is excited to bring you the GAMEDAY – SCAVENGER HUNT, a fun-filled and interactive event designed exclusively for international students!",
         paragraph1:
-          "Welcome Day at Vietnamese-German University marks the beginning of an extraordinary academic adventure. This special event introduces new students to our unique educational environment that combines Vietnamese hospitality with German academic excellence.",
+          " What’s the event about?\n\nThrough a series of clues and team-based challenges, you’ll explore important spots across campus, learn how to get around, and bond with your fellow students. It’s the perfect way to get familiar with your new environment while having a great time and building lasting friendships. And guess what? You’ll also receive special little gifts as rewards-a meaningful reminder of your very first adventure at VGU!!",
         paragraph2:
-          "The day begins with an inspiring opening ceremony featuring welcome speeches from university leadership, faculty presentations, and vibrant performances by our student organizations. New students receive comprehensive orientation materials and meet their academic advisors.",
+          "Come with curiosity, leave with confidence — and some awesome memories.",
         paragraph3:
-          "Interactive campus tours showcase our state-of-the-art facilities, modern laboratories, collaborative learning spaces, and recreational areas. Students explore different faculties, connect with professors, and discover the diverse academic programs and international opportunities available at VGU.",
+          "📌 Event Information:\nDate: 16/09/2025 (Tentative)\nTime: 8:00 – 12:00\nLocation: VGU Campus\nParticipants: International students\nFee: Totally free",
         show_more: "Show More",
         show_less: "Show Less",
       },
@@ -303,7 +312,11 @@ document.addEventListener("DOMContentLoaded", initializeLanguage);
       const translation = getNestedValue(translations[currentLanguage], key);
 
       if (translation) {
-        element.textContent = translation;
+        if (element.hasAttribute("data-i18n-html")) {
+          element.innerHTML = translation.replace(/\n/g, "<br>");
+        } else {
+          element.textContent = translation;
+        }
       }
     });
 
