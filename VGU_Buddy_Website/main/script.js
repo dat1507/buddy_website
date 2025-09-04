@@ -408,17 +408,17 @@ slider.addEventListener('transitionend', () => {
   }
 });
 
-// Auto-play (every 4 seconds)
+// Auto-play (every 6 seconds)
 let autoPlay = setInterval(() => {
   nextSlide();
-}, 4000);
+}, 6000);
 
 // Pause auto-play when hovering
 slider.addEventListener("mouseenter", () => clearInterval(autoPlay));
 slider.addEventListener("mouseleave", () => {
   autoPlay = setInterval(() => {
     nextSlide();
-  }, 4000);
+  }, 6000);
 });
 
 // End of Slider Function Section
