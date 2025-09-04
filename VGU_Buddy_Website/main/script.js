@@ -50,118 +50,112 @@ function getFallbackTranslations() {
                 "home": "Startseite",
                 "about": "Über uns",
                 "features": "Funktionen",
-                "community": "Gemeinschaft",
+                "community": "Community",
                 "contact": "Kontakt"
             },
             "hero": {
                 "title1": "Verbinde dich mit",
                 "title2": "VGU Buddy",
-                "subtitle": "Tritt der ultimativen Vietnamesisch-Deutschen Universitätsgemeinschaft bei. Knüpfe Verbindungen, teile Erfahrungen und gedeihe gemeinsam.",
+                "subtitle": "Werde Teil der ultimativen Vietnamesisch-Deutschen Universitäts-Community. Knüpfe Kontakte, teile Erfahrungen und wachse gemeinsam.",
                 "joinNow": "Jetzt beitreten",
                 "learnMore": "Mehr erfahren",
                 "cardTitle": "Willkommen bei VGU Buddy",
-                "cardSubtitle": "Dein Tor zu einer erstaunlichen Universitätserfahrung mit Freunden, die sich kümmern."
+                "cardSubtitle": "Dein Tor zu einem großartigen Universitätsleben mit Freunden, die sich kümmern."
             },
             "stats": {
-                "title": "Besondere Veranstaltungen",
-                "subtitle": "Nimm an spannenden Veranstaltungen teil, die das Uni-Leben für alle bereichern.",
+                "title": "Bevorstehende Veranstaltungen",
+                "subtitle": "Mach mit bei spannenden Events, die das Unileben für alle verbessern."
             },
             "about": {
                 "title": "Warum VGU Buddy wählen?",
-                "subtitle": "VGU Buddy ist nicht nur eine weitere Plattform – es ist dein kompletter Universitätsbegleiter. Wir haben alles gebaut, was du brauchst, um akademisch und sozial erfolgreich zu sein.",
+                "subtitle": "VGU Buddy ist nicht nur eine weitere Plattform – es ist dein kompletter Universitätsbegleiter. Wir haben alles entwickelt, was du für akademischen und sozialen Erfolg brauchst.",
                 "social": {
-                    "title": "Soziale Vernetzung",
-                    "desc": "Verbinde dich mit Gleichgesinnten, teile Erfahrungen und baue dauerhafte Freundschaften auf."
+                    "title": "Soziales Netzwerk",
+                    "desc": "Vernetze dich mit Kommilitonen, teile Erfahrungen und baue dauerhafte Freundschaften auf."
                 },
                 "academic": {
                     "title": "Akademische Unterstützung",
-                    "desc": "Zugang zu Ressourcen, Lerngruppen beitreten und in deinen Studien glänzen."
+                    "desc": "Greife auf Ressourcen zu, trete Lerngruppen bei und glänze in deinem Studium."
                 },
                 "campus": {
-                    "title": "Campus-Services",
-                    "desc": "Einrichtungen buchen, Bibliotheksdienste nutzen und deinen Zeitplan verwalten."
+                    "title": "Campus-Dienste",
+                    "desc": "Buche Einrichtungen, nutze Bibliotheksdienste und verwalte deinen Zeitplan."
                 },
                 "visual": {
                     "title": "Starte deine Reise",
-                    "subtitle": "Alles was du brauchst an einem Ort"
+                    "subtitle": "Alles, was du brauchst, an einem Ort"
                 }
             },
             "features": {
-                "title": "Mächtige Funktionen",
-                "subtitle": "Alles was du für eine erstaunliche Universitätserfahrung brauchst, alles in einer Plattform.",
+                "title": "Leistungsstarke Funktionen",
+                "subtitle": "Alles, was du für ein großartiges Unileben brauchst – auf einer Plattform.",
                 "social": {
                     "title": "Soziales Zentrum",
-                    "desc": "Verbinde dich, chatte und teile mit deiner VGU-Gemeinschaft in Echtzeit.",
-                    "item1": "Freundesverbindungen",
-                    "item2": "Gruppennachrichten",
-                    "item3": "Waren"
+                    "desc": "Verbinde dich in Echtzeit mit deiner VGU-Community, chatte und teile Inhalte.",
+                    "item1": "Freundschaftsverbindungen",
+                    "item2": "Gruppenchats",
+                    "item3": "Merchandise"
                 },
                 "events": {
-                    "title": "Veranstaltungskalender",
-                    "desc": "Verpasse nie wichtige Veranstaltungen, Workshops oder kulturelle Aktivitäten.",
-                    "item1": "Veranstaltungs-RSVP",
-                    "item2": "Kalender-Synchronisation",
+                    "title": "Event-Kalender",
+                    "desc": "Verpasse nie wichtige Events, Workshops oder kulturelle Aktivitäten.",
+                    "item1": "Event-Anmeldung",
+                    "item2": "Kalendersynchronisation",
                     "item3": "Erinnerungen"
                 },
                 "academic": {
-                    "title": "Akademische Werkzeuge",
-                    "desc": "Zugang zu all deinen akademischen Ressourcen und Verwaltung deiner Studien.",
+                    "title": "Bibliotheksrichtlinien",
+                    "desc": "Greife auf alle akademischen Ressourcen zu und organisiere dein Studium.",
                     "item1": "Stundenpläne",
                     "item2": "Bibliothekszugang",
                     "item3": "Lernräume"
                 },
                 "sports": {
-                    "title": "Sport & Fitness",
-                    "desc": "Buche Einrichtungen und bleibe aktiv mit deinen Buddies.",
+                    "title": "Sporthalle",
+                    "desc": "Buche Einrichtungen und bleibe aktiv mit deinen Freunden.",
                     "item1": "Platzbuchung",
-                    "item2": "Fitnessstudio-Zugang",
+                    "item2": "Zugang zum Fitnessstudio",
                     "item3": "Sportgruppen"
                 },
                 "support": {
-                    "title": "Support-Services",
-                    "desc": "Erhalte Hilfe wenn du sie brauchst mit umfassender Unterstützung.",
+                    "title": "International Office",
+                    "desc": "Erhalte umfassende Unterstützung, wann immer du sie brauchst.",
                     "item1": "Mentale Gesundheit",
                     "item2": "Notfallkontakte",
-                    "item3": "Universitäts-Hotline"
+                    "item3": "Universitätshotline"
                 },
                 "global": {
-                    "title": "Globale Gemeinschaft",
-                    "desc": "Verbinde dich über Kulturen hinweg mit mehrsprachiger Unterstützung.",
+                    "title": "Wohnheim-Service",
+                    "desc": "Vernetze dich über Kulturen hinweg mit mehrsprachiger Unterstützung.",
                     "item1": "Englische Oberfläche",
-                    "item2": "Deutsche Unterstützung",
+                    "item2": "Deutscher Support",
                     "item3": "Sprachaustausch"
                 }
             },
             "community": {
-                "title": "Was Studenten sagen",
-                "subtitle": "Höre von echten VGU-Studenten über ihre Erfahrungen mit dem Buddy-Programm.",
-                "testimonial1": "VGU Buddy hat meine Universitätserfahrung transformiert. Ich fand meine Lerngruppe, schloss lebenslange Freundschaften und verpasste nie eine wichtige Veranstaltung. Es ist wie ein persönlicher Assistent für das Studentenleben!",
-                "testimonial2": "Als Austauschstudentin half mir VGU Buddy, mich nahtlos zu integrieren. Die mehrsprachige Unterstützung und kulturellen Veranstaltungen ließen mich sofort zu Hause fühlen. Sehr empfehlenswert!",
-                "testimonial3": "Die Sportbuchungsfunktion ist erstaunlich! Ich kann einfach Plätze für Badminton mit Freunden reservieren. VGU Buddy macht das Campus-Leben so viel organisierter und spaßiger."
+                "title": "Was Studierende sagen",
+                "subtitle": "Erfahre von echten VGU-Studierenden, wie sie das Buddy-Programm erlebt haben.",
+                "testimonial1": "VGU Buddy hat mein Unileben verändert. Ich habe meine Lerngruppe gefunden, lebenslange Freunde gewonnen und kein wichtiges Event verpasst. Es ist wie ein persönlicher Assistent fürs Studentenleben!",
+                "testimonial2": "Als Austauschstudent hat mir VGU Buddy geholfen, mich nahtlos zu integrieren. Die mehrsprachige Unterstützung und kulturellen Events haben mich sofort wie zu Hause fühlen lassen. Sehr empfehlenswert!",
+                "testimonial3": "Die Sportbuchungsfunktion ist großartig! Ich kann ganz einfach Plätze für Badminton mit Freunden reservieren. VGU Buddy macht das Campusleben viel organisierter und spaßiger."
             },
             "cta": {
-                "title": "Bereit, deine Universitätserfahrung zu transformieren?",
-                "subtitle": "Tritt Tausenden von VGU-Studenten bei, die bereits das Beste aus ihrer Universitätsreise machen.",
-                "join": "Der Gemeinschaft beitreten",
+                "title": "Bereit, dein Unileben zu transformieren?",
+                "subtitle": "Schließe dich tausenden VGU-Studierenden an, die bereits das Beste aus ihrem Studium machen.",
+                "join": "Community beitreten",
                 "demo": "Demo ansehen"
             },
             "footer": {
-                "description": "Verbindung von Studenten an der Vietnamesisch-Deutschen Universität für eine außergewöhnliche akademische und soziale Erfahrung.",
-                "quickLinks": "Schnelle Links",
+                "description": "Wir verbinden Studierende an der Vietnamesisch-Deutschen Universität für ein außergewöhnliches akademisches und soziales Erlebnis.",
+                "quickLinks": "Schnellzugriff",
                 "support": "Unterstützung",
-                "helpCenter": "Hilfezentrum",
+                "helpCenter": "Hilfe-Center",
                 "emergency": "Notfallkontakte",
                 "mentalHealth": "Mentale Gesundheit",
                 "technical": "Technischer Support",
-                "copyright": "© 2025 VGU Buddy Programm. Alle Rechte vorbehalten. | Verfügbar auf Englisch & Deutsch"
+                "copyright": "© 2025 VGU Buddy Program. Alle Rechte vorbehalten. | Verfügbar auf Englisch & Deutsch"
             },
-            "validation": {
-                "invalidEmail": "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
-                "shortPassword": "Das Passwort muss mindestens 6 Zeichen lang sein.",
-                "invalidName": "Bitte geben Sie Ihren vollständigen Namen ein.",
-                "passwordMismatch": "Die Passwörter stimmen nicht überein."
-            }
-        };
+        }
     } else {
         return {
             "nav": {
@@ -181,7 +175,7 @@ function getFallbackTranslations() {
                 "cardSubtitle": "Your gateway to an amazing university experience with friends who care."
             },
             "stats": {
-                "title": "Featured Events",
+                "title": "Upcoming Events",
                 "subtitle": "Join thriving events that's making university life better for everyone.",
             },
             "about": {
@@ -222,28 +216,28 @@ function getFallbackTranslations() {
                     "item3": "Reminders"
                 },
                 "academic": {
-                    "title": "Academic Tools",
+                    "title": "Library Regulations",
                     "desc": "Access all your academic resources and manage your studies.",
                     "item1": "Class schedules",
                     "item2": "Library access",
                     "item3": "Study rooms"
                 },
                 "sports": {
-                    "title": "Sports & Fitness",
+                    "title": "Sports Hall",
                     "desc": "Book facilities and stay active with your buddies.",
                     "item1": "Court booking",
                     "item2": "Gym access",
                     "item3": "Sports groups"
                 },
                 "support": {
-                    "title": "Support Services",
+                    "title": "International Office",
                     "desc": "Get help when you need it with comprehensive support.",
                     "item1": "Mental health",
                     "item2": "Emergency contacts",
                     "item3": "University hotline"
                 },
                 "global": {
-                    "title": "Global Community",
+                    "title": "Dormitory Service",
                     "desc": "Connect across cultures with multilingual support.",
                     "item1": "English interface",
                     "item2": "German support",
@@ -273,12 +267,6 @@ function getFallbackTranslations() {
                 "technical": "Technical Support",
                 "copyright": "© 2025 VGU Buddy Program. All rights reserved. | Available in English & German"
             },
-            "validation": {
-                "invalidEmail": "Please enter a valid email address.",
-                "shortPassword": "Password must be at least 6 characters long.",
-                "invalidName": "Please enter your full name.",
-                "passwordMismatch": "Passwords do not match."
-            }
         };
     }
 }
