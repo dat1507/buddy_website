@@ -355,9 +355,11 @@ function scrollToSection(sectionId) {
     document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
 }
 
-// Slider Fuction
-const slider = document.getElementById('slider');
-let slides = document.querySelectorAll('#slider a');
+// ================================
+// Slider Function
+// ================================
+const slider = document.getElementById("slider");
+let slides = document.querySelectorAll("#slider a");
 const totalSlides = slides.length;
 let currentIndex = 1;
 
@@ -372,13 +374,16 @@ slider.appendChild(firstClone);
 slider.insertBefore(lastClone, slides[0]);
 
 // Update slides NodeList
-slides = document.querySelectorAll('#slider a');
+slides = document.querySelectorAll("#slider a");
 
-const slideWidth = 100; // each slide = 100%
+// Set slide width (100% each)
+const slideWidth = 100;
+
+// Initial position
 slider.style.transform = `translateX(-${slideWidth * currentIndex}%)`;
 
 function updateSlider() {
-  slider.style.transition = 'transform 0.7s ease';
+  slider.style.transition = "transform 0.7s ease";
   slider.style.transform = `translateX(-${slideWidth * currentIndex}%)`;
 }
 
@@ -395,15 +400,15 @@ function prevSlide() {
 }
 
 // Infinite loop fix
-slider.addEventListener('transitionend', () => {
+slider.addEventListener("transitionend", () => {
   if (slides[currentIndex].id === "first-clone") {
-    slider.style.transition = 'none';
-    currentIndex = 1;
+    slider.style.transition = "none";
+    currentIndex = 1; // jump to real first slide
     slider.style.transform = `translateX(-${slideWidth * currentIndex}%)`;
   }
   if (slides[currentIndex].id === "last-clone") {
-    slider.style.transition = 'none';
-    currentIndex = totalSlides - 2;
+    slider.style.transition = "none";
+    currentIndex = slides.length - 2; // jump to real last slide
     slider.style.transform = `translateX(-${slideWidth * currentIndex}%)`;
   }
 });
@@ -413,7 +418,7 @@ let autoPlay = setInterval(() => {
   nextSlide();
 }, 6000);
 
-// Pause auto-play when hovering
+// Pause auto-play on hover
 slider.addEventListener("mouseenter", () => clearInterval(autoPlay));
 slider.addEventListener("mouseleave", () => {
   autoPlay = setInterval(() => {
