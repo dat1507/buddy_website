@@ -357,52 +357,68 @@ function scrollToSection(sectionId) {
 
 // Slider Fuction
 const slider = document.getElementById('slider');
-let slides = document.querySelectorAll('#slider a'); // Query <a> thay vì <img>
+let slides = document.querySelectorAll('#slider a');
 const totalSlides = slides.length;
 let currentIndex = 1;
 
-    // Clone first and last slides (bao gồm cả link)
+// Clone first and last slides
 const firstClone = slides[0].cloneNode(true);
-const lastClone = slides[totalSlides - 1].cloneNode(true);
+const lastClone = slides[slides.length - 1].cloneNode(true);
+
+firstClone.id = "first-clone";
+lastClone.id = "last-clone";
 
 slider.appendChild(firstClone);
 slider.insertBefore(lastClone, slides[0]);
 
-    // Update slides NodeList
+// Update slides NodeList
 slides = document.querySelectorAll('#slider a');
 
-    // Set initial position
-slider.style.transform = `translateX(-${100 * currentIndex}%)`;
+const slideWidth = 100; // each slide = 100%
+slider.style.transform = `translateX(-${slideWidth * currentIndex}%)`;
 
 function updateSlider() {
-    slider.style.transition = 'transform 0.7s ease';
-    slider.style.transform = `translateX(-${100 * currentIndex}%)`;
+  slider.style.transition = 'transform 0.7s ease';
+  slider.style.transform = `translateX(-${slideWidth * currentIndex}%)`;
 }
 
 function nextSlide() {
-    if (currentIndex >= slides.length - 1) return;
-    currentIndex++;
-    updateSlider();
+  if (currentIndex >= slides.length - 1) return;
+  currentIndex++;
+  updateSlider();
 }
 
 function prevSlide() {
-    if (currentIndex <= 0) return;
-    currentIndex--;
-    updateSlider();
+  if (currentIndex <= 0) return;
+  currentIndex--;
+  updateSlider();
 }
 
-    // Handle infinite loop
+// Infinite loop fix
 slider.addEventListener('transitionend', () => {
-    if (slides[currentIndex].querySelector('img').alt === 'Slide 1') {
-        slider.style.transition = 'none';
-        currentIndex = 1;
-        slider.style.transform = `translateX(-${100 * currentIndex}%)`;
-    }
-    if (slides[currentIndex].querySelector('img').alt === 'Slide 3') {
-        slider.style.transition = 'none';
-        currentIndex = totalSlides;
-        slider.style.transform = `translateX(-${100 * currentIndex}%)`;
-    }
+  if (slides[currentIndex].id === "first-clone") {
+    slider.style.transition = 'none';
+    currentIndex = 1;
+    slider.style.transform = `translateX(-${slideWidth * currentIndex}%)`;
+  }
+  if (slides[currentIndex].id === "last-clone") {
+    slider.style.transition = 'none';
+    currentIndex = totalSlides - 2;
+    slider.style.transform = `translateX(-${slideWidth * currentIndex}%)`;
+  }
+});
+
+// Auto-play (every 4 seconds)
+let autoPlay = setInterval(() => {
+  nextSlide();
+}, 4000);
+
+// Pause auto-play when hovering
+slider.addEventListener("mouseenter", () => clearInterval(autoPlay));
+slider.addEventListener("mouseleave", () => {
+  autoPlay = setInterval(() => {
+    nextSlide();
+  }, 4000);
 });
 
 // End of Slider Function Section
