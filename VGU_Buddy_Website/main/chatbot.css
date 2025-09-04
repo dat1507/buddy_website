@@ -339,17 +339,3 @@ body.show-chatbot .chatbot-popup {
     display: block;
 }
 
-em-emoji-picker { 
-    position: absolute;
-    left: 50%; 
-    top: -337px;
-    width: 100%;
-    max-width: 350px;
-    max-height: 330px;
-    visibility: hidden;
-    transform: translateX(-50%);
-}
-
-body.show-emoji-picker em-emoji-picker { 
-    visibility: visible;
-}
