@@ -184,7 +184,7 @@
 }
 
 .card-hover:hover {
-    transform: translateY(-10px);
+    transform: scale(1.1) translateY(-10px);
     border-color: #FF670D;
     box-shadow: 0 20px 40px rgba(255, 103, 13, 0.2);
 }
