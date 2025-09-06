@@ -63,6 +63,11 @@ body.show-chatbot #chatbot-toggler span:last-child{
     transition: all 0.1s ease; 
 }
 
+#chatbot-toggler,
+.chatbot-popup {
+  z-index: 9999; /* higher than hero (z-10) */
+}
+
 body.show-chatbot .chatbot-popup { 
     opacity: 1;
     pointer-events: auto;
