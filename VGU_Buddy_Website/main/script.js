@@ -401,10 +401,10 @@ slider.addEventListener("transitionend", () => {
   }
 });
 
-// Auto-play (every 6 seconds)
+// Auto-play (every 3 seconds)
 let autoPlay = setInterval(() => {
   nextSlide();
-}, 6000);
+}, 3000);
 
 // Pause auto-play on hover
 slider.addEventListener("mouseenter", () => clearInterval(autoPlay));
