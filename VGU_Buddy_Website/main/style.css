@@ -557,3 +557,49 @@ html {
 .featured-events-title:hover::after {
     width: 400px;
 }
+
+/* ====== Community Testimonials (Marquee version) ====== */
+
+/* Dùng chung gap để JS đọc được */
+.testimonial-wrapper {
+  --gap: 20px;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.testimonial-track {
+  display: flex;
+  gap: var(--gap);
+  will-change: transform;
+  /* TẮT animation CSS nếu trước đó có bật */
+  animation: none !important;
+}
+
+/* Base card */
+.testimonial-card {
+  background: #1f1f1f;
+  color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+  flex: 0 0 100%; /* Mobile: 1 card */
+}
+
+/* Tablet: 2 cards */
+@media (min-width: 640px) {
+  .testimonial-card {
+    flex: 0 0 calc(50% - var(--gap));
+  }
+}
+
+/* Desktop: 3 cards */
+@media (min-width: 1024px) {
+  .testimonial-card {
+    flex: 0 0 calc(33.333% - var(--gap));
+  }
+}
+
+/* Hover: dừng (JS sẽ đọc trạng thái này) */
+.testimonial-wrapper:hover .testimonial-track {
+  /* Không cần set CSS gì thêm, JS sẽ pause khi hover wrapper */
+}
