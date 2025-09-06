@@ -598,3 +598,134 @@ document.getElementById('demoVideo').addEventListener('click', function(event) {
 });
 
 
+// ==============================================
+// Community Testimonials Marquee (Seamless, rAF)
+// ==============================================
+(function () {
+  const wrapper = document.querySelector(".testimonial-wrapper");
+  const track = document.querySelector(".testimonial-track");
+  if (!wrapper || !track) return;
+
+  // Speed Modify
+  const MARQUEE_SPEED = 100; // ( pixel /second )
+
+  let isPaused = false;
+  let pos = 0;                 // vị trí translateX hiện tại (px)
+  let groupWidth = 0;          // tổng độ rộng của NHÓM GỐC (1 lần)
+  let clonesMade = false;      // chỉ clone 1 lần
+  let lastTs = 0;              // timestamp frame trước
+  let resizeTimer = null;
+
+  // Chờ ảnh trong track load xong (để đo kích thước chính xác)
+  function imagesReady() {
+    const imgs = track.querySelectorAll("img");
+    if (!imgs.length) return Promise.resolve();
+    return Promise.all(Array.from(imgs).map(img => {
+      if (img.complete) return Promise.resolve();
+      return new Promise(res => img.addEventListener("load", res, { once: true }));
+    }));
+  }
+
+  function getGap() {
+    const st = getComputedStyle(track);
+    // với flex row, khoảng cách ngang là column-gap trong spec mới
+    const gapStr = st.columnGap || st.gap || "0";
+    const n = parseFloat(gapStr);
+    return Number.isNaN(n) ? 0 : n;
+  }
+
+  function measureGroupWidth(nodes) {
+    const gap = getGap();
+    let total = 0;
+    nodes.forEach((el, idx) => {
+      total += el.getBoundingClientRect().width;
+      if (idx > 0) total += gap;
+    });
+    return total;
+  }
+
+  function removeOldClones() {
+    track.querySelectorAll("[data-clone='1']").forEach(n => n.remove());
+  }
+
+  function cloneUntilEnough() {
+    // Clone cả nhóm gốc cho đến khi tổng chiều rộng >= 2 * groupWidth
+    // để có “dải nối” xếp sau nhóm gốc → chạy qua seam vẫn mượt.
+    if (clonesMade) return;
+    const originals = Array.from(track.children);
+    const fragment = document.createDocumentFragment();
+
+    // Tối thiểu cần >= groupWidth * 2
+    let currentWidth = measureGroupWidth(Array.from(track.children));
+
+    // Đảm bảo dải nội dung dài hơn ít nhất 2 lần nhóm gốc
+    while (currentWidth < groupWidth * 2) {
+      originals.forEach(node => {
+        const clone = node.cloneNode(true);
+        clone.dataset.clone = "1";
+        fragment.appendChild(clone);
+      });
+      // tạm tính gần đúng, lát nữa đo lại chính xác sau khi append
+      currentWidth += groupWidth;
+    }
+
+    track.appendChild(fragment);
+    clonesMade = true;
+  }
+
+  function recalc() {
+    // Reset transform để đo không bị sai
+    track.style.transform = "translate3d(0,0,0)";
+    pos = 0;
+
+    // Xoá clones cũ rồi đo lại từ nhóm gốc
+    removeOldClones();
+    const originals = Array.from(track.children);
+
+    groupWidth = measureGroupWidth(originals);
+    cloneUntilEnough();
+  }
+
+  function onResize() {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      // Recalculate sau khi layout ổn định
+      recalc();
+    }, 150);
+  }
+
+  // Điều khiển tạm dừng khi hover
+  wrapper.addEventListener("mouseenter", () => { isPaused = true; });
+  wrapper.addEventListener("mouseleave", () => { isPaused = false; });
+
+  function animate(ts) {
+    if (!lastTs) lastTs = ts;
+    const dt = (ts - lastTs) / 1000; // giây
+    lastTs = ts;
+
+    if (!isPaused) {
+      pos -= MARQUEE_SPEED * dt;
+
+      // Khi đã đi hết 1 nhóm gốc, nhảy tiến thêm groupWidth (không reset)
+      // để tiếp tục mạch dải sau → liền mạch, không giật.
+      if (pos <= -groupWidth) {
+        pos += groupWidth;
+      }
+
+      track.style.transform = `translate3d(${pos}px, 0, 0)`;
+    }
+
+    requestAnimationFrame(animate);
+  }
+
+  // Khởi động
+  (async function init() {
+    await imagesReady(); // chờ ảnh load để đo chính xác
+    recalc();
+    requestAnimationFrame(animate);
+    window.addEventListener("resize", onResize);
+  })();
+})();
+
+
+
