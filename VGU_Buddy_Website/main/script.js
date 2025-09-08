@@ -585,12 +585,6 @@ function closeModal(event) {
     }
 }
 
-// Close modal with Escape key
-document.addEventListener('keydown', function(event) {
-    if (event.key === 'Escape') {
-        closeModal();
-    }
-});
 
 // Prevent video controls from closing modal
 document.getElementById('demoVideo').addEventListener('click', function(event) {
