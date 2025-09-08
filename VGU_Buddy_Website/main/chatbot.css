@@ -64,6 +64,28 @@ body.show-chatbot #chatbot-toggler span:last-child{
     transition: all 0.1s ease; 
 }
 
+/* Responsive for smartphone */
+@media (max-width: 768px) {
+  .chatbot-popup {
+    width: 90%;        /* gần full chiều rộng */
+    height: 70%;       /* chiếm 70% chiều cao màn hình */
+    bottom: 100px;     /* cách nút toggle */
+    right: 5%;         /* căn giữa theo chiều ngang */
+    border-radius: 12px;
+  }
+
+  .chat-body {
+    height: calc(100% - 120px); /* giữ chat-body co giãn linh hoạt */
+  }
+
+  #chatbot-toggler {
+    width: 50px;
+    height: 50px;
+    bottom: 20px;
+    right: 20px;
+  }
+}
+
 #chatbot-toggler,
 .chatbot-popup {
   z-index: 9999; /* higher than hero (z-10) */
