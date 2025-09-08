@@ -992,22 +992,23 @@
       class="py-20 bg-gradient-to-br from-vgu-surface to-vgu-black relative min-h-screen flex items-center"
     >
       <div class="max-w-4xl mx-auto text-center px-6 lg:px-8 relative z-10">
-        <h2 class="text-4xl lg:text-6xl font-black text-vgu-text mb-8">
+        <h2 class="text-4xl lg:text-6xl font-black text-vgu-text mb-8" data-i18n="cta.title">
           Ready to Transform Your University Experience?
         </h2>
-        <p class="text-xl lg:text-2xl text-vgu-muted mb-12">
-          Join thousands of VGU students who are already making the most of
-          their university journey.
+        <p class="text-xl lg:text-2xl text-vgu-muted mb-12" data-i18n="cta.subtitle">
+          Join thousands of VGU students who are already making the most of their university journey.
         </p>
         <div class="flex flex-col sm:flex-row gap-6 justify-center">
           <button
             class="btn-primary px-8 py-4 rounded-xl font-bold text-lg text-vgu-black bg-orange-400 hover:bg-orange-500 transition"
+            data-i18n="cta.join"
           >
             Join the Community
           </button>
           <button
             onclick="showDemo()"
             class="btn-secondary px-8 py-4 rounded-xl font-bold text-lg bg-gray-800 text-white hover:bg-gray-700 transition"
+            data-i18n="cta.demo"
           >
             Watch Demo
           </button>
@@ -1015,28 +1016,29 @@
       </div>
     </section>
 
-    <!-- Video Modal -->
-    <div id="videoModal" class="video-modal" onclick="closeModal(event)">
-      <div class="video-container" onclick="event.stopPropagation()">
-        <button
-          class="close-button"
-          onclick="closeModal()"
-          aria-label="Close video"
-        >
-          ×
-        </button>
-        <video
-          id="demoVideo"
-          class="demo-video"
-          controls
-          preload="none"
-          style="display: none"
-        >
-          <source src="images/Demo.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-      </div>
+  <!-- Video Modal -->
+  <div id="videoModal" class="video-modal" onclick="closeModal(event)">
+    <div class="video-container" onclick="event.stopPropagation()">
+      <button
+        class="close-button"
+        onclick="closeModal()"
+        aria-label="Close video"
+      >
+        ×
+      </button>
+      <video
+        id="demoVideo"
+        class="demo-video"
+        controls
+        preload="none"
+        style="display: none"
+      >
+        <source src="images/Demo.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
     </div>
+  </div>
+
 
     <!-- AI Chatbot -->
     <button id="chatbot-toggler">
