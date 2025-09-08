@@ -58,7 +58,7 @@ function getFallbackTranslations() {
             },
             "about": {
                 "title": "Warum VGU Buddy wählen?",
-                "subtitle": "VGU Buddy ist nicht nur eine weitere Plattform – es ist dein kompletter Universitätsbegleiter. Wir haben alles entwickelt, was du für akademischen und sozialen Erfolg brauchst.",
+                "subtitle": "VGU Buddy ist nicht einfach nur ein Club – wir sind hier, um internationale Austauschstudierende zu unterstützen und ihnen zu helfen, sich während ihrer Zeit an der VGU wie zu Hause zu fühlen.",
                 "social": {
                     "title": "Soziales Netzwerk",
                     "desc": "Vernetze dich mit Kommilitonen, teile Erfahrungen und baue dauerhafte Freundschaften auf."
@@ -170,7 +170,7 @@ function getFallbackTranslations() {
             },
             "about": {
                 "title": "Why Choose VGU Buddy?",
-                "subtitle": "VGU Buddy isn't just another platform – it's your complete university companion. We've built everything you need to succeed academically and socially.",
+                "subtitle": "VGU Buddy isn’t just any club, we are here to support international transfer students and help them feel at home during their time at VGU.",
                 "social": {
                     "title": "Social Networking",
                     "desc": "Connect with peers, share experiences, and build lasting friendships."
