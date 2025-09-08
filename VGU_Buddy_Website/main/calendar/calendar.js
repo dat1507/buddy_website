@@ -64,21 +64,6 @@ function getFallbackTranslations() {
                 "community": "Gemeinschaft",
                 "contact": "Kontakt"
             },
-            "auth": {
-                "signIn": "Anmelden",
-                "signUp": "Registrieren",
-                "joinTitle": "Bei VGU Buddy beitreten",
-                "welcomeBack": "Willkommen zurück",
-                "createAccount": "Konto erstellen",
-                "haveAccount": "Bereits ein Konto?",
-                "noAccount": "Noch kein Konto?",
-                "fullName": "Vollständiger Name",
-                "email": "E-Mail",
-                "password": "Passwort",
-                "confirmPassword": "Passwort bestätigen",
-                "welcomeMessage": "Willkommen bei VGU Buddy! 🎉",
-                "demoMessage": "Dies ist eine Demo - die vollständige Authentifizierung würde mit sicheren Backend-Services implementiert."
-            },
             "footer": {
                 "description": "Verbindung von Studenten an der Vietnamesisch-Deutschen Universität für eine außergewöhnliche akademische und soziale Erfahrung.",
                 "quickLinks": "Schnelle Links",
@@ -98,21 +83,6 @@ function getFallbackTranslations() {
                 "features": "Features",
                 "community": "Community",
                 "contact": "Contact"
-            },
-            "auth": {
-                "signIn": "Sign In",
-                "signUp": "Sign Up",
-                "joinTitle": "Join VGU Buddy",
-                "welcomeBack": "Welcome Back",
-                "createAccount": "Create Account",
-                "haveAccount": "Already have an account?",
-                "noAccount": "Don't have an account?",
-                "fullName": "Full Name",
-                "email": "Email",
-                "password": "Password",
-                "confirmPassword": "Confirm Password",
-                "welcomeMessage": "Welcome to VGU Buddy! 🎉",
-                "demoMessage": "This is a demo - full authentication would be implemented with secure backend services."
             },
             "footer": {
                 "description": "Connecting students at Vietnamese-German University for an extraordinary academic and social experience.",
@@ -268,49 +238,3 @@ document.addEventListener('DOMContentLoaded', initializeLanguage);
     }
 })();
 
-// Authentication Functions
-function showSignIn() {
-    isSignUp = false;
-    updateAuthModal();
-    document.getElementById('authModal').classList.remove('hidden');
-}
-
-function showSignUp() {
-    isSignUp = true;
-    updateAuthModal();
-    document.getElementById('authModal').classList.remove('hidden');
-}
-
-function closeAuthModal() {
-    document.getElementById('authModal').classList.add('hidden');
-}
-
-function switchAuthMode() {
-    isSignUp = !isSignUp;
-    updateAuthModal();
-}
-
-function updateAuthModal() {
-    const title = document.getElementById('authTitle');
-    const buttonText = document.getElementById('authButtonText');
-    const switchText = document.getElementById('authSwitchText');
-    const switchButton = document.getElementById('authSwitchButton');
-    const nameField = document.getElementById('nameField');
-    const confirmPasswordField = document.getElementById('confirmPasswordField');
-    
-    if (isSignUp) {
-        title.textContent = getNestedTranslation(translations, 'auth.joinTitle') || 'Join VGU Buddy';
-        buttonText.textContent = getNestedTranslation(translations, 'auth.createAccount') || 'Create Account';
-        switchText.textContent = getNestedTranslation(translations, 'auth.haveAccount') || 'Already have an account?';
-        switchButton.textContent = getNestedTranslation(translations, 'auth.signIn') || 'Sign In';
-        nameField.classList.remove('hidden');
-        confirmPasswordField.classList.remove('hidden');
-    } else {
-        title.textContent = getNestedTranslation(translations, 'auth.welcomeBack') || 'Welcome Back';
-        buttonText.textContent = getNestedTranslation(translations, 'auth.signIn') || 'Sign In';
-        switchText.textContent = getNestedTranslation(translations, 'auth.noAccount') || "Don't have an account?";
-        switchButton.textContent = getNestedTranslation(translations, 'auth.signUp') || 'Sign Up';
-        nameField.classList.add('hidden');
-        confirmPasswordField.classList.add('hidden');
-    }
-}
