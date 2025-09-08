@@ -64,11 +64,11 @@ function getFallbackTranslations() {
                     "desc": "Vernetze dich mit Kommilitonen, teile Erfahrungen und baue dauerhafte Freundschaften auf."
                 },
                 "academic": {
-                    "title": "Akademische Unterstützung",
+                    "title": "Veranstaltungen & Aktivitäten",
                     "desc": "Greife auf Ressourcen zu, trete Lerngruppen bei und glänze in deinem Studium."
                 },
                 "campus": {
-                    "title": "Campus-Dienste",
+                    "title": "Campus-Unterstützung",
                     "desc": "Buche Einrichtungen, nutze Bibliotheksdienste und verwalte deinen Zeitplan."
                 },
                 "visual": {
@@ -176,11 +176,11 @@ function getFallbackTranslations() {
                     "desc": "Connect with peers, share experiences, and build lasting friendships."
                 },
                 "academic": {
-                    "title": "Academic Support",
+                    "title": "Events & Activites",
                     "desc": "Access resources, join study groups, and excel in your studies."
                 },
                 "campus": {
-                    "title": "Campus Services",
+                    "title": "Campus Support",
                     "desc": "Book facilities, access library services, and manage your schedule."
                 },
                 "visual": {
@@ -192,7 +192,7 @@ function getFallbackTranslations() {
                 "title": "Outstanding Benefits",
                 "subtitle": "Everything you need for an amazing university experience, all in one platform.",
                 "social": {
-                    "title": "Social Hub",
+                    "title": "Merchandise",
                     "desc": "Connect, chat, and share with your VGU community in real-time.",
                     "item1": "Friend connections",
                     "item2": "Group messaging",
