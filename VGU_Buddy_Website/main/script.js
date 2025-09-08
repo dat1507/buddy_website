@@ -29,17 +29,7 @@ async function initializeLanguage() {
 
 // Load translation files
 async function loadTranslations() {
-    try {
-        const response = await fetch(`locales/${currentLanguage}.json`);
-        if (response.ok) {
-            translations = await response.json();
-        } else {
-            throw new Error('Translation file not found');
-        }
-    } catch (error) {
-        console.warn('Failed to load translations, using fallback:', error);
-        translations = getFallbackTranslations();
-    }
+    translations = getFallbackTranslations();
 }
 
 // Fallback translations (embedded for demo)
@@ -87,7 +77,7 @@ function getFallbackTranslations() {
                 }
             },
             "features": {
-                "title": "Leistungsstarke Funktionen",
+                "title": "Hervorragende Vorteile",
                 "subtitle": "Alles, was du für ein großartiges Unileben brauchst – auf einer Plattform.",
                 "social": {
                     "title": "Soziales Zentrum",
@@ -199,7 +189,7 @@ function getFallbackTranslations() {
                 }
             },
             "features": {
-                "title": "Powerful Features",
+                "title": "Outstanding Benefits",
                 "subtitle": "Everything you need for an amazing university experience, all in one platform.",
                 "social": {
                     "title": "Social Hub",
