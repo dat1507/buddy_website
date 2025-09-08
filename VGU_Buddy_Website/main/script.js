@@ -238,8 +238,15 @@ function getFallbackTranslations() {
                 "title": "What Students Say",
                 "subtitle": "Hear from real VGU students about their experiences with the Buddy Program.",
                 "testimonial1": "VGU Buddy transformed my university experience. I found my study group, made lifelong friends, and never missed an important event. It's like having a personal assistant for student life!",
-                "testimonial2": "As an exchange student, VGU Buddy helped me integrate seamlessly. The multilingual support and cultural events made me feel at home immediately. Highly recommended!",
-                "testimonial3": "The sports booking feature is amazing! I can easily reserve courts for badminton with friends. VGU Buddy makes campus life so much more organized and fun."
+                "testimonial2": "I first heard about the Buddy Program through the VGU Tour. After following Buddy on Facebook, I found their video interesting and quirky. I hope I’ll have the chance to become a Buddy member in the future.",
+                "testimonial3": "I work in the marketing department at Buddy, and it has given me many valuable experiences. I get to work and communicate with great teammates and international students, which helps me improve my skills and create wonderful memories.",
+                "testimonial4": "My first impression of Buddy was “international.” Every member can communicate fluently with international students, and they organize many cultural events like Easter and Currywurst Day. I hope to join next semester. #BuddyProgramPlsCollab.",
+                "testimonial5": "From my perspective, the Buddy Program has amazing merchandise—especially their newest T-shirt. Can I have one, pls?",
+                "testimonial6": "Well, as someone with experience in web programming and UI/UX design, I think this new Buddy website is really helpful. It makes it much easier to access basic services like booking the sports hall, using the library, and catching up on event information.",
+                "testimonial7": "OMG, I just wanna join the Buddy marketing team right away. Their recent posters are straight fireee—no cap. Plus, I’d love to learn how to design posters like that!",
+                "testimonial8": "I left the Buddy Program due to my personal workload, but it’s a great place to gain soft skills and professional experience if you have the time.",
+                "testimonial9": "From my perspective, the Buddy Program sometimes runs into delays—I’m not sure why. It’s just an area where I think they could improve a little. Apart from that, everything else is great. Overall, I’d give it a solid 4/5.",
+                "testimonial10": "The Buddy Program is great, but communication can be a bit scattered. If that improves, it’ll be close to perfect.",
             },
             "cta": {
                 "title": "Ready to Transform Your University Experience?",
