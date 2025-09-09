@@ -86,11 +86,11 @@ function getFallbackTranslations() {
                 "community": "Community"
             },
             "welcome": {
-                "title": "Stay Connected with VGU",
-                "description": "Get the latest updates, announcements, and news from the VGU Buddy Program community."
+                "title": "Stay Stylish with VGU",
+                "description": "Discover exclusive VGU Buddy merchandise designed for our community. Get the latest drops, limited editions, and products that let you show your Buddy spirit everywhere."
             },
             "posts": {
-                "author": "VGU Buddy Program Team",
+                "author": "VGU Buddy Program Marketing Team",
                 "post1": {
                     "caption": "🎉 Exciting news! We're thrilled to announce the opening of 5 brand new study rooms in our main library. These modern, well-equipped spaces are designed to enhance your learning experience with high-speed Wi-Fi, comfortable seating, whiteboards, and presentation equipment. Each room can accommodate up to 8 people and features air conditioning and natural lighting for the perfect study environment."
                 },
@@ -312,41 +312,6 @@ function setupEventListeners() {
     console.log('🎧 Event listeners initialized');
 }
 
-// ============================================
-// LOAD MORE POSTS FUNCTIONALITY
-// ============================================
-
-function loadMorePosts() {
-    if (isLoading) return;
-    
-    isLoading = true;
-    const button = event.target;
-    const originalText = button.textContent;
-    
-    // Add loading state
-    button.textContent = 'Loading...';
-    button.classList.add('loading');
-    
-    // Simulate API call
-    setTimeout(() => {
-        // EDIT: Replace this with actual API call to load more posts
-        console.log('📡 Loading more posts...');
-        
-        // For demo purposes, show alert
-        const message = currentLanguage === 'de' 
-            ? 'Weitere Beiträge würden hier von Ihrer API geladen!'
-            : 'More posts would be loaded here from your API!';
-        
-        alert(message);
-        
-        // Reset button state
-        button.textContent = originalText;
-        button.classList.remove('loading');
-        isLoading = false;
-        
-        console.log('✅ Load more completed');
-    }, 1500);
-}
 
 // ============================================
 // UTILITY FUNCTIONS

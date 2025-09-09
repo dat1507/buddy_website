@@ -291,16 +291,16 @@
             <!-- Post Header -->
             <div class="flex items-center space-x-3 mb-4">
               <div
-                class="w-12 h-12 bg-gradient-to-br from-vgu-orange to-vgu-orange-dark rounded-full flex items-center justify-center"
+                class="w-12 h-12 bg-vgu-black rounded-full flex items-center justify-center"
               >
-                <span class="text-vgu-black font-bold text-sm">VGU</span>
+                <img src="../images/vguBuddy_logo.png">
               </div>
               <div>
                 <h3
                   class="font-semibold text-vgu-text"
                   data-i18n="posts.author"
                 >
-                  VGU Buddy Program Team
+                  VGU Buddy Program Marketing Team
                 </h3>
                 <p class="text-sm text-vgu-muted">December 15, 2024</p>
               </div>
@@ -330,33 +330,16 @@
             <!-- Post Image -->
             <div class="post-media mb-4">
               <!-- EDIT: Replace with your image URL -->
-              <div
-                class="aspect-video bg-gradient-to-br from-blue-500 to-blue-700 rounded-xl flex items-center justify-center text-white text-6xl"
-              >
-                📚
-              </div>
+              <img src="../images/sy_huy.jpeg">
             </div>
             <!-- Post Actions -->
-            <div
-              class="flex items-center space-x-6 pt-4 border-t border-vgu-surface/50"
-            >
+            <div class="flex items-center space-x-6 pt-4 border-t border-vgu-surface/50">
+              <!-- Shop Now -->
               <button
                 class="flex items-center space-x-2 text-vgu-muted hover:text-vgu-orange transition-colors"
               >
-                <span class="text-lg">👍</span>
-                <span class="text-sm">Like</span>
-              </button>
-              <button
-                class="flex items-center space-x-2 text-vgu-muted hover:text-vgu-orange transition-colors"
-              >
-                <span class="text-lg">💬</span>
-                <span class="text-sm">Comment</span>
-              </button>
-              <button
-                class="flex items-center space-x-2 text-vgu-muted hover:text-vgu-orange transition-colors"
-              >
-                <span class="text-lg">📤</span>
-                <span class="text-sm">Share</span>
+                <span class="text-lg">🛒</span>
+                <span class="text-sm font-semibold">Shop Now</span>
               </button>
             </div>
           </div>
@@ -612,17 +595,8 @@
           </div>
         </article>
       </div>
-      <!-- Load More Button -->
-      <div class="text-center mt-12">
-        <button
-          onclick="loadMorePosts()"
-          class="bg-vgu-surface border border-vgu-orange/20 text-vgu-text px-8 py-3 rounded-xl font-semibold hover:bg-vgu-orange hover:text-vgu-black transition-all duration-300 hover:scale-105"
-          data-i18n="common.loadMore"
-        >
-          Load More Posts
-        </button>
-      </div>
     </main>
+
     <!-- AI Chatbot -->
     <button id="chatbot-toggler">
       <span class="material-symbols-outlined">mode_comment</span>
@@ -689,6 +663,7 @@
         </form>
       </div>
     </div>
+
     <!-- Footer -->
     <footer id="contact" class="bg-vgu-surface py-16">
       <div class="max-w-7xl mx-auto px-6 lg:px-8">
@@ -696,7 +671,7 @@
           <div class="md:col-span-2">
             <div class="flex items-center space-x-3 mb-6">
               <img
-                src="images/vguBuddy_logo.png"
+                src="../images/vguBuddy_logo.png"
                 alt="VGU Buddy Logo"
                 class="w-12 h-12 rounded-xl object-cover"
               />
