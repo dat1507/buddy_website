@@ -536,4 +536,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-console.log('🎉 Social Hub JavaScript loaded successfully!');
+document.addEventListener("DOMContentLoaded", () => {
+    initializeLanguage();
+});
