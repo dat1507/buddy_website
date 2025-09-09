@@ -78,23 +78,23 @@ function getFallbackTranslations() {
             },
             "features": {
                 "title": "Hervorragende Vorteile",
-                "subtitle": "Alles, was du für ein großartiges Unileben brauchst – auf einer Plattform.",
+                "subtitle": "Alles, was du für ein großartiges Universitätsleben brauchst – alles auf einer Plattform.",
                 "social": {
-                    "title": "Soziales Zentrum",
-                    "desc": "Verbinde dich in Echtzeit mit deiner VGU-Community, chatte und teile Inhalte.",
-                    "item1": "Freundschaftsverbindungen",
-                    "item2": "Gruppenchats",
-                    "item3": "Merchandise"
+                    "title": "Merchandise",
+                    "desc": "Zeige deinen Spirit mit unserem coolen und praktischen Merch.",
+                    "item1": "Zeig es",
+                    "item2": "Trag es",
+                    "item3": "Liebe es"
                 },
                 "events": {
-                    "title": "Event-Kalender",
-                    "desc": "Verpasse nie wichtige Events, Workshops oder kulturelle Aktivitäten.",
-                    "item1": "Event-Anmeldung",
-                    "item2": "Kalendersynchronisation",
-                    "item3": "Erinnerungen"
+                    "title": "Eventkalender",
+                    "desc": "Verpasse keine wichtigen Veranstaltungen, Workshops oder kulturellen Aktivitäten.",
+                    "item1": "Bleib informiert",
+                    "item2": "Nichts verpassen",
+                    "item3": "Einfache Erinnerungen"
                 },
                 "academic": {
-                    "title": "Bibliotheksrichtlinien",
+                    "title": "Bibliotheksregeln",
                     "desc": "Greife auf alle akademischen Ressourcen zu und organisiere dein Studium.",
                     "item1": "Stundenpläne",
                     "item2": "Bibliothekszugang",
@@ -102,24 +102,24 @@ function getFallbackTranslations() {
                 },
                 "sports": {
                     "title": "Sporthalle",
-                    "desc": "Buche Einrichtungen und bleibe aktiv mit deinen Freunden.",
-                    "item1": "Platzbuchung",
-                    "item2": "Zugang zum Fitnessstudio",
-                    "item3": "Sportgruppen"
+                    "desc": "Buche Einrichtungen und bleib aktiv mit deinen Freunden.",
+                    "item1": "Spiel mit Power",
+                    "item2": "Bleib fit",
+                    "item3": "Teamwork"
                 },
                 "support": {
                     "title": "International Office",
-                    "desc": "Erhalte umfassende Unterstützung, wann immer du sie brauchst.",
-                    "item1": "Mentale Gesundheit",
-                    "item2": "Notfallkontakte",
-                    "item3": "Universitätshotline"
+                    "desc": "Mach deinen Aufenthalt so angenehm wie möglich.",
+                    "item1": "Auslandsstudium",
+                    "item2": "Globale Unterstützung",
+                    "item3": "Verbunden bleiben"
                 },
                 "global": {
-                    "title": "Wohnheim-Service",
-                    "desc": "Vernetze dich über Kulturen hinweg mit mehrsprachiger Unterstützung.",
-                    "item1": "Englische Oberfläche",
-                    "item2": "Deutscher Support",
-                    "item3": "Sprachaustausch"
+                    "title": "Wohnheimservice",
+                    "desc": "Komfortables Wohnen, nur wenige Schritte vom Campus entfernt.",
+                    "item1": "Gemütliches Wohnen",
+                    "item2": "Studentengemeinschaft",
+                    "item3": "Campusnah"
                 }
             },
             "community": {
@@ -141,7 +141,6 @@ function getFallbackTranslations() {
                 "support": "Unterstützung",
                 "helpCenter": "Hilfe-Center",
                 "emergency": "Notfallkontakte",
-                "mentalHealth": "Mentale Gesundheit",
                 "technical": "Technischer Support",
                 "copyright": "© 2025 VGU Buddy Program. Alle Rechte vorbehalten. | Verfügbar auf Englisch & Deutsch"
             },
@@ -193,17 +192,17 @@ function getFallbackTranslations() {
                 "subtitle": "Everything you need for an amazing university experience, all in one platform.",
                 "social": {
                     "title": "Merchandise",
-                    "desc": "Connect, chat, and share with your VGU community in real-time.",
-                    "item1": "Friend connections",
-                    "item2": "Group messaging",
-                    "item3": "Merchandise"
+                    "desc": "Show your spirit with our fun and practical merch.",
+                    "item1": "Show it",
+                    "item2": "Wear it",
+                    "item3": "Love it"
                 },
                 "events": {
                     "title": "Events Calendar",
                     "desc": "Never miss important events, workshops, or cultural activities.",
-                    "item1": "Event RSVP",
-                    "item2": "Calendar sync",
-                    "item3": "Reminders"
+                    "item1": "Stay updated",
+                    "item2": "Never miss out",
+                    "item3": "Easy reminders"
                 },
                 "academic": {
                     "title": "Library Regulations",
@@ -215,23 +214,23 @@ function getFallbackTranslations() {
                 "sports": {
                     "title": "Sports Hall",
                     "desc": "Book facilities and stay active with your buddies.",
-                    "item1": "Court booking",
-                    "item2": "Gym access",
-                    "item3": "Sports groups"
+                    "item1": "Play hard",
+                    "item2": "Stay fit",
+                    "item3": "Team up"
                 },
                 "support": {
                     "title": "International Office",
-                    "desc": "Get help when you need it with comprehensive support.",
-                    "item1": "Mental health",
-                    "item2": "Emergency contacts",
-                    "item3": "University hotline"
+                    "desc": "Make your stay as comfortable as possible.",
+                    "item1": "Study abroad",
+                    "item2": "Global support",
+                    "item3": "Stay connected"
                 },
                 "global": {
                     "title": "Dormitory Service",
-                    "desc": "Connect across cultures with multilingual support.",
-                    "item1": "English interface",
-                    "item2": "German support",
-                    "item3": "Language exchange"
+                    "desc": "Comfortable living, just steps from campus life.",
+                    "item1": "Cozy living",
+                    "item2": "Student community",
+                    "item3": "Campus close"
                 }
             },
             "community": {
@@ -258,9 +257,8 @@ function getFallbackTranslations() {
                 "description": "Connecting students at Vietnamese-German University for an extraordinary academic and social experience.",
                 "quickLinks": "Quick Links",
                 "support": "Support",
-                "helpCenter": "Help Center",
-                "emergency": "Emergency Contacts",
-                "mentalHealth": "Mental Health",
+                "helpCenter": "International Office",
+                "emergency": "Emergency Contacts: Mrs Nguyen",
                 "technical": "Technical Support",
                 "copyright": "© 2025 VGU Buddy Program. All rights reserved. | Available in English & German"
             },
