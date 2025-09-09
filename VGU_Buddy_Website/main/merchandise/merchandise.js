@@ -1,92 +1,35 @@
-// ============================================
-// SOCIAL HUB JAVASCRIPT
-// ============================================
-
-// Global variables
+// Global Variables
 let currentLanguage = 'en';
 let translations = {};
-let isLoading = false;
 
-// ============================================
-// LANGUAGE CONFIGURATION
-// EDIT: Add more languages here if needed
-// ============================================
 
+// Language Management
 const SUPPORTED_LANGUAGES = {
     'en': { 
         name: 'English', 
-        flag: '🇬🇧', 
         code: 'EN',
-        file: 'social_hub_en.json'
+        flagClass: 'fi fi-gb',
+        flagStyle: 'font-size: 16px;'
     },
     'de': { 
         name: 'Deutsch', 
-        flag: '🇩🇪', 
         code: 'DE',
-        file: 'social_hub_de.json'
+        flagClass: 'fi fi-de',
+        flagStyle: 'font-size: 16px;'
     }
 };
 
-// ============================================
-// READ MORE CONFIGURATION
-// EDIT: Customize read more settings here
-// ============================================
-
-const READ_MORE_CONFIG = {
-    wordLimit: 30,           // Number of words to show before "Read More"
-    animationDuration: 300   // Animation duration in milliseconds
-};
-
-// ============================================
-// INITIALIZATION
-// ============================================
-
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('🚀 Social Hub initializing...');
-    
-    initializeLanguage();
-    setupReadMoreFunctionality();
-    setupScrollAnimations();
-    setupEventListeners();
-    
-    console.log('✅ Social Hub initialized successfully!');
-});
-
-// ============================================
-// LANGUAGE MANAGEMENT
-// ============================================
-
+// Initialize language system
 async function initializeLanguage() {
-    // Get saved language or default to English
-    currentLanguage = localStorage.getItem('vgu-social-language') || 'en';
-    
-    try {
-        await loadTranslations();
-        updateLanguageToggle();
-        translatePage();
-        console.log(`📝 Language initialized: ${currentLanguage}`);
-    } catch (error) {
-        console.error('❌ Failed to initialize language:', error);
-        // Fallback to embedded translations
-        translations = getFallbackTranslations();
-        translatePage();
-    }
+    currentLanguage = localStorage.getItem('vgu-language') || 'en';
+    await loadTranslations();
+    updateLanguageToggle();
+    translatePage();
 }
 
+// Load translation files
 async function loadTranslations() {
-    const langConfig = SUPPORTED_LANGUAGES[currentLanguage];
-    
-    try {
-        const response = await fetch(langConfig.file);
-        if (response.ok) {
-            translations = await response.json();
-        } else {
-            throw new Error(`Failed to load ${langConfig.file}`);
-        }
-    } catch (error) {
-        console.warn(`⚠️ Could not load ${langConfig.file}, using fallback translations`);
-        translations = getFallbackTranslations();
-    }
+    translations = getFallbackTranslations();
 }
 
 // EDIT: Add your translations here
@@ -174,41 +117,48 @@ function getFallbackTranslations() {
     }
 }
 
+// Toggle language function
 async function toggleLanguage() {
-    // Switch language
     currentLanguage = currentLanguage === 'en' ? 'de' : 'en';
-    
-    // Save preference
-    localStorage.setItem('vgu-social-language', currentLanguage);
-    
-    // Add loading state
+    localStorage.setItem('vgu-language', currentLanguage);
+    await loadTranslations();
+    updateLanguageToggle();
+    translatePage();
+
     const toggleButton = document.getElementById('languageToggle');
-    toggleButton.classList.add('loading');
-    
-    try {
-        await loadTranslations();
-        updateLanguageToggle();
-        translatePage();
-        console.log(`🔄 Language switched to: ${currentLanguage}`);
-    } catch (error) {
-        console.error('❌ Failed to switch language:', error);
-    } finally {
-        toggleButton.classList.remove('loading');
+    if (toggleButton) {
+        toggleButton.setAttribute('aria-pressed', currentLanguage === 'de' ? 'true' : 'false');
     }
 }
 
+
+// Update language toggle UI
 function updateLanguageToggle() {
     const langData = SUPPORTED_LANGUAGES[currentLanguage];
     
+    // Desktop toggle
     const flagElement = document.getElementById('languageFlag');
     const codeElement = document.getElementById('languageCode');
     
     if (flagElement && codeElement) {
-        flagElement.textContent = langData.flag;
+        flagElement.className = langData.flagClass;
+        flagElement.style.cssText = langData.flagStyle;
         codeElement.textContent = langData.code;
+    }
+    
+    // Mobile toggle
+    const mobileFlagElement = document.getElementById('mobileLanguageFlag');
+    const mobileCodeElement = document.getElementById('mobileLanguageCode');
+    
+    if (mobileFlagElement && mobileCodeElement) {
+        mobileFlagElement.className = langData.flagClass;
+        mobileFlagElement.style.cssText = langData.flagStyle;
+        mobileCodeElement.textContent = langData.name;
     }
 }
 
+
+// Translate page content
 function translatePage() {
     const elements = document.querySelectorAll('[data-i18n]');
     
@@ -222,9 +172,23 @@ function translatePage() {
     });
 }
 
+// Get nested translation by key
 function getNestedTranslation(obj, key) {
     return key.split('.').reduce((o, k) => o && o[k], obj);
 }
+
+// Mobile Menu Functions
+function toggleMobileMenu() {
+    const menu = document.getElementById('mobileMenu');
+    menu.classList.toggle('active');
+}
+
+
+// Navigation Functions
+function scrollToSection(sectionId) {
+    document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+}
+
 
 // ============================================
 // READ MORE FUNCTIONALITY

@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VGU Buddy Program</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "vgu-orange": "#FF670D",
+              "vgu-orange-dark": "#E55D0C",
+              "vgu-orange-light": "#FF8A3B",
+              "vgu-black": "#000000",
+              "vgu-surface": "#1F1F1F",
+              "vgu-text": "#EFEFEF",
+              "vgu-muted": "#BDBDBD",
+            },
+          },
+        },
+      };
+    </script>
+    <!-- Insert Google Fonts for icons -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&display=swap"
+    />
+    <link rel="stylesheet" href="../chatbot.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="merchandise.css" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.6.6/css/flag-icons.min.css"
+    />
+    <link rel="icon" type="image/png" href="../images/vguBuddy_logo.png" />
+    <script>
+      (function () {
+        function c() {
+          var b = a.contentDocument || a.contentWindow.document;
+          if (b) {
+            var d = b.createElement("script");
+            d.innerHTML =
+              "window.__CF$cv$params={r:'9760834b34598976',t:'MTc1NjM0OTU0OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
+            b.getElementsByTagName("head")[0].appendChild(d);
+          }
+        }
+        if (document.body) {
+          var a = document.createElement("iframe");
+          a.height = 1;
+          a.width = 1;
+          a.style.position = "absolute";
+          a.style.top = 0;
+          a.style.left = 0;
+          a.style.border = "none";
+          a.style.visibility = "hidden";
+          document.body.appendChild(a);
+          if ("loading" !== document.readyState) c();
+          else if (window.addEventListener)
+            document.addEventListener("DOMContentLoaded", c);
+          else {
+            var e = document.onreadystatechange || function () {};
+            document.onreadystatechange = function (b) {
+              e(b);
+              "loading" !== document.readyState &&
+                ((document.onreadystatechange = e), c());
+            };
+          }
+        }
+      })();
+    </script>
+  </head>
+  <body class="bg-vgu-black text-vgu-text overflow-x-hidden">
+    <!--Page Reload-->
+    <div id="pageReveal" class="page-reveal" aria-hidden="true"></div>
+    <!-- Header -->
+    <header
+      class="fixed top-0 w-full z-50 bg-vgu-black/95 backdrop-blur-sm border-b border-vgu-surface/50"
+    >
+      <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <!-- Logo -->
+          <div class="flex items-center space-x-3">
+            <a href="../index.html">
+              <img
+                src="../images/vguBuddy_logo.png"
+                alt="VGU Buddy Logo"
+                class="w-12 h-12 rounded-xl object-cover"
+              />
+            </a>
+            <a href="../index.html" class="font-bold text-xl text-vgu-text"
+              >VGU Buddy</a
+            >
+          </div>
+          <!-- Desktop Navigation -->
+          <nav class="hidden lg:flex items-center space-x-8">
+            <a
+              href="../index.html"
+              class="text-vgu-text hover:text-vgu-orange transition-colors"
+              data-i18n="nav.home"
+              >Home</a
+            >
+            <a
+              href="#about"
+              class="text-vgu-text hover:text-vgu-orange transition-colors"
+              data-i18n="nav.about"
+              >About</a
+            >
+            <a
+              href="#features"
+              class="text-vgu-text hover:text-vgu-orange transition-colors"
+              data-i18n="nav.features"
+              >Features</a
+            >
+            <a
+              href="#community"
+              class="text-vgu-text hover:text-vgu-orange transition-colors"
+              data-i18n="nav.community"
+              >Community</a
+            >
+            <a
+              href="#contact"
+              class="text-vgu-text hover:text-vgu-orange transition-colors"
+              data-i18n="nav.contact"
+              >Contact</a
+            >
+          </nav>
+          <!-- Language Toggle & Auth -->
+          <div class="hidden lg:flex items-center space-x-4">
+            <!-- Language Toggle -->
+            <button
+              id="languageToggle"
+              onclick="toggleLanguage()"
+              class="language-toggle flex items-center space-x-2 px-3 py-2 rounded-lg bg-vgu-surface hover:bg-vgu-surface/80 transition-all duration-200"
+              aria-pressed="false"
+              aria-label="Toggle language"
+            >
+              <i id="languageFlag" class="fas fa-flag text-blue-500"></i>
+              <span
+                id="languageCode"
+                class="text-sm font-semibold text-vgu-muted"
+                >EN</span
+              >
+            </button>
+          </div>
+          <!-- Mobile Menu Button -->
+          <button
+            onclick="toggleMobileMenu()"
+            class="lg:hidden p-2 text-vgu-text hover:text-vgu-orange transition-colors"
+          >
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              ></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <!-- Mobile Menu -->
+      <div
+        id="mobileMenu"
+        class="mobile-menu fixed top-0 right-0 h-full w-80 bg-vgu-surface shadow-2xl z-50 lg:hidden"
+      >
+        <div class="p-6 bg-vgu-black">
+          <div class="flex justify-between items-center mb-8">
+            <h2 class="text-xl font-bold text-vgu-text">Menu</h2>
+            <button
+              onclick="toggleMobileMenu()"
+              class="p-2 text-vgu-text hover:text-vgu-orange transition-colors"
+            >
+              <svg
+                class="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M6 18L18 6M6 6l12 12"
+                ></path>
+              </svg>
+            </button>
+          </div>
+          <!-- Mobile Language Toggle -->
+          <div class="mb-6">
+            <button
+              onclick="toggleLanguage()"
+              class="w-full flex items-center justify-between p-3 rounded-lg bg-vgu-black hover:bg-vgu-black/80 transition-all duration-200"
+            >
+              <div class="flex items-center space-x-3">
+                <i
+                  id="mobileLanguageFlag"
+                  class="fas fa-flag text-blue-500"
+                ></i>
+                <span
+                  id="mobileLanguageCode"
+                  class="font-semibold text-vgu-text"
+                  >English</span
+                >
+              </div>
+              <svg
+                class="w-4 h-4 text-vgu-muted"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M8 9l4-4 4 4m0 6l-4 4-4-4"
+                ></path>
+              </svg>
+            </button>
+          </div>
+          <nav class="space-y-2 mb-8">
+            <a
+              href="#home"
+              class="block px-4 py-3 text-vgu-text hover:text-vgu-orange hover:bg-vgu-black rounded-lg transition-colors"
+              data-i18n="nav.home"
+              >Home</a
+            >
+            <a
+              href="#about"
+              class="block px-4 py-3 text-vgu-text hover:text-vgu-orange hover:bg-vgu-black rounded-lg transition-colors"
+              data-i18n="nav.about"
+              >About</a
+            >
+            <a
+              href="#features"
+              class="block px-4 py-3 text-vgu-text hover:text-vgu-orange hover:bg-vgu-black rounded-lg transition-colors"
+              data-i18n="nav.features"
+              >Features</a
+            >
+            <a
+              href="#community"
+              class="block px-4 py-3 text-vgu-text hover:text-vgu-orange hover:bg-vgu-black rounded-lg transition-colors"
+              data-i18n="nav.community"
+              >Community</a
+            >
+            <a
+              href="#contact"
+              class="block px-4 py-3 text-vgu-text hover:text-vgu-orange hover:bg-vgu-black rounded-lg transition-colors"
+              data-i18n="nav.contact"
+              >Contact</a
+            >
+          </nav>
+        </div>
+      </div>
+    </header>
+    <main class="max-w-4xl mx-auto px-6 py-8 mt-20">
+      <!-- Welcome Section -->
+      <div class="text-center mb-12 animate-fade-in">
+        <h2
+          class="text-3xl lg:text-4xl font-black text-vgu-text mb-4"
+          data-i18n="welcome.title"
+        >
+          Stay Connected with VGU
+        </h2>
+        <p
+          class="text-lg text-vgu-muted max-w-2xl mx-auto"
+          data-i18n="welcome.description"
+        >
+          Get the latest updates, announcements, and news from the VGU Buddy
+          Program community.
+        </p>
+      </div>
+      <!-- Posts Feed -->
+      <div id="postsFeed" class="space-y-8">
+        <!-- POST 1 - EDIT: Replace with your content -->
+        <article
+          class="post-card bg-vgu-surface rounded-2xl border border-vgu-surface/50 overflow-hidden"
+          data-post-id="1"
+        >
+          <div class="p-6">
+            <!-- Post Header -->
+            <div class="flex items-center space-x-3 mb-4">
+              <div
+                class="w-12 h-12 bg-gradient-to-br from-vgu-orange to-vgu-orange-dark rounded-full flex items-center justify-center"
+              >
+                <span class="text-vgu-black font-bold text-sm">VGU</span>
+              </div>
+              <div>
+                <h3
+                  class="font-semibold text-vgu-text"
+                  data-i18n="posts.author"
+                >
+                  VGU Buddy Program Team
+                </h3>
+                <p class="text-sm text-vgu-muted">December 15, 2024</p>
+              </div>
+            </div>
+            <!-- Post Caption -->
+            <div class="post-caption mb-4">
+              <p
+                class="text-vgu-text leading-relaxed"
+                data-i18n="posts.post1.caption"
+              >
+                🎉 Exciting news! We're thrilled to announce the opening of 5
+                brand new study rooms in our main library. These modern,
+                well-equipped spaces are designed to enhance your learning
+                experience with high-speed Wi-Fi, comfortable seating,
+                whiteboards, and presentation equipment. Each room can
+                accommodate up to 8 people and features air conditioning and
+                natural lighting for the perfect study environment.
+              </p>
+              <button
+                class="read-more-btn text-vgu-orange hover:text-vgu-orange-light transition-colors text-sm font-semibold mt-2 hidden"
+                onclick="toggleReadMore(this)"
+                data-i18n="common.readMore"
+              >
+                Read More...
+              </button>
+            </div>
+            <!-- Post Image -->
+            <div class="post-media mb-4">
+              <!-- EDIT: Replace with your image URL -->
+              <div
+                class="aspect-video bg-gradient-to-br from-blue-500 to-blue-700 rounded-xl flex items-center justify-center text-white text-6xl"
+              >
+                📚
+              </div>
+            </div>
+            <!-- Post Actions -->
+            <div
+              class="flex items-center space-x-6 pt-4 border-t border-vgu-surface/50"
+            >
+              <button
+                class="flex items-center space-x-2 text-vgu-muted hover:text-vgu-orange transition-colors"
+              >
+                <span class="text-lg">👍</span>
+                <span class="text-sm">Like</span>
+              </button>
+              <button
+                class="flex items-center space-x-2 text-vgu-muted hover:text-vgu-orange transition-colors"
+              >
+                <span class="text-lg">💬</span>
+                <span class="text-sm">Comment</span>
+              </button>
+              <button
+                class="flex items-center space-x-2 text-vgu-muted hover:text-vgu-orange transition-colors"
+              >
+                <span class="text-lg">📤</span>
+                <span class="text-sm">Share</span>
+              </button>
+            </div>
+          </div>
+        </article>
+        <!-- POST 2 - EDIT: Replace with your content -->
+        <article
+          class="post-card bg-vgu-surface rounded-2xl border border-vgu-surface/50 overflow-hidden"
+          data-post-id="2"
+        >
+          <div class="p-6">
+            <!-- Post Header -->
+            <div class="flex items-center space-x-3 mb-4">
+              <div
+                class="w-12 h-12 bg-gradient-to-br from-vgu-orange to-vgu-orange-dark rounded-full flex items-center justify-center"
+              >
+                <span class="text-vgu-black font-bold text-sm">VGU</span>
+              </div>
+              <div>
+                <h3
+                  class="font-semibold text-vgu-text"
+                  data-i18n="posts.author"
+                >
+                  VGU Buddy Program Team
+                </h3>
+                <p class="text-sm text-vgu-muted">December 20, 2024</p>
+              </div>
+            </div>
+            <!-- Post Caption -->
+            <div class="post-caption mb-4">
+              <p
+                class="text-vgu-text leading-relaxed"
+                data-i18n="posts.post2.caption"
+              >
+                🎊 Winter Cultural Festival is coming! Join us for the most
+                exciting cultural event of the year featuring traditional
+                Vietnamese and German performances, authentic food, interactive
+                workshops, and language exchange activities. This is a perfect
+                opportunity to experience the beautiful blend of cultures that
+                makes VGU unique. The festival will run from 10 AM to 6 PM with
+                various activities throughout the day including folk dance
+                performances, cultural presentations, international food fair,
+                and group activities.
+              </p>
+              <button
+                class="read-more-btn text-vgu-orange hover:text-vgu-orange-light transition-colors text-sm font-semibold mt-2 hidden"
+                onclick="toggleReadMore(this)"
+                data-i18n="common.readMore"
+              >
+                Read More...
+              </button>
+            </div>
+            <!-- Post Video -->
+            <div class="post-media mb-4">
+              <!-- EDIT: Replace with your video URL -->
+              <div
+                class="aspect-video bg-gradient-to-br from-purple-500 to-purple-700 rounded-xl flex items-center justify-center text-white"
+              >
+                <div class="text-center">
+                  <div class="text-6xl mb-2">🎥</div>
+                  <p class="text-sm opacity-80">Cultural Festival Preview</p>
+                </div>
+              </div>
+            </div>
+            <!-- Post Actions -->
+            <div
+              class="flex items-center space-x-6 pt-4 border-t border-vgu-surface/50"
+            >
+              <button
+                class="flex items-center space-x-2 text-vgu-muted hover:text-vgu-orange transition-colors"
+              >
+                <span class="text-lg">👍</span>
+                <span class="text-sm">Like</span>
+              </button>
+              <button
+                class="flex items-center space-x-2 text-vgu-muted hover:text-vgu-orange transition-colors"
+              >
+                <span class="text-lg">💬</span>
+                <span class="text-sm">Comment</span>
+              </button>
+              <button
+                class="flex items-center space-x-2 text-vgu-muted hover:text-vgu-orange transition-colors"
+              >
+                <span class="text-lg">📤</span>
+                <span class="text-sm">Share</span>
+              </button>
+            </div>
+          </div>
+        </article>
+        <!-- POST 3 - EDIT: Replace with your content -->
+        <article
+          class="post-card bg-vgu-surface rounded-2xl border border-vgu-surface/50 overflow-hidden"
+          data-post-id="3"
+        >
+          <div class="p-6">
+            <!-- Post Header -->
+            <div class="flex items-center space-x-3 mb-4">
+              <div
+                class="w-12 h-12 bg-gradient-to-br from-vgu-orange to-vgu-orange-dark rounded-full flex items-center justify-center"
+              >
+                <span class="text-vgu-black font-bold text-sm">VGU</span>
+              </div>
+              <div>
+                <h3
+                  class="font-semibold text-vgu-text"
+                  data-i18n="posts.author"
+                >
+                  VGU Buddy Program Team
+                </h3>
+                <p class="text-sm text-vgu-muted">December 12, 2024</p>
+              </div>
+            </div>
+            <!-- Post Caption -->
+            <div class="post-caption mb-4">
+              <p
+                class="text-vgu-text leading-relaxed"
+                data-i18n="posts.post3.caption"
+              >
+                📱 VGU Buddy App 2.0 is here! We're excited to announce the
+                release of our major update packed with new features based on
+                your feedback. The new version includes real-time chat for
+                instant messaging with friends and study groups, enhanced event
+                booking with easier navigation, improved user profiles where you
+                can customize with interests and skills, dark mode for
+                comfortable late-night studying, offline mode for accessing
+                schedules without internet, and push notifications so you never
+                miss important announcements.
+              </p>
+              <button
+                class="read-more-btn text-vgu-orange hover:text-vgu-orange-light transition-colors text-sm font-semibold mt-2 hidden"
+                onclick="toggleReadMore(this)"
+                data-i18n="common.readMore"
+              >
+                Read More...
+              </button>
+            </div>
+            <!-- Post Image -->
+            <div class="post-media mb-4">
+              <!-- EDIT: Replace with your image URL -->
+              <div
+                class="aspect-video bg-gradient-to-br from-green-500 to-green-700 rounded-xl flex items-center justify-center text-white text-6xl"
+              >
+                📲
+              </div>
+            </div>
+            <!-- Post Actions -->
+            <div
+              class="flex items-center space-x-6 pt-4 border-t border-vgu-surface/50"
+            >
+              <button
+                class="flex items-center space-x-2 text-vgu-muted hover:text-vgu-orange transition-colors"
+              >
+                <span class="text-lg">👍</span>
+                <span class="text-sm">Like</span>
+              </button>
+              <button
+                class="flex items-center space-x-2 text-vgu-muted hover:text-vgu-orange transition-colors"
+              >
+                <span class="text-lg">💬</span>
+                <span class="text-sm">Comment</span>
+              </button>
+              <button
+                class="flex items-center space-x-2 text-vgu-muted hover:text-vgu-orange transition-colors"
+              >
+                <span class="text-lg">📤</span>
+                <span class="text-sm">Share</span>
+              </button>
+            </div>
+          </div>
+        </article>
+        <!-- POST 4 - EDIT: Replace with your content -->
+        <article
+          class="post-card bg-vgu-surface rounded-2xl border border-vgu-surface/50 overflow-hidden"
+          data-post-id="4"
+        >
+          <div class="p-6">
+            <!-- Post Header -->
+            <div class="flex items-center space-x-3 mb-4">
+              <div
+                class="w-12 h-12 bg-gradient-to-br from-vgu-orange to-vgu-orange-dark rounded-full flex items-center justify-center"
+              >
+                <span class="text-vgu-black font-bold text-sm">VGU</span>
+              </div>
+              <div>
+                <h3
+                  class="font-semibold text-vgu-text"
+                  data-i18n="posts.author"
+                >
+                  VGU Buddy Program Team
+                </h3>
+                <p class="text-sm text-vgu-muted">December 25, 2024</p>
+              </div>
+            </div>
+            <!-- Post Caption -->
+            <div class="post-caption mb-4">
+              <p
+                class="text-vgu-text leading-relaxed"
+                data-i18n="posts.post4.caption"
+              >
+                🏆 Annual Sports Tournament 2024! Get ready for the biggest
+                sporting event of the year with three days of intense
+                competition, team spirit, and fun activities. We're hosting
+                competitions in basketball (5v5 teams), volleyball (6v6 teams),
+                badminton (singles and doubles), table tennis, and football (7v7
+                teams). Amazing prizes await including trophies, medals, and
+                cash prizes for winning teams. Registration is open until
+                December 20th through the VGU Buddy app. Don't miss this
+                opportunity to showcase your athletic skills and represent your
+                faculty!
+              </p>
+              <button
+                class="read-more-btn text-vgu-orange hover:text-vgu-orange-light transition-colors text-sm font-semibold mt-2 hidden"
+                onclick="toggleReadMore(this)"
+                data-i18n="common.readMore"
+              >
+                Read More...
+              </button>
+            </div>
+            <!-- Post Video -->
+            <div class="post-media mb-4">
+              <!-- EDIT: Replace with your video URL -->
+              <div
+                class="aspect-video bg-gradient-to-br from-red-500 to-red-700 rounded-xl flex items-center justify-center text-white"
+              >
+                <div class="text-center">
+                  <div class="text-6xl mb-2">🎥</div>
+                  <p class="text-sm opacity-80">Sports Tournament Highlights</p>
+                </div>
+              </div>
+            </div>
+            <!-- Post Actions -->
+            <div
+              class="flex items-center space-x-6 pt-4 border-t border-vgu-surface/50"
+            >
+              <button
+                class="flex items-center space-x-2 text-vgu-muted hover:text-vgu-orange transition-colors"
+              >
+                <span class="text-lg">👍</span>
+                <span class="text-sm">Like</span>
+              </button>
+              <button
+                class="flex items-center space-x-2 text-vgu-muted hover:text-vgu-orange transition-colors"
+              >
+                <span class="text-lg">💬</span>
+                <span class="text-sm">Comment</span>
+              </button>
+              <button
+                class="flex items-center space-x-2 text-vgu-muted hover:text-vgu-orange transition-colors"
+              >
+                <span class="text-lg">📤</span>
+                <span class="text-sm">Share</span>
+              </button>
+            </div>
+          </div>
+        </article>
+      </div>
+      <!-- Load More Button -->
+      <div class="text-center mt-12">
+        <button
+          onclick="loadMorePosts()"
+          class="bg-vgu-surface border border-vgu-orange/20 text-vgu-text px-8 py-3 rounded-xl font-semibold hover:bg-vgu-orange hover:text-vgu-black transition-all duration-300 hover:scale-105"
+          data-i18n="common.loadMore"
+        >
+          Load More Posts
+        </button>
+      </div>
+    </main>
+    <!-- AI Chatbot -->
+    <button id="chatbot-toggler">
+      <span class="material-symbols-outlined">mode_comment</span>
+      <span class="material-symbols-outlined">close</span>
+    </button>
+    <div class="chatbot-popup">
+      <!-- Chatbot Header -->
+      <div class="chat-header">
+        <div class="header-info">
+          <svg
+            class="chatbot-logo"
+            xmlns="http://www.w3.org/2000/svg"
+            width="50"
+            height="50"
+            viewBox="0 0 1024 1024"
+          >
+            <path
+              d="M738.3 287.6H285.7c-59 0-106.8 47.8-106.8 106.8v303.1c0 59 47.8 106.8 106.8 106.8h81.5v111.1c0 .7.8 1.1 1.4.7l166.9-110.6 41.8-.8h117.4l43.6-.4c59 0 106.8-47.8 106.8-106.8V394.5c0-59-47.8-106.9-106.8-106.9zM351.7 448.2c0-29.5 23.9-53.5 53.5-53.5s53.5 23.9 53.5 53.5-23.9 53.5-53.5 53.5-53.5-23.9-53.5-53.5zm157.9 267.1c-67.8 0-123.8-47.5-132.3-109h264.6c-8.6 61.5-64.5 109-132.3 109zm110-213.7c-29.5 0-53.5-23.9-53.5-53.5s23.9-53.5 53.5-53.5 53.5 23.9 53.5 53.5-23.9 53.5-53.5 53.5zM867.2 644.5V453.1h26.5c19.4 0 35.1 15.7 35.1 35.1v121.1c0 19.4-15.7 35.1-35.1 35.1h-26.5zM95.2 609.4V488.2c0-19.4 15.7-35.1 35.1-35.1h26.5v191.3h-26.5c-19.4 0-35.1-15.7-35.1-35.1zM561.5 149.6c0 23.4-15.6 43.3-36.9 49.7v44.9h-30v-44.9c-21.4-6.5-36.9-26.3-36.9-49.7 0-28.6 23.3-51.9 51.9-51.9s51.9 23.3 51.9 51.9z"
+            ></path>
+          </svg>
+          <h2 class="logo-text">Chatbot</h2>
+        </div>
+        <button id="close-chatbot" class="material-symbols-outlined">
+          keyboard_arrow_down
+        </button>
+      </div>
+      <!-- Chatbot Body -->
+      <div class="chat-body">
+        <div class="message bot-message">
+          <svg
+            class="bot-avatar"
+            xmlns="http://www.w3.org/2000/svg"
+            width="50"
+            height="50"
+            viewBox="0 0 1024 1024"
+          >
+            <path
+              d="M738.3 287.6H285.7c-59 0-106.8 47.8-106.8 106.8v303.1c0 59 47.8 106.8 106.8 106.8h81.5v111.1c0 .7.8 1.1 1.4.7l166.9-110.6 41.8-.8h117.4l43.6-.4c59 0 106.8-47.8 106.8-106.8V394.5c0-59-47.8-106.9-106.8-106.9zM351.7 448.2c0-29.5 23.9-53.5 53.5-53.5s53.5 23.9 53.5 53.5-23.9 53.5-53.5 53.5-53.5-23.9-53.5-53.5zm157.9 267.1c-67.8 0-123.8-47.5-132.3-109h264.6c-8.6 61.5-64.5 109-132.3 109zm110-213.7c-29.5 0-53.5-23.9-53.5-53.5s23.9-53.5 53.5-53.5 53.5 23.9 53.5 53.5-23.9 53.5-53.5 53.5zM867.2 644.5V453.1h26.5c19.4 0 35.1 15.7 35.1 35.1v121.1c0 19.4-15.7 35.1-35.1 35.1h-26.5zM95.2 609.4V488.2c0-19.4 15.7-35.1 35.1-35.1h26.5v191.3h-26.5c-19.4 0-35.1-15.7-35.1-35.1zM561.5 149.6c0 23.4-15.6 43.3-36.9 49.7v44.9h-30v-44.9c-21.4-6.5-36.9-26.3-36.9-49.7 0-28.6 23.3-51.9 51.9-51.9s51.9 23.3 51.9 51.9z"
+            ></path>
+          </svg>
+          <div class="message-text">
+            Hey there ! 👋 <br />
+            How can I help you today?
+          </div>
+        </div>
+      </div>
+      <!-- Chatbot Footer -->
+      <div class="chat-footer">
+        <form action="#" class="chat-form">
+          <textarea
+            placeholder="Message..."
+            class="message-input"
+            required
+          ></textarea>
+          <div class="chat-controls">
+            <button
+              type="submit"
+              id="send-message"
+              class="material-symbols-outlined"
+            >
+              arrow_upward
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- Footer -->
+    <footer id="contact" class="bg-vgu-surface py-16">
+      <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="grid md:grid-cols-4 gap-8">
+          <div class="md:col-span-2">
+            <div class="flex items-center space-x-3 mb-6">
+              <img
+                src="images/vguBuddy_logo.png"
+                alt="VGU Buddy Logo"
+                class="w-12 h-12 rounded-xl object-cover"
+              />
+              <span class="font-bold text-xl text-vgu-text">VGU Buddy</span>
+            </div>
+            <p
+              class="text-vgu-muted leading-relaxed mb-6"
+              data-i18n="footer.description"
+            >
+              Connecting students at Vietnamese-German University for an
+              extraordinary academic and social experience.
+            </p>
+            <div class="flex space-x-4">
+              <a
+                href="https://www.facebook.com/VGUBuddyProgram"
+                target="_blank"
+              >
+                <div
+                  class="w-10 h-10 bg-vgu-black rounded-lg flex items-center justify-center hover:bg-vgu-orange transition-colors cursor-pointer"
+                >
+                  <i
+                    data-lucide="facebook"
+                    class="text-vgu-orange hover:text-vgu-black w-6 h-6"
+                  ></i>
+                </div>
+              </a>
+              <a
+                href="https://www.instagram.com/buddyprogram_vgu/"
+                target="_blank"
+              >
+                <div
+                  class="w-10 h-10 bg-vgu-black rounded-lg flex items-center justify-center hover:bg-vgu-orange transition-colors cursor-pointer"
+                >
+                  <i
+                    data-lucide="instagram"
+                    class="text-vgu-orange hover:text-vgu-black w-6 h-6"
+                  ></i>
+                </div>
+              </a>
+              <a href="#home">
+                <div
+                  class="w-10 h-10 bg-vgu-black rounded-lg flex items-center justify-center hover:bg-vgu-orange transition-colors cursor-pointer"
+                >
+                  <i
+                    data-lucide="globe"
+                    class="text-vgu-orange hover:text-vgu-black w-6 h-6"
+                  ></i>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div>
+            <h4
+              class="font-bold text-lg text-vgu-text mb-4"
+              data-i18n="footer.quickLinks"
+            >
+              Quick Links
+            </h4>
+            <ul class="space-y-2">
+              <li>
+                <a
+                  href="#home"
+                  class="text-vgu-muted hover:text-vgu-orange transition-colors"
+                  data-i18n="nav.home"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#about"
+                  class="text-vgu-muted hover:text-vgu-orange transition-colors"
+                  data-i18n="nav.about"
+                  >About</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#features"
+                  class="text-vgu-muted hover:text-vgu-orange transition-colors"
+                  data-i18n="nav.features"
+                  >Features</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#community"
+                  class="text-vgu-muted hover:text-vgu-orange transition-colors"
+                  data-i18n="nav.community"
+                  >Community</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4
+              class="font-bold text-lg text-vgu-text mb-4"
+              data-i18n="footer.support"
+            >
+              Support
+            </h4>
+            <ul class="space-y-2">
+              <li>
+                <a
+                  href="https://vgu.edu.vn/international-office"
+                  class="text-vgu-muted hover:text-vgu-orange transition-colors"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-i18n="footer.helpCenter"
+                >
+                  International Office
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://chatgpt.com/"
+                  class="text-vgu-muted hover:text-vgu-orange transition-colors"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-i18n="footer.technical"
+                >
+                  Technical Support
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="border-t border-vgu-black mt-12 pt-8 text-center">
+          <p class="text-vgu-muted" data-i18n="footer.copyright">
+            &copy; 2025 VGU Buddy Program. All rights reserved. | Available in
+            English & German
+          </p>
+        </div>
+      </div>
+    </footer>
+    <script src="merchandise.js"></script>
+    <script>
+      (function () {
+        function c() {
+          var b = a.contentDocument || a.contentWindow.document;
+          if (b) {
+            var d = b.createElement("script");
+            d.innerHTML =
+              "window.__CF$cv$params={r:'97128657528985e9',t:'MTc1NTUzMTc4NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
+            b.getElementsByTagName("head")[0].appendChild(d);
+          }
+        }
+        if (document.body) {
+          var a = document.createElement("iframe");
+          a.height = 1;
+          a.width = 1;
+          a.style.position = "absolute";
+          a.style.top = 0;
+          a.style.left = 0;
+          a.style.border = "none";
+          a.style.visibility = "hidden";
+          document.body.appendChild(a);
+          if ("loading" !== document.readyState) c();
+          else if (window.addEventListener)
+            document.addEventListener("DOMContentLoaded", c);
+          else {
+            var e = document.onreadystatechange || function () {};
+            document.onreadystatechange = function (b) {
+              e(b);
+              "loading" !== document.readyState &&
+                ((document.onreadystatechange = e), c());
+            };
+          }
+        }
+      })();
+    </script>
+    <script>
+      lucide.createIcons();
+    </script>
+    <script src="../chatbot.js"></script>
+  </body>
+</html>
