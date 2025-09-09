@@ -258,7 +258,6 @@ function getFallbackTranslations() {
                 "quickLinks": "Quick Links",
                 "support": "Support",
                 "helpCenter": "International Office",
-                "emergency": "Emergency Contacts: Mrs Nguyen",
                 "technical": "Technical Support",
                 "copyright": "© 2025 VGU Buddy Program. All rights reserved. | Available in English & German"
             },
