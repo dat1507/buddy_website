@@ -189,8 +189,7 @@ button:active {
 } /* ============================================ ACCESSIBILITY IMPROVEMENTS ============================================ */ /* Focus states */
 button:focus,
 a:focus {
-  outline: 2px solid #ff670d;
-  outline-offset: 2px;
+  outline: none;
 } /* High contrast mode support */
 @media (prefers-contrast: high) {
   .post-card {
