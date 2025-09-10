@@ -87,7 +87,7 @@ function getFallbackTranslations() {
             },
             "welcome": {
                 "title": "Stay Stylish with VGU",
-                "description": "Discover exclusive VGU Buddy merchandise designed for our community. Get the latest drops, limited editions, and products that let you show your Buddy spirit everywhere."
+                "description": ""
             },
             "posts": {
                 "author": "VGU Buddy Program Marketing Team",
@@ -111,7 +111,7 @@ function getFallbackTranslations() {
             },
             "footer": {
                 "description": "Connecting students at Vietnamese-German University for an extraordinary experience.",
-                "copyright": "© 2024 VGU Buddy Program. Available in English & German."
+                "copyright": "© 2025 VGU Buddy Program. Available in English & German."
             }
         };
     }

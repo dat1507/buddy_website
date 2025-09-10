@@ -69,8 +69,6 @@ function getFallbackTranslations() {
                 "quickLinks": "Schnelle Links",
                 "support": "Unterstützung",
                 "helpCenter": "Hilfezentrum",
-                "emergency": "Notfallkontakte",
-                "mentalHealth": "Mentale Gesundheit",
                 "technical": "Technischer Support",
                 "copyright": "© 2025 VGU Buddy Programm. Alle Rechte vorbehalten. | Verfügbar auf Englisch & Deutsch"
             }
@@ -89,8 +87,6 @@ function getFallbackTranslations() {
                 "quickLinks": "Quick Links",
                 "support": "Support",
                 "helpCenter": "Help Center",
-                "emergency": "Emergency Contacts",
-                "mentalHealth": "Mental Health",
                 "technical": "Technical Support",
                 "copyright": "© 2025 VGU Buddy Program. All rights reserved. | Available in English & German"
             }
