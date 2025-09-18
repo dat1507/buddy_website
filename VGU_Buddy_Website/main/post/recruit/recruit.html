@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VGU Buddy Program</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'vgu-orange': '#FF670D',
+                        'vgu-orange-dark': '#E55D0C',
+                        'vgu-orange-light': '#FF8A3B',
+                        'vgu-black': '#000000',
+                        'vgu-surface': '#1F1F1F',
+                        'vgu-text': '#EFEFEF',
+                        'vgu-muted': '#BDBDBD'
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="recruit.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.6.6/css/flag-icons.min.css">
+    <link rel="icon" type="image/png" href="../../images/vguBuddy_logo.png">
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9760834b34598976',t:'MTc1NjM0OTU0OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+</head>
+
+<body class="bg-vgu-black text-vgu-text overflow-x-hidden">
+    <!-- Header -->
+    <header class="fixed top-0 w-full z-50 bg-vgu-black/95 backdrop-blur-sm border-b border-vgu-surface/50">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                    <a href="../../index.html">
+                        <img src="../../images/vguBuddy_logo.png" alt="VGU Buddy Logo" class="w-12 h-12 rounded-xl object-cover">
+                    </a>
+                    <a href="../../index.html" class="font-bold text-xl text-vgu-text">VGU Buddy</a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <nav class="hidden lg:flex items-center space-x-8">
+                    <a href="../../index.html" class="text-vgu-text hover:text-vgu-orange transition-colors" data-i18n="nav.home">Home</a>
+                    <a href="#about" class="text-vgu-text hover:text-vgu-orange transition-colors" data-i18n="nav.about">About</a>
+                    <a href="#features" class="text-vgu-text hover:text-vgu-orange transition-colors" data-i18n="nav.features">Features</a>
+                    <a href="#community" class="text-vgu-text hover:text-vgu-orange transition-colors" data-i18n="nav.community">Community</a>
+                    <a href="#contact" class="text-vgu-text hover:text-vgu-orange transition-colors" data-i18n="nav.contact">Contact</a>
+                </nav>
+                
+                <!-- Language Toggle -->
+                <div class="hidden lg:flex items-center space-x-4">
+                    <button 
+                        id="languageToggle" 
+                        onclick="toggleLanguage()" 
+                        class="language-toggle flex items-center space-x-2 px-3 py-2 rounded-lg bg-vgu-surface hover:bg-vgu-surface/80 transition-all duration-200"
+                        aria-pressed="false"
+                        aria-label="Toggle language">
+                        <i id="languageFlag" class="fas fa-flag text-blue-500"></i>
+                        <span id="languageCode" class="text-sm font-semibold text-vgu-muted">EN</span>
+                    </button>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button onclick="toggleMobileMenu()" class="lg:hidden p-2 text-vgu-text hover:text-vgu-orange transition-colors">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="mobile-menu fixed top-0 right-0 h-full w-80 bg-vgu-surface shadow-2xl z-50 lg:hidden">
+            <div class="p-6 bg-vgu-black">
+                <div class="flex justify-between items-center mb-8">
+                    <h2 class="text-xl font-bold text-vgu-text">Menu</h2>
+                    <button onclick="toggleMobileMenu()" class="p-2 text-vgu-text hover:text-vgu-orange transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+                
+                <!-- Mobile Language Toggle -->
+                <div class="mb-6">
+                    <button 
+                        onclick="toggleLanguage()" 
+                        class="w-full flex items-center justify-between p-3 rounded-lg bg-vgu-black hover:bg-vgu-black/80 transition-all duration-200">
+                        <div class="flex items-center space-x-3">
+                            <i id="mobileLanguageFlag" class="fas fa-flag text-blue-500"></i>
+                            <span id="mobileLanguageCode" class="font-semibold text-vgu-text">English</span>
+                        </div>
+                        <svg class="w-4 h-4 text-vgu-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l4-4 4 4m0 6l-4 4-4-4"></path>
+                        </svg>
+                    </button>
+                </div>
+                                
+                <nav class="space-y-2 mb-8">
+                    <a href="#home" class="block px-4 py-3 text-vgu-text hover:text-vgu-orange hover:bg-vgu-black rounded-lg transition-colors" data-i18n="nav.home">Home</a>
+                    <a href="#about" class="block px-4 py-3 text-vgu-text hover:text-vgu-orange hover:bg-vgu-black rounded-lg transition-colors" data-i18n="nav.about">About</a>
+                    <a href="#features" class="block px-4 py-3 text-vgu-text hover:text-vgu-orange hover:bg-vgu-black rounded-lg transition-colors" data-i18n="nav.features">Features</a>
+                    <a href="#community" class="block px-4 py-3 text-vgu-text hover:text-vgu-orange hover:bg-vgu-black rounded-lg transition-colors" data-i18n="nav.community">Community</a>
+                    <a href="#contact" class="block px-4 py-3 text-vgu-text hover:text-vgu-orange hover:bg-vgu-black rounded-lg transition-colors" data-i18n="nav.contact">Contact</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+
+    <main class="pt-20 min-h-screen bg-gradient-to-br from-vgu-surface to-vgu-black">
+        <div class="container">
+            <article class="article-container">
+                
+                <!-- Image Section -->
+                <section class="image-section" aria-labelledby="image-caption">
+                    <figure class="hero-image-container">
+                        <img 
+                            id="hero-image"
+                            src="../../images/recruit.jpg" 
+                            alt="Grand Recruitment"
+                            class="hero-image"
+                            loading="eager">
+                        
+                        <!-- Image Caption -->
+                        <figcaption id="image-caption" class="image-caption" data-i18n="article.caption">
+                            Grand Recruitment
+                        </figcaption>
+                    </figure>
+                    
+                    <!-- Thumbnail Gallery -->
+                    <div class="thumbnail-gallery" role="group" aria-label="Additional images">
+                        <button class="thumbnail active" data-src="../../images/go_out_day.png" data-caption="Go Out Day">
+                            <img src="../../images/recruit.jpg" alt="Grand Recruitment">
+                        </button>
+                    </div>
+                </section>
+
+
+                <!-- Content Section -->
+                <section class="content-section">
+                    <header class="article-header">
+                        <h1 class="article-title" data-i18n="article.title">Go Out Dat</h1>
+                        <time class="article-date" data-i18n="article.date" datetime="2025-09-10">
+                            September 19th, 2025
+                        </time>
+                    </header>
+
+                    <!-- Article Summary -->
+                    <div class="article-summary">
+                        <p data-i18n-html="article.summary">
+                            👉 𝐆𝐫𝐚𝐧𝐝 𝐑𝐞𝐜𝐫𝐮𝐢𝐭𝐦𝐞𝐧𝐭 𝐢𝐬 𝐧𝐨𝐰 𝐎𝐏𝐄𝐍!<br>Are you ready to land on the Buddy planet? If yes, then why wait? Scroll down and hit that recruitment form 🫵
+                        </p>
+                    </div>
+
+                    <!-- Article Content -->
+                    <div class="article-content">
+                        <!-- Always visible paragraph -->
+                        <p class="content-paragraph" data-i18n-html="article.paragraph1">
+                            𝐖𝐡𝐲 𝐬𝐡𝐨𝐮𝐥𝐝 𝐲𝐨𝐮 𝐣𝐨𝐢𝐧 𝐭𝐡𝐞 𝐁𝐮𝐝𝐝𝐲 𝐏𝐫𝐨𝐠𝐫𝐚𝐦?<br>
+                                - A dynamic, professional, and super fun environment.<br>
+                                - Make friends with international students.<br>
+                                - Enjoy warm gatherings, charity trips, and fun activities with the IS community.<br>
+                                - Develop soft skills and gain hands-on experience.<br>
+                                🔥 (Bonus) Feel the adrenaline of last-minute event rushes (just for fun😎).
+                        </p>
+
+                        <!-- Expandable content -->
+                        <div id="expandable-content" class="expandable-content" aria-expanded="false">
+                            <p class="content-paragraph" data-i18n-html="article.paragraph2">
+                                𝐌𝐨𝐫𝐞 𝐩𝐞𝐫𝐤𝐬 𝐢𝐧𝐜𝐥𝐮𝐝𝐞:<br>
+                                    - Receive certificates that recognize your contributions.<br>
+                                    - Work directly with the VGU International Office.<br>
+                                    - Join exciting field trips and events with the Buddy Team & exchange students.<br>
+                                    - Gain valuable experience in event organizing, program development, and thriving in a global community.
+                            </p>
+
+                            <p class="content-paragraph" data-i18n-html="article.paragraph3">
+                                Are you triggered by all these benefits? Then this is your sign: 𝐖𝐄 𝐍𝐄𝐄𝐃 𝐘𝐎𝐔!<br>
+                                    📌 𝐑𝐞𝐜𝐫𝐮𝐢𝐭𝐦𝐞𝐧𝐭 𝐅𝐨𝐫𝐦 & 𝐉𝐨𝐛 𝐃𝐞𝐬𝐜𝐫𝐢𝐩𝐭𝐢𝐨𝐧: 𝐏𝐥𝐞𝐚𝐬𝐞 𝐜𝐡𝐞𝐜𝐤 𝐲𝐨𝐮𝐫 𝐞𝐦𝐚𝐢𝐥 𝐟𝐨𝐫 𝐦𝐨𝐫𝐞 𝐢𝐧𝐟𝐨!<br>
+                                    ⏳ 𝐃𝐞𝐚𝐝𝐥𝐢𝐧𝐞: 𝟐𝟑:𝟓𝟗 𝐨𝐧 𝐒𝐞𝐩𝐭𝐞𝐦𝐛𝐞𝐫 𝟐𝟖, 𝟐𝟎𝟐𝟓<br>
+                                    Got any questions? Don’t hesitate to message us at <a href="https://www.facebook.com/VGUBuddyProgram" targer="blank" class="transition-colors duration-300 hover:text-[#FF7A00]" >𝐕𝐆𝐔 𝐁𝐮𝐝𝐝𝐲 𝐏𝐫𝐨𝐠𝐫𝐚𝐦</a> – we’re always here for you. And psst… don’t forget to invite your friends to join too, because Buddy fun is always better when doubled! 💫
+                            </p>
+                        </div>
+
+                        <!-- Read More Button -->
+                        <button 
+                            id="read-more-btn" 
+                            class="read-more-btn"
+                            aria-expanded="false"
+                            aria-controls="expandable-content"
+                            data-i18n="article.show_more">
+                            Show More
+                        </button>
+                    </div>
+
+                </section>
+
+            </article>
+        </div>
+    </main>
+
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-vgu-surface py-16">
+      <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="grid md:grid-cols-4 gap-8">
+          <div class="md:col-span-2">
+            <div class="flex items-center space-x-3 mb-6">
+              <img
+                src="../../images/vguBuddy_logo.png"
+                alt="VGU Buddy Logo"
+                class="w-12 h-12 rounded-xl object-cover"
+              />
+              <span class="font-bold text-xl text-vgu-text">VGU Buddy</span>
+            </div>
+            <p
+              class="text-vgu-muted leading-relaxed mb-6"
+              data-i18n="footer.description"
+            >
+              Connecting students at Vietnamese-German University for an
+              extraordinary academic and social experience.
+            </p>
+            <div class="flex space-x-4">
+              <a
+                href="https://www.facebook.com/VGUBuddyProgram"
+                target="_blank"
+              >
+                <div
+                  class="w-10 h-10 bg-vgu-black rounded-lg flex items-center justify-center hover:bg-vgu-orange transition-colors cursor-pointer"
+                >
+                  <i
+                    data-lucide="facebook"
+                    class="text-vgu-orange hover:text-vgu-black w-6 h-6"
+                  ></i>
+                </div>
+              </a>
+              <a
+                href="https://www.instagram.com/buddyprogram_vgu/"
+                target="_blank"
+              >
+                <div
+                  class="w-10 h-10 bg-vgu-black rounded-lg flex items-center justify-center hover:bg-vgu-orange transition-colors cursor-pointer"
+                >
+                  <i
+                    data-lucide="instagram"
+                    class="text-vgu-orange hover:text-vgu-black w-6 h-6"
+                  ></i>
+                </div>
+              </a>
+              <a href="#home">
+                <div
+                  class="w-10 h-10 bg-vgu-black rounded-lg flex items-center justify-center hover:bg-vgu-orange transition-colors cursor-pointer"
+                >
+                  <i
+                    data-lucide="globe"
+                    class="text-vgu-orange hover:text-vgu-black w-6 h-6"
+                  ></i>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <h4
+              class="font-bold text-lg text-vgu-text mb-4"
+              data-i18n="footer.quickLinks"
+            >
+              Quick Links
+            </h4>
+            <ul class="space-y-2">
+              <li>
+                <a
+                  href="#home"
+                  class="text-vgu-muted hover:text-vgu-orange transition-colors"
+                  data-i18n="nav.home"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#about"
+                  class="text-vgu-muted hover:text-vgu-orange transition-colors"
+                  data-i18n="nav.about"
+                  >About</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#features"
+                  class="text-vgu-muted hover:text-vgu-orange transition-colors"
+                  data-i18n="nav.features"
+                  >Features</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#community"
+                  class="text-vgu-muted hover:text-vgu-orange transition-colors"
+                  data-i18n="nav.community"
+                  >Community</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4
+              class="font-bold text-lg text-vgu-text mb-4"
+              data-i18n="footer.support"
+            >
+              Support
+            </h4>
+            <ul class="space-y-2">
+              <li>
+                <a
+                  href="https://vgu.edu.vn/international-office"
+                  class="text-vgu-muted hover:text-vgu-orange transition-colors"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-i18n="footer.helpCenter"
+                >
+                International Office
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://chatgpt.com/"
+                  class="text-vgu-muted hover:text-vgu-orange transition-colors"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-i18n="footer.technical"
+                >
+                  Technical Support
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="border-t border-vgu-black mt-12 pt-8 text-center">
+          <p class="text-vgu-muted" data-i18n="footer.copyright">
+            &copy; 2025 VGU Buddy Program. All rights reserved. | Available in
+            English & German
+          </p>
+        </div>
+      </div>
+    </footer>
+
+
+    <script src="recruit.js"></script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97128657528985e9',t:'MTc1NTUzMTc4NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+<script>
+  lucide.createIcons();
+</script>
+</body>
+
