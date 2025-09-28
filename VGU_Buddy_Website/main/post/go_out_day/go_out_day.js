@@ -198,7 +198,7 @@ document.addEventListener("DOMContentLoaded", initializeLanguage);
     en: {
       article: {
         title: "Go Out Day",
-        date: " September 19th, 2025",
+        date: " October 05th, 2025",
         caption: "Go Out Day",
         summary:
           "🌏Go Out Day – Explore Củ Chi Tunnels with VGU International Students🌏\n\nJoin us for the grand finale of Welcome Week – Go Out Day!",
@@ -207,7 +207,7 @@ document.addEventListener("DOMContentLoaded", initializeLanguage);
         paragraph2:
           "✨ Highlight Activities:\n+ Gathering & Departure – Meet at VGU Campus, Bến Cát\n+ Exploration – Guided tour of Củ Chi Tunnels with an English-speaking guide\n+ Bonding Activities – Team building fun: archery, SUP paddling, fishing, and more!",
         paragraph3:
-          "📌 Event Information:\nDate: 19/09/2025\nTime: 07:00 – 18:00\nLocation: Củ Chi Tunnel\nParticipants: International Students",
+          "📌 Event Information:\nDate: 05/10/2025\nTime: 07:00 – 18:00\nLocation: Củ Chi Tunnel\nParticipants: International Students",
         show_more: "Show More",
         show_less: "Show Less",
       },
