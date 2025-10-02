@@ -41,7 +41,8 @@ function getFallbackTranslations() {
                 "about": "Über uns",
                 "features": "Funktionen",
                 "community": "Community",
-                "contact": "Kontakt"
+                "contact": "Kontakt",
+                "surbook": "Überlebensbuch"
             },
             "hero": {
                 "title1": "Verbinde dich mit",
@@ -152,7 +153,8 @@ function getFallbackTranslations() {
                 "about": "About",
                 "features": "Features",
                 "community": "Community",
-                "contact": "Contact"
+                "contact": "Contact",
+                "surbook": "Survival Book"
             },
             "hero": {
                 "title1": "Connect with",
