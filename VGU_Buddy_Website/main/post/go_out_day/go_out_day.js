@@ -62,6 +62,7 @@ function getFallbackTranslations() {
         features: "Funktionen",
         community: "Gemeinschaft",
         contact: "Kontakt",
+        surbook: "Überlebensbuch"
       },
       footer: {
         description:
@@ -84,6 +85,7 @@ function getFallbackTranslations() {
         features: "Features",
         community: "Community",
         contact: "Contact",
+        surbook: "Survival Book"
       },
       footer: {
         description:

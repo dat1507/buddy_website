@@ -79,12 +79,17 @@
       })();
     </script>
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"
+    ></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-QH5RXQ579N');
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-QH5RXQ579N");
     </script>
   </head>
   <body class="bg-vgu-black text-vgu-text overflow-x-hidden">
@@ -100,7 +105,7 @@
           <div class="flex items-center space-x-3">
             <a href="../index.html">
               <img
-                src="../images/vguBuddy_logo.png"
+                src="../../images/vguBuddy_logo.png"
                 alt="VGU Buddy Logo"
                 class="w-12 h-12 rounded-xl object-cover"
               />
@@ -109,10 +114,11 @@
               >VGU Buddy</a
             >
           </div>
+
           <!-- Desktop Navigation -->
           <nav class="hidden lg:flex items-center space-x-8">
             <a
-              href="../index.html"
+              href="#home"
               class="text-vgu-text hover:text-vgu-orange transition-colors"
               data-i18n="nav.home"
               >Home</a
@@ -141,7 +147,16 @@
               data-i18n="nav.contact"
               >Contact</a
             >
+            <a
+              href="../images/Survival_Book.pdf"
+              class="text-vgu-text hover:text-vgu-orange transition-colors"
+              data-i18n="nav.surbook"
+              target="_blank"
+            >
+              Survival Book
+            </a>
           </nav>
+
           <!-- Language Toggle & Auth -->
           <div class="hidden lg:flex items-center space-x-4">
             <!-- Language Toggle -->
@@ -152,10 +167,15 @@
               aria-pressed="false"
               aria-label="Toggle language"
             >
-              <i id="languageFlag" class="fi fi-gb" style="font-size:16px;"></i>
-              <span id="languageCode" class="text-sm font-semibold text-vgu-muted">EN</span>
+              <i id="languageFlag" class="fas fa-flag text-blue-500"></i>
+              <span
+                id="languageCode"
+                class="text-sm font-semibold text-vgu-muted"
+                >EN</span
+              >
             </button>
           </div>
+
           <!-- Mobile Menu Button -->
           <button
             onclick="toggleMobileMenu()"
@@ -177,6 +197,7 @@
           </button>
         </div>
       </div>
+
       <!-- Mobile Menu -->
       <div
         id="mobileMenu"
@@ -204,6 +225,7 @@
               </svg>
             </button>
           </div>
+
           <!-- Mobile Language Toggle -->
           <div class="mb-6">
             <button
@@ -236,6 +258,7 @@
               </svg>
             </button>
           </div>
+
           <nav class="space-y-2 mb-8">
             <a
               href="#home"
@@ -267,6 +290,13 @@
               data-i18n="nav.contact"
               >Contact</a
             >
+            <a
+              href="../images/Survival_Book.pdf"
+              class="block px-4 py-3 text-vgu-text hover:text-vgu-orange hover:bg-vgu-black rounded-lg transition-colors"
+              data-i18n="nav.surbook"
+            >
+              Survival Book
+            </a>
           </nav>
         </div>
       </div>
@@ -286,7 +316,7 @@
         >
           Get the latest updates, announcements, and news from the VGU Buddy
           Program community.
-        </p>
+        </p> 
       </div>
       <!-- Posts Feed -->
       <div id="postsFeed" class="space-y-8">
@@ -301,7 +331,7 @@
               <div
                 class="w-12 h-12 bg-vgu-black rounded-full flex items-center justify-center"
               >
-                <img src="../images/vguBuddy_logo.png">
+                <img src="../images/vguBuddy_logo.png" />
               </div>
               <div>
                 <h3
@@ -319,7 +349,13 @@
                 class="text-vgu-text leading-relaxed"
                 data-i18n="posts.post1.caption"
               >
-                🎉 Exciting news! We’re thrilled to introduce the official VGU Buddy Program Cup – the perfect companion for your daily coffee, tea, or late-night study sessions. Designed with a sleek look and our signature Buddy spirit, this cup not only keeps your drinks warm but also shows off your community pride wherever you go. Limited stock is available, so don’t miss the chance to grab yours and sip the Buddy way!
+                🎉 Exciting news! We’re thrilled to introduce the official VGU
+                Buddy Program Cup – the perfect companion for your daily coffee,
+                tea, or late-night study sessions. Designed with a sleek look
+                and our signature Buddy spirit, this cup not only keeps your
+                drinks warm but also shows off your community pride wherever you
+                go. Limited stock is available, so don’t miss the chance to grab
+                yours and sip the Buddy way!
               </p>
               <button
                 class="read-more-btn text-vgu-orange hover:text-vgu-orange-light transition-colors text-sm font-semibold mt-2 hidden"
@@ -332,10 +368,12 @@
             <!-- Post Image -->
             <div class="post-media mb-4">
               <!-- EDIT: Replace with your image URL -->
-              <img src="../images/buddy_cup.jpg">
+              <img src="../images/buddy_cup.jpg" />
             </div>
             <!-- Post Actions -->
-            <div class="flex items-center space-x-6 pt-4 border-t border-vgu-surface/50">
+            <div
+              class="flex items-center space-x-6 pt-4 border-t border-vgu-surface/50"
+            >
               <!-- Shop Now -->
               <button
                 class="flex items-center space-x-2 text-vgu-muted hover:text-vgu-orange transition-colors"
@@ -357,7 +395,7 @@
               <div
                 class="w-12 h-12 bg-vgu-black rounded-full flex items-center justify-center"
               >
-                <img src="../images/vguBuddy_logo.png">
+                <img src="../images/vguBuddy_logo.png" />
               </div>
               <div>
                 <h3
@@ -375,16 +413,24 @@
                 class="text-vgu-text leading-relaxed"
                 data-i18n="posts.post1.caption"
               >
-                🎉 Exciting news! We’re thrilled to present the official VGU Buddy Program Keychain – a small but mighty accessory that keeps your keys secure while showing off your Buddy pride everywhere you go. With its sleek design and durable finish, this keychain is the perfect way to carry a piece of the Buddy community with you every day. Limited stock is available, so don’t miss the chance to grab yours and unlock the Buddy spirit!
+                🎉 Exciting news! We’re thrilled to present the official VGU
+                Buddy Program Keychain – a small but mighty accessory that keeps
+                your keys secure while showing off your Buddy pride everywhere
+                you go. With its sleek design and durable finish, this keychain
+                is the perfect way to carry a piece of the Buddy community with
+                you every day. Limited stock is available, so don’t miss the
+                chance to grab yours and unlock the Buddy spirit!
               </p>
             </div>
             <!-- Post Image -->
             <div class="post-media mb-4">
               <!-- EDIT: Replace with your image URL -->
-              <img src="../images/key_chain.jpg">
+              <img src="../images/key_chain.jpg" />
             </div>
             <!-- Post Actions -->
-            <div class="flex items-center space-x-6 pt-4 border-t border-vgu-surface/50">
+            <div
+              class="flex items-center space-x-6 pt-4 border-t border-vgu-surface/50"
+            >
               <!-- Shop Now -->
               <button
                 class="flex items-center space-x-2 text-vgu-muted hover:text-vgu-orange transition-colors"

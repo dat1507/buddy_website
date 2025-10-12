@@ -61,7 +61,8 @@ function getFallbackTranslations() {
                 "about": "Über uns",
                 "features": "Funktionen",
                 "community": "Gemeinschaft",
-                "contact": "Kontakt"
+                "contact": "Kontakt",
+                "surbook": "Überlensbuch"
             },
             "footer": {
                 "description": "Verbindung von Studenten an der Vietnamesisch-Deutschen Universität für eine außergewöhnliche akademische und soziale Erfahrung.",
@@ -81,7 +82,8 @@ function getFallbackTranslations() {
                 "about": "About",
                 "features": "Features",
                 "community": "Community",
-                "contact": "Contact"
+                "contact": "Contact",
+                "surbook": "Survival Book"
             },
             "footer": {
                 "description": "Connecting students at Vietnamese-German University for an extraordinary academic and social experience.",

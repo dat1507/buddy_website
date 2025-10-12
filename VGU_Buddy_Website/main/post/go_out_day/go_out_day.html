@@ -1,211 +1,421 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>VGU Buddy Program</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'vgu-orange': '#FF670D',
-                        'vgu-orange-dark': '#E55D0C',
-                        'vgu-orange-light': '#FF8A3B',
-                        'vgu-black': '#000000',
-                        'vgu-surface': '#1F1F1F',
-                        'vgu-text': '#EFEFEF',
-                        'vgu-muted': '#BDBDBD'
-                    }
-                }
-            }
-        }
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "vgu-orange": "#FF670D",
+              "vgu-orange-dark": "#E55D0C",
+              "vgu-orange-light": "#FF8A3B",
+              "vgu-black": "#000000",
+              "vgu-surface": "#1F1F1F",
+              "vgu-text": "#EFEFEF",
+              "vgu-muted": "#BDBDBD",
+            },
+          },
+        },
+      };
     </script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="go_out_day.css">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="go_out_day.css" />
     <script src="https://unpkg.com/lucide@latest"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.6.6/css/flag-icons.min.css">
-    <link rel="icon" type="image/png" href="../../images/vguBuddy_logo.png">
-    <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9760834b34598976',t:'MTc1NjM0OTU0OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.6.6/css/flag-icons.min.css"
+    />
+    <link rel="icon" type="image/png" href="../../images/vguBuddy_logo.png" />
+    <script>
+      (function () {
+        function c() {
+          var b = a.contentDocument || a.contentWindow.document;
+          if (b) {
+            var d = b.createElement("script");
+            d.innerHTML =
+              "window.__CF$cv$params={r:'9760834b34598976',t:'MTc1NjM0OTU0OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
+            b.getElementsByTagName("head")[0].appendChild(d);
+          }
+        }
+        if (document.body) {
+          var a = document.createElement("iframe");
+          a.height = 1;
+          a.width = 1;
+          a.style.position = "absolute";
+          a.style.top = 0;
+          a.style.left = 0;
+          a.style.border = "none";
+          a.style.visibility = "hidden";
+          document.body.appendChild(a);
+          if ("loading" !== document.readyState) c();
+          else if (window.addEventListener)
+            document.addEventListener("DOMContentLoaded", c);
+          else {
+            var e = document.onreadystatechange || function () {};
+            document.onreadystatechange = function (b) {
+              e(b);
+              "loading" !== document.readyState &&
+                ((document.onreadystatechange = e), c());
+            };
+          }
+        }
+      })();
+    </script>
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"
+    ></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-QH5RXQ579N');
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-QH5RXQ579N");
     </script>
-</head>
+  </head>
 
-<body class="bg-vgu-black text-vgu-text overflow-x-hidden">
+  <body class="bg-vgu-black text-vgu-text overflow-x-hidden">
     <!-- Header -->
-    <header class="fixed top-0 w-full z-50 bg-vgu-black/95 backdrop-blur-sm border-b border-vgu-surface/50">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <!-- Logo -->
-                <div class="flex items-center space-x-3">
-                    <a href="../../index.html">
-                        <img src="../../images/vguBuddy_logo.png" alt="VGU Buddy Logo" class="w-12 h-12 rounded-xl object-cover">
-                    </a>
-                    <a href="../../index.html" class="font-bold text-xl text-vgu-text">VGU Buddy</a>
-                </div>
-                
-                <!-- Desktop Navigation -->
-                <nav class="hidden lg:flex items-center space-x-8">
-                    <a href="../../index.html" class="text-vgu-text hover:text-vgu-orange transition-colors" data-i18n="nav.home">Home</a>
-                    <a href="#about" class="text-vgu-text hover:text-vgu-orange transition-colors" data-i18n="nav.about">About</a>
-                    <a href="#features" class="text-vgu-text hover:text-vgu-orange transition-colors" data-i18n="nav.features">Features</a>
-                    <a href="#community" class="text-vgu-text hover:text-vgu-orange transition-colors" data-i18n="nav.community">Community</a>
-                    <a href="#contact" class="text-vgu-text hover:text-vgu-orange transition-colors" data-i18n="nav.contact">Contact</a>
-                </nav>
-                
-                <!-- Language Toggle -->
-                <div class="hidden lg:flex items-center space-x-4">
-                    <button 
-                        id="languageToggle" 
-                        onclick="toggleLanguage()" 
-                        class="language-toggle flex items-center space-x-2 px-3 py-2 rounded-lg bg-vgu-surface hover:bg-vgu-surface/80 transition-all duration-200"
-                        aria-pressed="false"
-                        aria-label="Toggle language">
-                        <i id="languageFlag" class="fas fa-flag text-blue-500"></i>
-                        <span id="languageCode" class="text-sm font-semibold text-vgu-muted">EN</span>
-                    </button>
-                </div>
-                
-                <!-- Mobile Menu Button -->
-                <button onclick="toggleMobileMenu()" class="lg:hidden p-2 text-vgu-text hover:text-vgu-orange transition-colors">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
-                </button>
-            </div>
+    <header
+      class="fixed top-0 w-full z-50 bg-vgu-black/95 backdrop-blur-sm border-b border-vgu-surface/50"
+    >
+      <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <!-- Logo -->
+          <div class="flex items-center space-x-3">
+            <a href="../../index.html">
+              <img
+                src="../../images/vguBuddy_logo.png"
+                alt="VGU Buddy Logo"
+                class="w-12 h-12 rounded-xl object-cover"
+              />
+            </a>
+            <a href="../../index.html" class="font-bold text-xl text-vgu-text"
+              >VGU Buddy</a
+            >
+          </div>
+
+          <!-- Desktop Navigation -->
+          <nav class="hidden lg:flex items-center space-x-8">
+            <a
+              href="#home"
+              class="text-vgu-text hover:text-vgu-orange transition-colors"
+              data-i18n="nav.home"
+              >Home</a
+            >
+            <a
+              href="#about"
+              class="text-vgu-text hover:text-vgu-orange transition-colors"
+              data-i18n="nav.about"
+              >About</a
+            >
+            <a
+              href="#features"
+              class="text-vgu-text hover:text-vgu-orange transition-colors"
+              data-i18n="nav.features"
+              >Features</a
+            >
+            <a
+              href="#community"
+              class="text-vgu-text hover:text-vgu-orange transition-colors"
+              data-i18n="nav.community"
+              >Community</a
+            >
+            <a
+              href="#contact"
+              class="text-vgu-text hover:text-vgu-orange transition-colors"
+              data-i18n="nav.contact"
+              >Contact</a
+            >
+            <a
+              href="../../images/Survival_Book.pdf"
+              class="text-vgu-text hover:text-vgu-orange transition-colors"
+              data-i18n="nav.surbook"
+              target="_blank"
+            >
+              Survival Book
+            </a>
+          </nav>
+
+          <!-- Language Toggle & Auth -->
+          <div class="hidden lg:flex items-center space-x-4">
+            <!-- Language Toggle -->
+            <button
+              id="languageToggle"
+              onclick="toggleLanguage()"
+              class="language-toggle flex items-center space-x-2 px-3 py-2 rounded-lg bg-vgu-surface hover:bg-vgu-surface/80 transition-all duration-200"
+              aria-pressed="false"
+              aria-label="Toggle language"
+            >
+              <i id="languageFlag" class="fas fa-flag text-blue-500"></i>
+              <span
+                id="languageCode"
+                class="text-sm font-semibold text-vgu-muted"
+                >EN</span
+              >
+            </button>
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <button
+            onclick="toggleMobileMenu()"
+            class="lg:hidden p-2 text-vgu-text hover:text-vgu-orange transition-colors"
+          >
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              ></path>
+            </svg>
+          </button>
         </div>
-        
-        <!-- Mobile Menu -->
-        <div id="mobileMenu" class="mobile-menu fixed top-0 right-0 h-full w-80 bg-vgu-surface shadow-2xl z-50 lg:hidden">
-            <div class="p-6 bg-vgu-black">
-                <div class="flex justify-between items-center mb-8">
-                    <h2 class="text-xl font-bold text-vgu-text">Menu</h2>
-                    <button onclick="toggleMobileMenu()" class="p-2 text-vgu-text hover:text-vgu-orange transition-colors">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                        </svg>
-                    </button>
-                </div>
-                
-                <!-- Mobile Language Toggle -->
-                <div class="mb-6">
-                    <button 
-                        onclick="toggleLanguage()" 
-                        class="w-full flex items-center justify-between p-3 rounded-lg bg-vgu-black hover:bg-vgu-black/80 transition-all duration-200">
-                        <div class="flex items-center space-x-3">
-                            <i id="mobileLanguageFlag" class="fas fa-flag text-blue-500"></i>
-                            <span id="mobileLanguageCode" class="font-semibold text-vgu-text">English</span>
-                        </div>
-                        <svg class="w-4 h-4 text-vgu-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l4-4 4 4m0 6l-4 4-4-4"></path>
-                        </svg>
-                    </button>
-                </div>
-                                
-                <nav class="space-y-2 mb-8">
-                    <a href="#home" class="block px-4 py-3 text-vgu-text hover:text-vgu-orange hover:bg-vgu-black rounded-lg transition-colors" data-i18n="nav.home">Home</a>
-                    <a href="#about" class="block px-4 py-3 text-vgu-text hover:text-vgu-orange hover:bg-vgu-black rounded-lg transition-colors" data-i18n="nav.about">About</a>
-                    <a href="#features" class="block px-4 py-3 text-vgu-text hover:text-vgu-orange hover:bg-vgu-black rounded-lg transition-colors" data-i18n="nav.features">Features</a>
-                    <a href="#community" class="block px-4 py-3 text-vgu-text hover:text-vgu-orange hover:bg-vgu-black rounded-lg transition-colors" data-i18n="nav.community">Community</a>
-                    <a href="#contact" class="block px-4 py-3 text-vgu-text hover:text-vgu-orange hover:bg-vgu-black rounded-lg transition-colors" data-i18n="nav.contact">Contact</a>
-                </nav>
-            </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div
+        id="mobileMenu"
+        class="mobile-menu fixed top-0 right-0 h-full w-80 bg-vgu-surface shadow-2xl z-50 lg:hidden"
+      >
+        <div class="p-6 bg-vgu-black">
+          <div class="flex justify-between items-center mb-8">
+            <h2 class="text-xl font-bold text-vgu-text">Menu</h2>
+            <button
+              onclick="toggleMobileMenu()"
+              class="p-2 text-vgu-text hover:text-vgu-orange transition-colors"
+            >
+              <svg
+                class="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M6 18L18 6M6 6l12 12"
+                ></path>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Mobile Language Toggle -->
+          <div class="mb-6">
+            <button
+              onclick="toggleLanguage()"
+              class="w-full flex items-center justify-between p-3 rounded-lg bg-vgu-black hover:bg-vgu-black/80 transition-all duration-200"
+            >
+              <div class="flex items-center space-x-3">
+                <i
+                  id="mobileLanguageFlag"
+                  class="fas fa-flag text-blue-500"
+                ></i>
+                <span
+                  id="mobileLanguageCode"
+                  class="font-semibold text-vgu-text"
+                  >English</span
+                >
+              </div>
+              <svg
+                class="w-4 h-4 text-vgu-muted"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M8 9l4-4 4 4m0 6l-4 4-4-4"
+                ></path>
+              </svg>
+            </button>
+          </div>
+
+          <nav class="space-y-2 mb-8">
+            <a
+              href="#home"
+              class="block px-4 py-3 text-vgu-text hover:text-vgu-orange hover:bg-vgu-black rounded-lg transition-colors"
+              data-i18n="nav.home"
+              >Home</a
+            >
+            <a
+              href="#about"
+              class="block px-4 py-3 text-vgu-text hover:text-vgu-orange hover:bg-vgu-black rounded-lg transition-colors"
+              data-i18n="nav.about"
+              >About</a
+            >
+            <a
+              href="#features"
+              class="block px-4 py-3 text-vgu-text hover:text-vgu-orange hover:bg-vgu-black rounded-lg transition-colors"
+              data-i18n="nav.features"
+              >Features</a
+            >
+            <a
+              href="#community"
+              class="block px-4 py-3 text-vgu-text hover:text-vgu-orange hover:bg-vgu-black rounded-lg transition-colors"
+              data-i18n="nav.community"
+              >Community</a
+            >
+            <a
+              href="#contact"
+              class="block px-4 py-3 text-vgu-text hover:text-vgu-orange hover:bg-vgu-black rounded-lg transition-colors"
+              data-i18n="nav.contact"
+              >Contact</a
+            >
+            <a
+              href="../../images/Survival_Book.pdf"
+              class="block px-4 py-3 text-vgu-text hover:text-vgu-orange hover:bg-vgu-black rounded-lg transition-colors"
+              data-i18n="nav.surbook"
+            >
+              Survival Book
+            </a>
+          </nav>
         </div>
+      </div>
     </header>
 
+    <main
+      class="pt-20 min-h-screen bg-gradient-to-br from-vgu-surface to-vgu-black"
+    >
+      <div class="container">
+        <article class="article-container">
+          <!-- Image Section -->
+          <section class="image-section" aria-labelledby="image-caption">
+            <figure class="hero-image-container">
+              <img
+                id="hero-image"
+                src="../../images/go_out_fix.jpeg"
+                alt="Go Out Day"
+                class="hero-image"
+                loading="eager"
+              />
 
-    <main class="pt-20 min-h-screen bg-gradient-to-br from-vgu-surface to-vgu-black">
-        <div class="container">
-            <article class="article-container">
-                
-                <!-- Image Section -->
-                <section class="image-section" aria-labelledby="image-caption">
-                    <figure class="hero-image-container">
-                        <img 
-                            id="hero-image"
-                            src="../../images/go_out_fix.jpeg" 
-                            alt="Go Out Day"
-                            class="hero-image"
-                            loading="eager">
-                        
-                        <!-- Image Caption -->
-                        <figcaption id="image-caption" class="image-caption" data-i18n="article.caption">
-                            Go Out Day
-                        </figcaption>
-                    </figure>
-                    
-                    <!-- Thumbnail Gallery -->
-                    <div class="thumbnail-gallery" role="group" aria-label="Additional images">
-                        <button class="thumbnail active" data-src="../../images/go_out_fix.jpeg" data-caption="Go Out Day">
-                            <img src="../../images/go_out_fix.jpeg" alt="Go Out Day">
-                        </button>
-                    </div>
-                </section>
+              <!-- Image Caption -->
+              <figcaption
+                id="image-caption"
+                class="image-caption"
+                data-i18n="article.caption"
+              >
+                Go Out Day
+              </figcaption>
+            </figure>
 
+            <!-- Thumbnail Gallery -->
+            <div
+              class="thumbnail-gallery"
+              role="group"
+              aria-label="Additional images"
+            >
+              <button
+                class="thumbnail active"
+                data-src="../../images/go_out_fix.jpeg"
+                data-caption="Go Out Day"
+              >
+                <img src="../../images/go_out_fix.jpeg" alt="Go Out Day" />
+              </button>
+            </div>
+          </section>
 
-                <!-- Content Section -->
-                <section class="content-section">
-                    <header class="article-header">
-                        <h1 class="article-title" data-i18n="article.title">Go Out Dat</h1>
-                        <time class="article-date" data-i18n="article.date" datetime="2025-09-10">
-                            October 05th, 2025
-                        </time>
-                    </header>
+          <!-- Content Section -->
+          <section class="content-section">
+            <header class="article-header">
+              <h1 class="article-title" data-i18n="article.title">
+                Go Out Dat
+              </h1>
+              <time
+                class="article-date"
+                data-i18n="article.date"
+                datetime="2025-09-10"
+              >
+                October 05th, 2025
+              </time>
+            </header>
 
-                    <!-- Article Summary -->
-                    <div class="article-summary">
-                        <p data-i18n-html="article.summary">
-                            🌏Go Out Day – Explore Củ Chi Tunnels with VGU International Students🌏<br><br>Join us for the grand finale of Welcome Week – Go Out Day!
-                        </p>
-                    </div>
+            <!-- Article Summary -->
+            <div class="article-summary">
+              <p data-i18n-html="article.summary">
+                🌏Go Out Day – Explore Củ Chi Tunnels with VGU International
+                Students🌏<br /><br />Join us for the grand finale of Welcome
+                Week – Go Out Day!
+              </p>
+            </div>
 
-                    <!-- Article Content -->
-                    <div class="article-content">
-                        <!-- Always visible paragraph -->
-                        <p class="content-paragraph" data-i18n-html="article.paragraph1">
-                            This special trip aims to strengthen bonds between international students, Buddies, and Vietnamese culture through an unforgettable journey to the Củ Chi Tunnels. You’ll get the chance to explore Vietnam’s history, experience local culture, and create lasting friendships in a fun, friendly atmosphere.
-                        </p>
+            <!-- Article Content -->
+            <div class="article-content">
+              <!-- Always visible paragraph -->
+              <p class="content-paragraph" data-i18n-html="article.paragraph1">
+                This special trip aims to strengthen bonds between international
+                students, Buddies, and Vietnamese culture through an
+                unforgettable journey to the Củ Chi Tunnels. You’ll get the
+                chance to explore Vietnam’s history, experience local culture,
+                and create lasting friendships in a fun, friendly atmosphere.
+              </p>
 
-                        <!-- Expandable content -->
-                        <div id="expandable-content" class="expandable-content" aria-expanded="false">
-                            <p class="content-paragraph" data-i18n-html="article.paragraph2">
-                                ✨ Highlight Activities:<br>+ Gathering & Departure – Meet at VGU Campus, Bến Cát<br>+ Exploration – Guided tour of Củ Chi Tunnels with an English-speaking guide<br>+ Bonding Activities – Team building fun: archery, SUP paddling, fishing, and more!
-                            </p>
+              <!-- Expandable content -->
+              <div
+                id="expandable-content"
+                class="expandable-content"
+                aria-expanded="false"
+              >
+                <p
+                  class="content-paragraph"
+                  data-i18n-html="article.paragraph2"
+                >
+                  ✨ Highlight Activities:<br />+ Gathering & Departure – Meet
+                  at VGU Campus, Bến Cát<br />+ Exploration – Guided tour of Củ
+                  Chi Tunnels with an English-speaking guide<br />+ Bonding
+                  Activities – Team building fun: archery, SUP paddling,
+                  fishing, and more!
+                </p>
 
-                            <p class="content-paragraph" data-i18n-html="article.paragraph3">
-                                📌 Event Information:<br>
-                                Date: 05/10/2025<br>
-                                Time: 07:00 – 18:00<br>
-                                Location: Củ Chi Tunnel<br>
-                                Participants: International Students
-                            </p>
-                        </div>
+                <p
+                  class="content-paragraph"
+                  data-i18n-html="article.paragraph3"
+                >
+                  📌 Event Information:<br />
+                  Date: 05/10/2025<br />
+                  Time: 07:00 – 18:00<br />
+                  Location: Củ Chi Tunnel<br />
+                  Participants: International Students
+                </p>
+              </div>
 
-                        <!-- Read More Button -->
-                        <button 
-                            id="read-more-btn" 
-                            class="read-more-btn"
-                            aria-expanded="false"
-                            aria-controls="expandable-content"
-                            data-i18n="article.show_more">
-                            Show More
-                        </button>
-                    </div>
-
-                </section>
-
-            </article>
-        </div>
+              <!-- Read More Button -->
+              <button
+                id="read-more-btn"
+                class="read-more-btn"
+                aria-expanded="false"
+                aria-controls="expandable-content"
+                data-i18n="article.show_more"
+              >
+                Show More
+              </button>
+            </div>
+          </section>
+        </article>
+      </div>
     </main>
-
 
     <!-- Footer -->
     <footer id="contact" class="bg-vgu-surface py-16">
@@ -326,7 +536,7 @@
                   rel="noopener noreferrer"
                   data-i18n="footer.helpCenter"
                 >
-                International Office
+                  International Office
                 </a>
               </li>
               <li>
@@ -353,11 +563,44 @@
       </div>
     </footer>
 
-
     <script src="go_out_day.js"></script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97128657528985e9',t:'MTc1NTUzMTc4NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
-<script>
-  lucide.createIcons();
-</script>
-</body>
-
+    <script>
+      (function () {
+        function c() {
+          var b = a.contentDocument || a.contentWindow.document;
+          if (b) {
+            var d = b.createElement("script");
+            d.innerHTML =
+              "window.__CF$cv$params={r:'97128657528985e9',t:'MTc1NTUzMTc4NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
+            b.getElementsByTagName("head")[0].appendChild(d);
+          }
+        }
+        if (document.body) {
+          var a = document.createElement("iframe");
+          a.height = 1;
+          a.width = 1;
+          a.style.position = "absolute";
+          a.style.top = 0;
+          a.style.left = 0;
+          a.style.border = "none";
+          a.style.visibility = "hidden";
+          document.body.appendChild(a);
+          if ("loading" !== document.readyState) c();
+          else if (window.addEventListener)
+            document.addEventListener("DOMContentLoaded", c);
+          else {
+            var e = document.onreadystatechange || function () {};
+            document.onreadystatechange = function (b) {
+              e(b);
+              "loading" !== document.readyState &&
+                ((document.onreadystatechange = e), c());
+            };
+          }
+        }
+      })();
+    </script>
+    <script>
+      lucide.createIcons();
+    </script>
+  </body>
+</html>

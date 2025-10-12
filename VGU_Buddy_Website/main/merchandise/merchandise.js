@@ -43,7 +43,8 @@ function getFallbackTranslations() {
             "nav": {
                 "home": "Startseite",
                 "events": "Veranstaltungen",
-                "community": "Gemeinschaft"
+                "community": "Gemeinschaft",
+                "surbook": "Überlebensbuch"
             },
             "welcome": {
                 "title": "Bleiben Sie mit VGU verbunden",
@@ -82,12 +83,16 @@ function getFallbackTranslations() {
             },
             "nav": {
                 "home": "Home",
-                "events": "Events",
-                "community": "Community"
+                "about": "About",
+                "features": "Features",
+                "community": "Community",
+                "contact": "Contact",
+                "surbook": "Survival Book"
+
             },
             "welcome": {
                 "title": "Stay Stylish with VGU",
-                "description": ""
+                "description": "Get the latest updates, announcements, and news from the VGU Buddy Program community."
             },
             "posts": {
                 "author": "VGU Buddy Program Marketing Team",
