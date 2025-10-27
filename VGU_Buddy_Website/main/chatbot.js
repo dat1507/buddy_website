@@ -80,7 +80,9 @@ ${userData.message}
     console.log("API Response:", data);
 
     if (!response.ok) throw new Error(data.error.message);
-    const apiResponseText = data.candidates?.[0]?.content?.parts?.[0]?.text?.trim() || "I don't know.";
+    const apiResponseText =
+      data.candidates?.[0]?.content?.parts?.[0]?.text?.trim() ||
+      "I don't know.";
     messageElement.innerText = apiResponseText;
   } catch (error) {
     console.error(error);
@@ -106,8 +108,12 @@ const handleOutgoingMessage = (e) => {
 
   // Display user message
   const messageContent = `<div class="message-text"></div>`;
-  const outgoingMessageDiv = createMessageElement(messageContent, "user-message");
-  outgoingMessageDiv.querySelector(".message-text").textContent = userData.message;
+  const outgoingMessageDiv = createMessageElement(
+    messageContent,
+    "user-message"
+  );
+  outgoingMessageDiv.querySelector(".message-text").textContent =
+    userData.message;
   chatBody.appendChild(outgoingMessageDiv);
   chatBody.scrollTo({ top: chatBody.scrollHeight, behavior: "smooth" });
 
@@ -130,7 +136,11 @@ const handleOutgoingMessage = (e) => {
           <div class="dot"></div><div class="dot"></div><div class="dot"></div>
         </div>
       </div>`;
-    const incomingMessageDiv = createMessageElement(messageContent, "bot-message", "thinking");
+    const incomingMessageDiv = createMessageElement(
+      messageContent,
+      "bot-message",
+      "thinking"
+    );
     chatBody.appendChild(incomingMessageDiv);
     chatBody.scrollTo({ top: chatBody.scrollHeight, behavior: "smooth" });
     generateBotResponse(incomingMessageDiv);
@@ -142,7 +152,12 @@ const handleOutgoingMessage = (e) => {
 // ================================
 messageInput.addEventListener("keydown", (e) => {
   const userMessage = e.target.value.trim();
-  if (e.key === "Enter" && userMessage && !e.shiftKey && window.innerWidth > 768) {
+  if (
+    e.key === "Enter" &&
+    userMessage &&
+    !e.shiftKey &&
+    window.innerWidth > 768
+  ) {
     handleOutgoingMessage(e);
   }
 });
@@ -155,5 +170,9 @@ messageInput.addEventListener("input", () => {
 });
 
 sendMessageButton.addEventListener("click", (e) => handleOutgoingMessage(e));
-chatbotToggler.addEventListener("click", () => document.body.classList.toggle("show-chatbot"));
-closeChatbot.addEventListener("click", () => document.body.classList.remove("show-chatbot"));
+chatbotToggler.addEventListener("click", () =>
+  document.body.classList.toggle("show-chatbot")
+);
+closeChatbot.addEventListener("click", () =>
+  document.body.classList.remove("show-chatbot")
+);
