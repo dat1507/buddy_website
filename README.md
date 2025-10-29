@@ -4,9 +4,14 @@
   VGU Buddy Program Website
 </h1>
 
-
 <p align="center">
   <em>Your gateway to an amazing Vietnamese-German University community experience.</em>  
+</p>
+
+<p align="center">
+  <a href="https://www.vgubuddyprogram.com/" target="_blank">
+    <img src="https://img.shields.io/badge/Visit%20Our%20Website-vgubuddyprogram.com-blue?style=for-the-badge&logo=google-chrome&logoColor=white"/>
+  </a>
 </p>
 
 <p align="center">
@@ -85,5 +90,3 @@ Built with a **friendly interface**, rounded corners, and modern accents.
 <p align="center">
   © 2025 💻 <strong>DevCrew – VGU Buddy Program Team</strong>. All rights reserved.
 </p>
-
-
