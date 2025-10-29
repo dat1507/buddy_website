@@ -83,6 +83,7 @@ Built with a **friendly interface**, rounded corners, and modern accents.
 ---
 
 <p align="center">
-  Made with ❤️ by the <strong>VGU Buddy Program Team</strong>  
+  © 2025 💻 <strong>DevCrew – VGU Buddy Program Team</strong>. All rights reserved.
 </p>
+
 
