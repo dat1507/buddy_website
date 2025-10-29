@@ -82,8 +82,8 @@ Built with a **friendly interface**, rounded corners, and modern accents.
 ---
 
 ## 🌟 Vision
-> This website is more than just a platform — it’s the **complete digital companion** for every VGU student.  
-> Whether you're seeking connection, guidance, or just curiosity, the Buddy Program site helps you **thrive, connect, and belong**.
+This website is more than just a platform — it’s the **complete digital companion** for every VGU student.  
+Whether you're seeking connection, guidance, or just curiosity, the Buddy Program site helps you **thrive, connect, and belong**.
 
 ---
 
