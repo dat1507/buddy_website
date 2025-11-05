@@ -24,8 +24,9 @@ const initialInputHeight = messageInput.scrollHeight;
 // ================================
 // API Setup
 // ================================
-const API_KEY = "AIzaSyAWjXrcaQihB_Xyvu976daGv_v3J7oOv9k";
-const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${API_KEY}`;
+// API URL trỏ đến backend proxy của bạn
+const API_URL = '/api/gemini';
+
 
 // ================================
 // Create message bubble
