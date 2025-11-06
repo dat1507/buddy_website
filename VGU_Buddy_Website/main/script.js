@@ -128,7 +128,8 @@ function getFallbackTranslations() {
                 "subtitle": "Erfahre von echten VGU-Studierenden, wie sie das Buddy-Programm erlebt haben.",
                 "testimonial1": "VGU Buddy hat mein Unileben verändert. Ich habe meine Lerngruppe gefunden, lebenslange Freunde gewonnen und kein wichtiges Event verpasst. Es ist wie ein persönlicher Assistent fürs Studentenleben!",
                 "testimonial2": "Als Austauschstudent hat mir VGU Buddy geholfen, mich nahtlos zu integrieren. Die mehrsprachige Unterstützung und kulturellen Events haben mich sofort wie zu Hause fühlen lassen. Sehr empfehlenswert!",
-                "testimonial3": "Die Sportbuchungsfunktion ist großartig! Ich kann ganz einfach Plätze für Badminton mit Freunden reservieren. VGU Buddy macht das Campusleben viel organisierter und spaßiger."
+                "testimonial3": "Die Sportbuchungsfunktion ist großartig! Ich kann ganz einfach Plätze für Badminton mit Freunden reservieren. VGU Buddy macht das Campusleben viel organisierter und spaßiger.",
+                "testimonial11": "Ich bin erst seit Kurzem im DevCrew-Marketingteam, aber es ist jetzt schon super, Teil von Buddy zu sein. Alle sind freundlich und motiviert – ich freue mich darauf, Neues zu lernen und Buddy noch cooler zu machen!",
             },
             "cta": {
                 "title": "Bereit, dein Unileben zu transformieren?",
@@ -248,6 +249,7 @@ function getFallbackTranslations() {
                 "testimonial8": "I left the Buddy Program due to my personal workload, but it’s a great place to gain soft skills and professional experience if you have the time.",
                 "testimonial9": "From my perspective, the Buddy Program sometimes runs into delays—I’m not sure why. It’s just an area where I think they could improve a little. Apart from that, everything else is great. Overall, I’d give it a solid 4/5.",
                 "testimonial10": "The Buddy Program is great, but communication can be a bit scattered. If that improves, it’ll be close to perfect.",
+                "testimonial11": "Even though I just joined devCrew in the marketing team, being part of Buddy already feels great. Everyone’s really welcoming and full of energy. Can’t wait to pick up some new skills and help make Buddy even cooler!",
             },
             "cta": {
                 "title": "Ready to Transform Your University Experience?",
