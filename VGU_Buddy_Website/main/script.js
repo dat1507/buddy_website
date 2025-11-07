@@ -130,6 +130,7 @@ function getFallbackTranslations() {
                 "testimonial2": "Als Austauschstudent hat mir VGU Buddy geholfen, mich nahtlos zu integrieren. Die mehrsprachige Unterstützung und kulturellen Events haben mich sofort wie zu Hause fühlen lassen. Sehr empfehlenswert!",
                 "testimonial3": "Die Sportbuchungsfunktion ist großartig! Ich kann ganz einfach Plätze für Badminton mit Freunden reservieren. VGU Buddy macht das Campusleben viel organisierter und spaßiger.",
                 "testimonial11": "Ich bin erst seit Kurzem im DevCrew-Marketingteam, aber es ist jetzt schon super, Teil von Buddy zu sein. Alle sind freundlich und motiviert – ich freue mich darauf, Neues zu lernen und Buddy noch cooler zu machen!",
+                "testimonial12": "Bereits in meinem ersten Jahr habe ich das VGU Buddy-Programm als jungen, enthusiastischen und dynamischen Club kennengelernt. Deshalb möchte ich ein wichtiges Mitglied dieser Organisation werden. Ich hoffe, ich kann hier viele Erfahrungen sammeln und Erinnerungen festhalten.",
             },
             "cta": {
                 "title": "Bereit, dein Unileben zu transformieren?",
@@ -250,6 +251,7 @@ function getFallbackTranslations() {
                 "testimonial9": "From my perspective, the Buddy Program sometimes runs into delays—I’m not sure why. It’s just an area where I think they could improve a little. Apart from that, everything else is great. Overall, I’d give it a solid 4/5.",
                 "testimonial10": "The Buddy Program is great, but communication can be a bit scattered. If that improves, it’ll be close to perfect.",
                 "testimonial11": "Even though I just joined devCrew in the marketing team, being part of Buddy already feels great. Everyone’s really welcoming and full of energy. Can’t wait to pick up some new skills and help make Buddy even cooler!",
+                "testimonial12": "In my first year, I have already recognized the VGU Buddy Program as a young, enthusiastic, and energetic club. That is the reason why I want to be an essential member of this organization. Hopefully, I can earn many experiences and memories here.",
             },
             "cta": {
                 "title": "Ready to Transform Your University Experience?",
